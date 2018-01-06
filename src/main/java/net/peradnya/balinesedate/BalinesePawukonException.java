@@ -4,7 +4,7 @@ public class BalinesePawukonException extends Exception {
     
     private static final long serialVersionUID = 1003L;
 
-    public static final String INVALID_DAY_OF_YEAR = "Invalid day of year value. Value need between 0 - 209.";
+    public static final String INVALID_DAY_IN_YEAR = "Invalid day in year value. Value need in between 0 - 209.";
 
     public BalinesePawukonException(String text) {
         super(text);

@@ -26,4 +26,8 @@ public final class Utils {
         return (int) ((timeB - timeA) / (1000 * 60 * 60 * 24));
     }
 
+    public static int mod(int a, int b) {
+        return ((a % b) + b) % b;
+    }
+
 }

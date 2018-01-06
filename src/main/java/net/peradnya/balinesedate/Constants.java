@@ -240,7 +240,7 @@ public final class Constants {
         PUJUD           (14, 9),
         PAHANG          (15, 3),
         KRULUT          (16, 7),
-        MRAKIH          (17, 1),
+        MERAKIH         (17, 1),
         TAMBIR          (18, 4),
         MEDANGKUNGAN    (19, 6),
         MATAL           (20, 5),
@@ -302,7 +302,7 @@ public final class Constants {
     }
 
     public enum Dwiwara {
-        MANGA(0, 5),
+        MENGA(0, 5),
         PEPET(1, 4);
 
         private final int id;

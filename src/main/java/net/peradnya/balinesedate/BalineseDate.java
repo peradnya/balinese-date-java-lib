@@ -111,7 +111,7 @@ public class BalineseDate implements Serializable, Cloneable, Comparable<Balines
 
         int diff    = Utils.getDeltaDay(pivot.getCalendar(), calendar);
 
-        return (pivot.getPawukonDayInYear() + diff) % Constants.DAYS_IN_YEAR_PAWUKON;
+        return Utils.mod(pivot.getPawukonDayInYear() + diff, Constants.DAYS_IN_YEAR_PAWUKON);
     }
 
     private static int calcNgunaRatri(
@@ -120,7 +120,7 @@ public class BalineseDate implements Serializable, Cloneable, Comparable<Balines
 
         int diff    = Utils.getDeltaDay(pivot.getCalendar(), calendar);
 
-        return (pivot.getDayInPengalantaka() + diff) % Constants.MAX_NGUNARATRI;
+        return Utils.mod(pivot.getPawukonDayInYear() + diff, Constants.MAX_NGUNARATRI);
     }
 
     private static int calcPenanggal(

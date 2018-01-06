@@ -2,21 +2,21 @@ package net.peradnya.balinesedate;
 
 import java.io.Serializable;
 
-public class BalinesePawukon implements Serializable, Cloneable {
+public final class BalinesePawukon implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1002L;
 
-    private static final Constants.Wuku[]      lookupWuku       = Constants.Wuku.values();
-    private static final Constants.Ekawara[]   lookupEkawara    = Constants.Ekawara.values();
-    private static final Constants.Dwiwara[]   lookupDwiwara    = Constants.Dwiwara.values();
-    private static final Constants.Triwara[]   lookupTriwara    = Constants.Triwara.values();
-    private static final Constants.Caturwara[] lookupCaturwara  = Constants.Caturwara.values();
-    private static final Constants.Pancawara[] lookupPancawara  = Constants.Pancawara.values();
-    private static final Constants.Sadwara[]   lookupSadwara    = Constants.Sadwara.values();
-    private static final Constants.Saptawara[] lookupSaptawara  = Constants.Saptawara.values();
-    private static final Constants.Astawara[]  lookupAstawara   = Constants.Astawara.values();
-    private static final Constants.Sangawara[] lookupSangawara  = Constants.Sangawara.values();
-    private static final Constants.Dasawara[]  lookupDasawara   = Constants.Dasawara.values();
+    private static final Constants.Wuku[]           lookupWuku       = Constants.Wuku.values();
+    private static final Constants.Ekawara[]        lookupEkawara    = Constants.Ekawara.values();
+    private static final Constants.Dwiwara[]        lookupDwiwara    = Constants.Dwiwara.values();
+    private static final Constants.Triwara[]        lookupTriwara    = Constants.Triwara.values();
+    private static final Constants.Caturwara[]      lookupCaturwara  = Constants.Caturwara.values();
+    private static final Constants.Pancawara[]      lookupPancawara  = Constants.Pancawara.values();
+    private static final Constants.Sadwara[]        lookupSadwara    = Constants.Sadwara.values();
+    private static final Constants.Saptawara[]      lookupSaptawara  = Constants.Saptawara.values();
+    private static final Constants.Astawara[]       lookupAstawara   = Constants.Astawara.values();
+    private static final Constants.Sangawara[]      lookupSangawara  = Constants.Sangawara.values();
+    private static final Constants.Dasawara[]       lookupDasawara   = Constants.Dasawara.values();
 
     private static final Constants.Ingkel[]         lookupIngkel     = Constants.Ingkel.values();
     private static final Constants.Jejapan[]        lookupJejapan    = Constants.Jejapan.values();
@@ -28,251 +28,153 @@ public class BalinesePawukon implements Serializable, Cloneable {
     private static final Constants.Rakam[]          lookupRakam      = Constants.Rakam.values();
 
 
-    private int dayInYear;
+    private final int dayInYear;
+    private final int urip;
 
-    private Constants.Wuku      wuku        = null;
+    private final Constants.Wuku            wuku;
 
-    private Constants.Ekawara   ekawara     = null;
-    private Constants.Dwiwara   dwiwara     = null;
-    private Constants.Triwara   triwara     = null;
-    private Constants.Caturwara caturwara   = null;
-    private Constants.Pancawara pancawara   = null;
-    private Constants.Sadwara   sadwara     = null;
-    private Constants.Saptawara saptawara   = null;
-    private Constants.Astawara  astawara    = null;
-    private Constants.Sangawara sangawara   = null;
-    private Constants.Dasawara  dasawara    = null;
+    private final Constants.Ekawara         ekawara;
+    private final Constants.Dwiwara         dwiwara;
+    private final Constants.Triwara         triwara;
+    private final Constants.Caturwara       caturwara;
+    private final Constants.Pancawara       pancawara;
+    private final Constants.Sadwara         sadwara;
+    private final Constants.Saptawara       saptawara;
+    private final Constants.Astawara        astawara;
+    private final Constants.Sangawara       sangawara;
+    private final Constants.Dasawara        dasawara;
 
-    private Constants.Ingkel            ingkel      = null;
-    private Constants.Jejapan           jejapan     = null;
-    private Constants.PawatekanAlit     watekAlit   = null;
-    private Constants.PawatekanMadya    watekMadya  = null;
-    private Constants.Lintang           lintang     = null;
-    private Constants.Pancasuda         pancasuda   = null;
-    private Constants.Pararasan         pararasan   = null;
-    private Constants.Rakam             rakam       = null;
+    private final Constants.Ingkel          ingkel;
+    private final Constants.Jejapan         jejapan;
+    private final Constants.PawatekanAlit   watekAlit;
+    private final Constants.PawatekanMadya  watekMadya;
+    private final Constants.Lintang         lintang;
+    private final Constants.Pancasuda       pancasuda;
+    private final Constants.Pararasan       pararasan;
+    private final Constants.Rakam           rakam;
 
     public BalinesePawukon(int pawukonDayInYear) throws BalinesePawukonException {
-        if (pawukonDayInYear >= Constants.DAYS_IN_YEAR_PAWUKON) { 
-            throw new BalinesePawukonException(BalinesePawukonException.INVALID_DAY_OF_YEAR);
+        if (pawukonDayInYear >= Constants.DAYS_IN_YEAR_PAWUKON || pawukonDayInYear < 0) { 
+            throw new BalinesePawukonException(BalinesePawukonException.INVALID_DAY_IN_YEAR);
         }
 
-        this.dayInYear = pawukonDayInYear;
+        dayInYear  = pawukonDayInYear;
+        wuku       = lookupWuku         [dayInYear / 7];
+
+        triwara    = lookupTriwara      [dayInYear % 3];
+        pancawara  = lookupPancawara    [dayInYear % 5];
+        sadwara    = lookupSadwara      [dayInYear % 6];
+        saptawara  = lookupSaptawara    [dayInYear % 7];
+
+        urip       = pancawara.getUrip() + saptawara.getUrip();
+        ekawara    = lookupEkawara      [urip % 2];
+        dwiwara    = lookupDwiwara      [urip % 2];
+        dasawara   = lookupDasawara     [urip % 10];
+
+        caturwara  = lookupCaturwara    [calcCaturwaraIdx(dayInYear)];
+        astawara   = lookupAstawara     [calcAstawaraIdx(dayInYear)];
+        sangawara  = lookupSangawara    [calcSangawaraIdx(dayInYear)];
+
+        ingkel     = lookupIngkel       [wuku.getId() % 6];
+        jejapan    = lookupJejapan      [dayInYear % 6];
+        lintang    = lookupLintang      [dayInYear % 35];
+
+        watekAlit  = lookupWatekAlit    [urip % 4];
+        watekMadya = lookupWatekMadya   [urip % 5];
+        pararasan  = lookupPararasan    [urip % 10];
+        
+        pancasuda  = lookupPancasuda    [(saptawara.getKertaAji() + pancawara.getUrip()) % 7];
+        rakam      = lookupRakam        [(saptawara.getKupih() + pancawara.getKupih()) % 6];
     }
 
     public int getPawukonDayInYear() {
-        return this.dayInYear;
+        return dayInYear;
     }
 
     public Constants.Wuku getWuku() {
-        if (wuku == null) {
-            wuku = lookupWuku[getPawukonDayInYear() / 7];
-        }
-
         return wuku;
     }
 
     public Constants.Ekawara getEkawara() {
-        if (ekawara == null) {
-            int idx = this.GetUrip() % 2;
-            ekawara = lookupEkawara[idx];
-        }
-
         return ekawara;
     }
 
     public Constants.Dwiwara getDwiwara() {
-        if (dwiwara == null) {
-            int idx = this.GetUrip() % 2;
-            dwiwara = lookupDwiwara[idx];
-        }
-
         return dwiwara;
     }
 
     public Constants.Triwara getTriwara() {
-        if (triwara == null) {
-            int idx = this.getPawukonDayInYear() % 3;
-            triwara = lookupTriwara[idx];
-        }
-
         return triwara;
     }
 
     public Constants.Caturwara getCaturwara() {
-        if (caturwara == null) {
-            int idx = 0;
-            if (this.getPawukonDayInYear() <= 70) {
-                idx = this.getPawukonDayInYear() % 4;
-            } else if (this.getPawukonDayInYear() == 71 || this.getPawukonDayInYear() == 72) {
-                idx = Constants.Caturwara.JAYA.getId();
-            } else {
-                idx = (this.getPawukonDayInYear() - 2) % 4;
-            }
-
-            caturwara = lookupCaturwara[idx];
-        }
-
         return caturwara;
     }
 
     public Constants.Pancawara getPancawara() {
-        if (pancawara == null) {
-            int idx   = getPawukonDayInYear() % 5;
-            pancawara = lookupPancawara[idx];
-        }
-
         return pancawara;
     }
 
     public Constants.Sadwara getSadwara() {
-        if (sadwara == null) {
-            int idx = getPawukonDayInYear() % 6;
-            sadwara = lookupSadwara[idx];
-        }
-
         return sadwara;
     }
 
     public Constants.Saptawara getSaptawara() {
-        if (saptawara == null) {
-            int idx   = getPawukonDayInYear() % 7;
-            saptawara = lookupSaptawara[idx];
-        }
-
         return saptawara;
     }
 
     public Constants.Astawara getAstawara() {
-        if (astawara == null) {
-            int idx = 0;
-            if (this.getPawukonDayInYear() <= 70) {
-                idx = this.getPawukonDayInYear() % 8;
-            } else if (this.getPawukonDayInYear() == 71 || this.getPawukonDayInYear() == 72) {
-                idx = Constants.Astawara.KALA.getId();
-            } else {
-                idx = (this.getPawukonDayInYear() - 2) % 8;
-            }
-            
-            astawara = lookupAstawara[idx];
-        }
-
         return astawara;
     }
 
     public Constants.Sangawara getSangawara() {
-        if (sangawara == null) {
-            int idx = 0;
-            if (this.getPawukonDayInYear() <= 3) {
-                idx = Constants.Sangawara.DANGU.getId();
-            } else {
-                idx = (this.getPawukonDayInYear() - 3) % 9;
-            }
-
-            sangawara = lookupSangawara[idx];
-        }
-
         return sangawara;
     }
 
     public Constants.Dasawara getDasawara() {
-        if (dasawara == null) {
-            int idx  = this.GetUrip() % 10;
-            dasawara = lookupDasawara[idx];
-        }
-
         return dasawara;
     }
 
     public Constants.Ingkel getIngkel() {
-        if (ingkel == null) {
-            int idx = this.getWuku().getId() % 6;
-            ingkel  = lookupIngkel[idx];
-        }
-
         return ingkel;
     }
 
     public Constants.Jejapan getJejapan() {
-        if (jejapan == null) {
-            int idx = this.getPawukonDayInYear() % 6;
-            jejapan = lookupJejapan[idx];
-        }
-
         return jejapan;
     }
 
     public Constants.PawatekanAlit getWatekAlit() {
-        if (watekAlit == null) {
-            int idx     = this.GetUrip() % 4;
-            watekAlit   = lookupWatekAlit[idx];
-        }
-
         return watekAlit;
     }
 
     public Constants.PawatekanMadya getWatekMadya() {
-        if (watekMadya == null) {
-            int idx     = this.GetUrip() % 5;
-            watekMadya  = lookupWatekMadya[idx];
-        }
-
         return watekMadya;
     }
 
     public Constants.Lintang getLintang() {
-        if (lintang == null) {
-            int idx = this.getPawukonDayInYear() % 35;
-            lintang = lookupLintang[idx];
-        }
-
         return lintang;
     }
 
     public Constants.Pancasuda getPancasuda() {
-        if (pancasuda == null) {
-            getSangawara();
-            getPancawara();
-
-            int idx   = (saptawara.getKertaAji() + pancawara.getUrip()) % 7;
-            pancasuda = lookupPancasuda[idx];
-        }
-
         return pancasuda;
     }
 
     public Constants.Pararasan getPararasan() {
-        if (pararasan == null) {
-            int idx    = this.GetUrip() % 10;
-            pararasan  = lookupPararasan[idx];
-        }
-
         return pararasan;
     }
 
     public Constants.Rakam getRakam() {
-        if (rakam == null) {
-            getPancawara();
-            getSaptawara();
-
-            int idx = (pancawara.getKupih() + saptawara.getKupih()) % 6;
-            rakam   = lookupRakam[idx];
-        }
-
         return rakam;
     }
 
     public int GetUrip() {
-        getPancawara();
-        getSaptawara();
-
-        return pancawara.getUrip() + saptawara.getUrip();
+        return urip;
     }
 
     @Override
     public Object clone() {
         try {
-            return new BalinesePawukon(this.getPawukonDayInYear());
+            return new BalinesePawukon(getPawukonDayInYear());
         } catch (BalinesePawukonException ex) {
             return null;
         }
@@ -281,12 +183,49 @@ public class BalinesePawukon implements Serializable, Cloneable {
     @Override
     public boolean equals(Object obj) {
         BalinesePawukon that = (BalinesePawukon) obj;
-        return this.getPawukonDayInYear() == that.getPawukonDayInYear();
+        return getPawukonDayInYear() == that.getPawukonDayInYear();
     }
 
     @Override
     public String toString() {
         return "";
+    }
+
+    private static int calcCaturwaraIdx(int pawukonDayInYear) {
+        int idx = 0;
+        if (pawukonDayInYear <= 70) {
+            idx = pawukonDayInYear % 4;
+        } else if (pawukonDayInYear == 71 || pawukonDayInYear == 72) {
+            idx = Constants.Caturwara.JAYA.getId();
+        } else {
+            idx = (pawukonDayInYear - 2) % 4;
+        }
+
+        return idx;
+    }
+
+    private static int calcAstawaraIdx(int pawukonDayInYear) {
+        int idx = 0;
+        if (pawukonDayInYear <= 70) {
+            idx = pawukonDayInYear % 8;
+        } else if (pawukonDayInYear == 71 || pawukonDayInYear == 72) {
+            idx = Constants.Astawara.KALA.getId();
+        } else {
+            idx = (pawukonDayInYear - 2) % 8;
+        }
+
+        return idx;
+    }
+
+    private static int calcSangawaraIdx(int pawukonDayInYear) {
+        int idx = 0;
+        if (pawukonDayInYear <= 3) {
+            idx = Constants.Sangawara.DANGU.getId();
+        } else {
+            idx = (pawukonDayInYear - 3) % 9;
+        }
+
+        return idx;
     }
 
 }
