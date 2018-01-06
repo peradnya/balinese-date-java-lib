@@ -53,7 +53,14 @@ public class BalineseDate implements Serializable, Cloneable, Comparable<Balines
             int pDIY        = calcPawukonDayInYear(this.pivot, this.calendar);
             this.pawukon    = new BalinesePawukon(pDIY);
 
-            this.ngunaRatri = calcNgunaRatri(this.pivot, this.calendar);
+            int tempTanggal = calcPenanggal(this.pivot, this.calendar);
+
+            this.penanggal  = tempTanggal % 15;
+            this.penanggalStatus = (tempTanggal / 15 == 0) ? 
+                Constants.MoonStatus.PENANGGAL: 
+                Constants.MoonStatus.PANGELONG;
+
+            
 
         } catch (BalinesePawukonException ex) {
             //later
@@ -62,6 +69,10 @@ public class BalineseDate implements Serializable, Cloneable, Comparable<Balines
 
     public GregorianCalendar getCalendar() {
         return (GregorianCalendar) calendar.clone();
+    }
+
+    public BalinesePawukon getPawukon() {
+        return pawukon;
     }
 
     @Override
@@ -109,14 +120,33 @@ public class BalineseDate implements Serializable, Cloneable, Comparable<Balines
 
         int diff    = Utils.getDeltaDay(pivot.getCalendar(), calendar);
 
-        return (pivot.getNgunaRatri() + diff) % Constants.MAX_NGUNARATRI;
+        return (pivot.getDayInPengalantaka() + diff) % Constants.MAX_NGUNARATRI;
     }
 
-    private static int calcPenaggal(
+    private static int calcPenanggal(
         Constants.BalineseDatePivot pivot, 
         GregorianCalendar calendar) {
 
-        return 0;
+        int diff = Utils.getDeltaDay(pivot.getCalendar(), calendar);
+        int days = pivot.getDayInPengalantaka() + diff;
+
+        int countNG     = 0;
+        int startNG     = 0;
+        int penanggal   = 0;
+        int pangelong   = pivot.isPangelong() ? 0 : 15;
+
+        if (diff >= 0) {
+            startNG     = pivot.getDayInPengalantaka() - (pivot.getDayInPengalantaka() % 63);
+        } else {
+            startNG     = pivot.getDayInPengalantaka() + 63 - (pivot.getDayInPengalantaka() % 63);
+        }
+
+        countNG     = (int) Math.ceil((days - startNG) / 63);
+        countNG     = countNG + (pivot.isNgunaRatri() ? 1 : 0);
+
+        penanggal   = (diff + pivot.getPenanggal() + pangelong + countNG) % 30;
+
+        return penanggal;
     }
 	
 }

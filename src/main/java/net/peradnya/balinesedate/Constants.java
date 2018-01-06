@@ -1,7 +1,6 @@
 package net.peradnya.balinesedate;
 
 import java.util.GregorianCalendar;
-import java.util.TimeZone;
 
 public final class Constants {
 
@@ -155,8 +154,8 @@ public final class Constants {
         TUNGGAK_SEMI(2),
         SATRIA_WIBAWA(3),
         SUMUR_SINABA(4),
-        BUMI_KAPETAK(5),
-        SATRIA_WIRANG(6);
+        SATRIA_WIRANG(5),
+        BUMI_KAPETAK(6);
 
         private final int id;
         
@@ -447,7 +446,7 @@ public final class Constants {
         REDITE(0, 5, 6, 3),
         SOMA(1, 4, 4, 4),
         ANGGARA(2, 3, 3, 5),
-        BUDA(3, 7, 7, 6),
+        BUDA(3, 7, 6, 6),
         WRESPATI(4, 8, 5, 7),
         SUKRA(5, 6, 7, 1),
         SANISCARA(6, 9, 8, 2);
@@ -462,7 +461,7 @@ public final class Constants {
             int urip, 
             int kertaaji, 
             int kupih) {
-                
+
             this.id         = id;
             this.urip       = urip;
             this.kertaaji   = kertaaji;
@@ -609,26 +608,32 @@ public final class Constants {
     }
 
     public enum BalineseDatePivot {
-        PIVOT_1999(1999, 1, 1, 124, 58, false),
-        PIVOT_2000(2000, 1, 1, 32, 424, false);
+        PIVOT_1999(1999, 1, 1, 124, 13, 58, false, false),
+        PIVOT_2000(2000, 1, 1, 69, 10, 424, false, true);
 
         private final GregorianCalendar calendar;
         private final int pawukonDayInYear;
-        private final int ngunaRatri;
+        private final int penanggal;
+        private final int dayInPengalantaka;
         private final boolean isNgunaRatri;
+        private final boolean isPangelong;
 
         private BalineseDatePivot(
             int year, 
             int month, 
             int dayOfMonth, 
             int pawukonDayInYear, 
-            int ngunaRatri, 
-            boolean isNgunaRatri) {
+            int penanggal,
+            int dayInPengalantaka, 
+            boolean isNgunaRatri,
+            boolean isPangelong) {
 
             this.calendar           = new GregorianCalendar(year, month, dayOfMonth);
             this.pawukonDayInYear   = pawukonDayInYear;
-            this.ngunaRatri         = ngunaRatri;
+            this.penanggal          = penanggal;
+            this.dayInPengalantaka  = dayInPengalantaka;
             this.isNgunaRatri       = isNgunaRatri;
+            this.isPangelong        = isPangelong;
         }
 
         public GregorianCalendar getCalendar() {
@@ -639,12 +644,20 @@ public final class Constants {
             return pawukonDayInYear;
         }
 
-        public int getNgunaRatri() {
-            return ngunaRatri;
+        public int getPenanggal() {
+            return penanggal;
+        }
+
+        public int getDayInPengalantaka() {
+            return dayInPengalantaka;
         }
 
         public boolean isNgunaRatri() {
             return isNgunaRatri;
+        }
+
+        public boolean isPangelong() {
+            return isPangelong;
         }
 
     }
