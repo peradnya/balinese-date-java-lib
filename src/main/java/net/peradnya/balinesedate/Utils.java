@@ -3,6 +3,8 @@ package net.peradnya.balinesedate;
 import java.util.GregorianCalendar;
 
 public final class Utils {
+
+    private static final long DAY_IN_MS = 86400000L;
     
     public static String toTitleCase(String text) {
         char[] arr = text.toCharArray();
@@ -20,10 +22,9 @@ public final class Utils {
     }
 
     public static int getDeltaDay(GregorianCalendar a, GregorianCalendar b) {
-        long timeA   = a.getTimeInMillis();
-        long timeB   = b.getTimeInMillis();
-
-        return (int) ((timeB - timeA) / (1000 * 60 * 60 * 24));
+        // try to fix precision error
+        double deltaMillis = (double) (b.getTimeInMillis() - a.getTimeInMillis());
+        return (int) Math.ceil(deltaMillis / DAY_IN_MS);
     }
 
     public static int mod(int a, int b) {

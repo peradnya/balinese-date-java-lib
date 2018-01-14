@@ -4,67 +4,62 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class BalineseDate implements Serializable, Cloneable, Comparable<BalineseDate> {
+public final class BalineseDate implements Serializable, Cloneable, Comparable<BalineseDate> {
 
     private static final long serialVersionUID = 1001L;
 
-    private static final GregorianCalendar DATE_NYEPI_1921 = new GregorianCalendar(1999, 3, 18);
+    // Start of Pengalantaka Eka Sungsang to Pon (need to be confirmed)
+    // From: http://erwandigunawandly.blogspot.co.id/2014/06/luni-solar-shofiyulloh-st.html
+    private static final GregorianCalendar DATE_TRANSITION_PON      = new GregorianCalendar(1971, 1, 27);
 
+    // Start of Pengalantaka Eka Sungsang to Paing (need to be confirmed)
+    private static final GregorianCalendar DATE_TRANSITION_PAING    = new GregorianCalendar(2000, 1, 6);
 
-
-    private Constants.BalineseDatePivot pivot;
-    private int ngunaRatri;
+    private final Constants.BalineseDatePivot pivot;
+    private final int ngunaratri;
     
-    private int penanggal;
-    private Constants.MoonStatus penanggalStatus;
-    private Constants.Sasih sasih;
-    private int saka;
+    private final int penanggal;
+    private final boolean isPangelong;
+    private final Constants.Sasih sasih;
+    private final int saka;
 
-    private GregorianCalendar calendar;
-    private BalinesePawukon pawukon;
-
-
+    private final GregorianCalendar calendar;
+    private final BalinesePawukon pawukon;
 
 
     public BalineseDate() {
-        GregorianCalendar temp = new GregorianCalendar();
-
-        temp.set(Calendar.HOUR_OF_DAY, 0);
-        temp.set(Calendar.MINUTE, 0);
-        temp.set(Calendar.SECOND, 0);
-        temp.set(Calendar.MILLISECOND, 0);
-
-        initBalineseDate(temp);
+        this(new GregorianCalendar(), false);
     }
 
     public BalineseDate(int year, int month, int dayOfMonth) {
-        initBalineseDate(new GregorianCalendar(year, month, dayOfMonth));
+        this(new GregorianCalendar(year, month, dayOfMonth), false);
     }
 
-    public BalineseDate(GregorianCalendar calendar) {
-        initBalineseDate((GregorianCalendar) calendar.clone());
+    public BalineseDate(GregorianCalendar calendar)  {
+        this(calendar, true);
     }
 
-    private void initBalineseDate(GregorianCalendar calendar) {
-        try {
-            this.calendar   = calendar;
-            this.pivot      = chooseBestPivot(this.calendar);
+    private BalineseDate(GregorianCalendar calendar, boolean copy) {
+        GregorianCalendar date = copy ? (GregorianCalendar) calendar.clone() : calendar;
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
 
-            int pDIY        = calcPawukonDayInYear(this.pivot, this.calendar);
-            this.pawukon    = new BalinesePawukon(pDIY);
+        this.calendar   = date;
+        this.pivot      = chooseBestPivot(this.calendar);
 
-            int tempTanggal = calcPenanggal(this.pivot, this.calendar);
+        int pDIY        = calcPawukonDayInYear(this.pivot, this.calendar);
+        this.pawukon    = new BalinesePawukon(pDIY);
 
-            this.penanggal  = tempTanggal % 15;
-            this.penanggalStatus = (tempTanggal / 15 == 0) ? 
-                Constants.MoonStatus.PENANGGAL: 
-                Constants.MoonStatus.PANGELONG;
+        int[] resPenanggal = calcPenanggal(this.pivot, this.calendar);
 
-            
+        this.penanggal  = resPenanggal[0];
+        this.isPangelong = false;
 
-        } catch (BalinesePawukonException ex) {
-            //later
-        }
+        this.saka = 0;
+        this.sasih = Constants.Sasih.KASA;
+        this.ngunaratri = 0;
     }
 
     public GregorianCalendar getCalendar() {
@@ -73,6 +68,10 @@ public class BalineseDate implements Serializable, Cloneable, Comparable<Balines
 
     public BalinesePawukon getPawukon() {
         return pawukon;
+    }
+
+    public int getPenanggal() {
+        return penanggal;
     }
 
     @Override
@@ -100,9 +99,9 @@ public class BalineseDate implements Serializable, Cloneable, Comparable<Balines
     }
 
     private static Constants.BalineseDatePivot chooseBestPivot(GregorianCalendar calendar) {
-        return (DATE_NYEPI_1921.compareTo(calendar) >= 0) ? 
-            Constants.BalineseDatePivot.PIVOT_1999 : 
-            Constants.BalineseDatePivot.PIVOT_2000;
+        return (calendar.compareTo(DATE_TRANSITION_PAING) < 0) ? 
+            Constants.BalineseDatePivot.PIVOT_NG_PON : 
+            Constants.BalineseDatePivot.PIVOT_NG_PAING;
     }
 
     private static int calcPawukonDayInYear(
@@ -110,43 +109,29 @@ public class BalineseDate implements Serializable, Cloneable, Comparable<Balines
         GregorianCalendar calendar) {
 
         int diff    = Utils.getDeltaDay(pivot.getCalendar(), calendar);
-
         return Utils.mod(pivot.getPawukonDayInYear() + diff, Constants.DAYS_IN_YEAR_PAWUKON);
     }
 
-    private static int calcNgunaRatri(
-        Constants.BalineseDatePivot pivot, 
-        GregorianCalendar calendar) {
+    private static int[] calcPenanggal(Constants.BalineseDatePivot pivot, GregorianCalendar calendar) {
+        int[]   res     = new int[3];
 
-        int diff    = Utils.getDeltaDay(pivot.getCalendar(), calendar);
+        int     dayDiff = Utils.getDeltaDay(pivot.getCalendar(), calendar);
+        int     daySkip = 0;
 
-        return Utils.mod(pivot.getPawukonDayInYear() + diff, Constants.MAX_NGUNARATRI);
-    }
+        daySkip = (int) Math.ceil((double) dayDiff / Constants.NGUNARATRI);
 
-    private static int calcPenanggal(
-        Constants.BalineseDatePivot pivot, 
-        GregorianCalendar calendar) {
+        // calc penanggal
+        res[0]  = Utils.mod(pivot.getPenanggal() + dayDiff + daySkip, 30);
+        // calc if this pangelong
+        res[1]  = !(pivot.isPangelong() ^ res[0] < 15) ? 1 : 0;
+        // calc if this ngunaratri
+        res[2]  = Utils.mod(dayDiff, Constants.NGUNARATRI) == 0 ? 1 : 0;
 
-        int diff = Utils.getDeltaDay(pivot.getCalendar(), calendar);
-        int days = pivot.getDayInPengalantaka() + diff;
+        // if penanggal 0, change to penanggal 15
+        res[0] = Utils.mod(res[0], 15);
+        res[0] = (res[0] == 0) ? 15 : res[0];
 
-        int countNG     = 0;
-        int startNG     = 0;
-        int penanggal   = 0;
-        int pangelong   = pivot.isPangelong() ? 0 : 15;
-
-        if (diff >= 0) {
-            startNG     = pivot.getDayInPengalantaka() - (pivot.getDayInPengalantaka() % 63);
-        } else {
-            startNG     = pivot.getDayInPengalantaka() + 63 - (pivot.getDayInPengalantaka() % 63);
-        }
-
-        countNG     = (int) Math.ceil((days - startNG) / 63);
-        countNG     = countNG + (pivot.isNgunaRatri() ? 1 : 0);
-
-        penanggal   = (diff + pivot.getPenanggal() + pangelong + countNG) % 30;
-
-        return penanggal;
+        return res;
     }
 	
 }

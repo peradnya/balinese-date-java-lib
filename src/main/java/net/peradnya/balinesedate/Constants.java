@@ -4,6 +4,7 @@ import java.util.GregorianCalendar;
 
 public final class Constants {
 
+    public static final int NGUNARATRI              = 63;
     public static final int DAYS_IN_YEAR_PAWUKON    = 210;
     public static final int MAX_NGUNARATRI          = 1890;
 
@@ -608,14 +609,13 @@ public final class Constants {
     }
 
     public enum BalineseDatePivot {
-        PIVOT_1999(1999, 1, 1, 124, 13, 58, false, false),
-        PIVOT_2000(2000, 1, 1, 69, 10, 424, false, true);
+        PIVOT_NG_PON(1971, 1, 27, 3, 0, 0, true),
+        PIVOT_NG_PAING(2000, 1, 18, 86, 12, 0, true);
 
         private final GregorianCalendar calendar;
         private final int pawukonDayInYear;
         private final int penanggal;
-        private final int dayInPengalantaka;
-        private final boolean isNgunaRatri;
+        private final int ngunaratriDay;
         private final boolean isPangelong;
 
         private BalineseDatePivot(
@@ -624,15 +624,13 @@ public final class Constants {
             int dayOfMonth, 
             int pawukonDayInYear, 
             int penanggal,
-            int dayInPengalantaka, 
-            boolean isNgunaRatri,
+            int ngunaratriDay, 
             boolean isPangelong) {
 
             this.calendar           = new GregorianCalendar(year, month, dayOfMonth);
             this.pawukonDayInYear   = pawukonDayInYear;
             this.penanggal          = penanggal;
-            this.dayInPengalantaka  = dayInPengalantaka;
-            this.isNgunaRatri       = isNgunaRatri;
+            this.ngunaratriDay      = ngunaratriDay;
             this.isPangelong        = isPangelong;
         }
 
@@ -648,12 +646,8 @@ public final class Constants {
             return penanggal;
         }
 
-        public int getDayInPengalantaka() {
-            return dayInPengalantaka;
-        }
-
-        public boolean isNgunaRatri() {
-            return isNgunaRatri;
+        public int getNgunaratriDay() {
+            return ngunaratriDay;
         }
 
         public boolean isPangelong() {

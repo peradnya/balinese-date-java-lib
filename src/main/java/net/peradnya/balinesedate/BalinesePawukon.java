@@ -5,6 +5,7 @@ import java.io.Serializable;
 public final class BalinesePawukon implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1002L;
+    private static final String INVALID_DAY_IN_YEAR = "Invalid day in year value. Value need in between 0 - 209.";
 
     private static final Constants.Wuku[]           lookupWuku       = Constants.Wuku.values();
     private static final Constants.Ekawara[]        lookupEkawara    = Constants.Ekawara.values();
@@ -53,9 +54,9 @@ public final class BalinesePawukon implements Serializable, Cloneable {
     private final Constants.Pararasan       pararasan;
     private final Constants.Rakam           rakam;
 
-    public BalinesePawukon(int pawukonDayInYear) throws BalinesePawukonException {
+    public BalinesePawukon(int pawukonDayInYear) {
         if (pawukonDayInYear >= Constants.DAYS_IN_YEAR_PAWUKON || pawukonDayInYear < 0) { 
-            throw new BalinesePawukonException(BalinesePawukonException.INVALID_DAY_IN_YEAR);
+            throw new IllegalArgumentException(INVALID_DAY_IN_YEAR);
         }
 
         dayInYear  = pawukonDayInYear;
@@ -173,11 +174,7 @@ public final class BalinesePawukon implements Serializable, Cloneable {
 
     @Override
     public Object clone() {
-        try {
-            return new BalinesePawukon(getPawukonDayInYear());
-        } catch (BalinesePawukonException ex) {
-            return null;
-        }
+        return new BalinesePawukon(getPawukonDayInYear());
     }
 
     @Override
