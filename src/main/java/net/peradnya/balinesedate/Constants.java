@@ -609,14 +609,13 @@ public final class Constants {
     }
 
     public enum BalineseDatePivot {
-        PIVOT_NG_PON(1971, 1, 27, 3, 0, 0, true),
-        PIVOT_NG_PAING(2000, 1, 18, 86, 12, 0, true);
+        PIVOT_NG_PON(1971, 1, 27, 3, 0, 0),
+        PIVOT_NG_PAING(2000, 1, 18, 86, 12, 0);
 
         private final GregorianCalendar calendar;
         private final int pawukonDayInYear;
         private final int penanggal;
         private final int ngunaratriDay;
-        private final boolean isPangelong;
 
         private BalineseDatePivot(
             int year, 
@@ -624,14 +623,12 @@ public final class Constants {
             int dayOfMonth, 
             int pawukonDayInYear, 
             int penanggal,
-            int ngunaratriDay, 
-            boolean isPangelong) {
+            int ngunaratriDay) {
 
             this.calendar           = new GregorianCalendar(year, month, dayOfMonth);
             this.pawukonDayInYear   = pawukonDayInYear;
             this.penanggal          = penanggal;
             this.ngunaratriDay      = ngunaratriDay;
-            this.isPangelong        = isPangelong;
         }
 
         public GregorianCalendar getCalendar() {
@@ -648,10 +645,6 @@ public final class Constants {
 
         public int getNgunaratriDay() {
             return ngunaratriDay;
-        }
-
-        public boolean isPangelong() {
-            return isPangelong;
         }
 
     }
