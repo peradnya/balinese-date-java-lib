@@ -15,13 +15,24 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     // Start of Pengalantaka Eka Sungsang to Paing (need to be confirmed)
     private static final GregorianCalendar DATE_TRANSITION_PAING    = new GregorianCalendar(2000, 1, 6);
 
+    // Start of Sasih Berkesinambungan (Kawolu, Caka 1914) (need to be confirmed)
+    private static final GregorianCalendar DATE_TRANSITION_SK_START  = new GregorianCalendar(1993, 1, 24);
+
+    // Finish of Sasih Berkesinambungan (Kawolu, Caka 1924) (need to be confirmed)
+    private static final GregorianCalendar DATE_TRANSITION_SK_FINISH  = new GregorianCalendar(2003, 1, 3);
+
+    // Lookup table for sasih
+    private static final Constants.Sasih[] lookupSasih              = Constants.Sasih.values();
+
     private final Constants.BalineseDatePivot pivot;
     
     private final int penanggal;
     private final boolean isPangelong;
     private final boolean isNgunaratri;
-    private final Constants.Sasih sasih;
+
     private final int saka;
+    private final Constants.Sasih sasih;
+    private final boolean isNampihSasih;
 
     private final GregorianCalendar calendar;
     private final BalinesePawukon pawukon;
@@ -58,8 +69,11 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         this.isPangelong        = resPenanggal[1] == 1;
         this.isNgunaratri       = resPenanggal[2] == 1;
 
-        this.saka               = 0;
-        this.sasih              = Constants.Sasih.KASA;
+        int[] resSasih          = calcSasih(this.pivot, this.penanggal, this.isPangelong, this.isNgunaratri, this.calendar);
+
+        this.saka               = resSasih[0];
+        this.sasih              = lookupSasih[resSasih[1]];
+        this.isNampihSasih      = resSasih[2] == 1;
     }
 
     public GregorianCalendar getCalendar() {
@@ -83,6 +97,27 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
      */
     public boolean isNgunaratri() {
         return isNgunaratri;
+    }
+
+    /**
+     * @return the saka
+     */
+    public int getSaka() {
+        return saka;
+    }
+
+    /**
+     * @return the sasih
+     */
+    public Constants.Sasih getSasih() {
+        return sasih;
+    }
+
+    /**
+     * @return the isNampihSasih
+     */
+    public boolean isNampihSasih() {
+        return isNampihSasih;
     }
 
     @Override
@@ -144,6 +179,139 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         res[0] = (res[0] == 0) ? 15 : res[0];
 
         return res;
+    }
+
+    private static int[] calcSasih(
+        Constants.BalineseDatePivot pivot, 
+        int penanggal, 
+        boolean isPangelong, 
+        boolean isNgunaratri, 
+        GregorianCalendar calendar) {
+
+        int[]   res     = new int[3];
+
+        int dayDiff     = Utils.getDeltaDay(pivot.getCalendar(), calendar);
+        int daySkip     = (int) Math.ceil((double) dayDiff / Constants.NGUNARATRI);
+        int dayTotal    = pivot.getPenanggal() + dayDiff + daySkip;
+
+        // calc number of sasih
+        int totalSasih  = (int) Math.ceil((double) dayTotal / 30);
+
+        int     currentSasih  = pivot.getSasih().getId();
+        int     currentSaka   = pivot.getSaka() - (currentSasih == 9 ? 1 : 0);
+        int     nampihCount   = pivot.isNampihSasih() ? 1 : 0;
+
+        // in sasih kesinambungan period (1993 - 2002)
+        boolean inSK        = false;
+        if (pivot.getCalendar().compareTo(DATE_TRANSITION_SK_START) >= 0 && 
+            pivot.getCalendar().compareTo(DATE_TRANSITION_SK_FINISH) < 0) {
+                inSK        = true;
+        }
+
+        while (totalSasih != 0) {
+
+            if (dayTotal >= 0) {
+
+                if (nampihCount == 0 || nampihCount == 2) {
+                    nampihCount     = 0;
+                    totalSasih      = totalSasih - 1;
+                    currentSasih    = Utils.mod(currentSasih + 1, 12);
+                } else {
+                    totalSasih      = totalSasih - 1;
+                }
+
+                if (currentSasih == Constants.Sasih.KADASA.getId() && nampihCount == 0) { 
+                    currentSaka = currentSaka + 1; 
+                }
+
+                if (currentSasih == Constants.Sasih.KAWOLU.getId() && currentSaka == 1914) {
+                    inSK = true;
+                } else if (currentSasih == Constants.Sasih.KAWOLU.getId() && currentSaka == 1924) {
+                    inSK = false; 
+                }
+
+            } else {
+
+                if (nampihCount == 0 || nampihCount == 2) {
+                    nampihCount     = 0;
+                    totalSasih      = totalSasih + 1;
+                    currentSasih    = Utils.mod(currentSasih - 1, 12);
+                } else {
+                    totalSasih      = totalSasih + 1;
+                }
+
+                if (currentSasih == Constants.Sasih.KASANGA.getId()) { 
+                    currentSaka = currentSaka - 1; 
+                }
+
+                if (currentSasih == Constants.Sasih.KAPITU.getId() && currentSaka == 1914) {
+                    inSK = false;
+                } else if (currentSasih == Constants.Sasih.KAPITU.getId() && currentSaka == 1924) {
+                    inSK = true; 
+                }
+            }
+
+            switch (currentSaka % 19) {
+                case 0:
+                case 6:
+                case 11:
+                    if (currentSasih == Constants.Sasih.DESTHA.getId() && !inSK) {
+                        nampihCount++;
+                    }
+                    break;
+                case 3:
+                case 8:
+                case 14:
+                case 16:
+                    if (currentSasih == Constants.Sasih.SADHA.getId() && !inSK) {
+                        nampihCount++;
+                    }
+                    break;
+                case 2:
+                case 10:
+                    if (currentSasih == Constants.Sasih.DESTHA.getId() && inSK) {
+                        nampihCount++;
+                    }
+                    break;
+                case 4:
+                    if (currentSasih == Constants.Sasih.KATIGA.getId() && inSK) {
+                        nampihCount++;
+                    }
+                    break;
+                case 7:
+                    if (currentSasih == Constants.Sasih.KASA.getId() &&  inSK) {
+                        nampihCount++;
+                    }
+                    break;
+                case 13:
+                    if (currentSasih == Constants.Sasih.KADASA.getId() && inSK) {
+                        nampihCount++;
+                    }
+                    break;
+                case 15:
+                    if (currentSasih == Constants.Sasih.KARO.getId() && inSK) {
+                        nampihCount++;
+                    }
+                    break;
+                case 18:
+                    if (currentSasih == Constants.Sasih.SADHA.getId() && inSK) {
+                        nampihCount++;
+                    }
+                    break;
+            }
+        }
+
+        res[0] = currentSaka;
+        res[1] = currentSasih;
+
+        if (dayTotal >= 0) {
+            res[2] = nampihCount == 2 ? 1 : 0;
+        } else {
+            res[2] = nampihCount == 1 ? 1 : 0;
+        }
+
+        return res;
+
     }
 	
 }

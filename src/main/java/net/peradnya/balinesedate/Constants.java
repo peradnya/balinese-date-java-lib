@@ -6,7 +6,6 @@ public final class Constants {
 
     public static final int NGUNARATRI              = 63;
     public static final int DAYS_IN_YEAR_PAWUKON    = 210;
-    public static final int MAX_NGUNARATRI          = 1890;
 
     public enum Jejapan {
         MINA(0),
@@ -587,18 +586,32 @@ public final class Constants {
     }
 
     public enum Sasih {
-        KASA,
-        KARO,
-        KATIGA,
-        KAPAT,
-        KALIMA,
-        KANEM,
-        KAPITU,
-        KAWOLU,
-        KASANGA,
-        KADASA,
-        DESTHA,
-        SADHA
+        KASA(0),
+        KARO(1),
+        KATIGA(2),
+        KAPAT(3),
+        KALIMA(4),
+        KANEM(5),
+        KAPITU(6),
+        KAWOLU(7),
+        KASANGA(8),
+        KADASA(9),
+        DESTHA(10),
+        SADHA(11);
+
+        private final int id;
+
+        private Sasih(int id) {
+            this.id     = id;
+        }
+
+        public int getId() { 
+            return this.id; 
+        }
+
+        public String getName() {
+            return this.name();
+        }
     }
 
     public enum MoonStatus {
@@ -609,13 +622,19 @@ public final class Constants {
     }
 
     public enum BalineseDatePivot {
-        PIVOT_NG_PON(1971, 1, 27, 3, 0, 0),
-        PIVOT_NG_PAING(2000, 1, 18, 86, 12, 0);
+        PIVOT_NG_PON(1971, 1, 27, 3, 0, 0, 1891, Constants.Sasih.KAPITU, false),
+        PIVOT_NG_PAING(2000, 1, 18, 86, 12, 0, 1921, Constants.Sasih.KAPITU, false);
 
         private final GregorianCalendar calendar;
+
         private final int pawukonDayInYear;
         private final int penanggal;
         private final int ngunaratriDay;
+
+        private final int saka;
+        private final Constants.Sasih sasih;
+        private final boolean isNampihSasih;
+
 
         private BalineseDatePivot(
             int year, 
@@ -623,12 +642,18 @@ public final class Constants {
             int dayOfMonth, 
             int pawukonDayInYear, 
             int penanggal,
-            int ngunaratriDay) {
+            int ngunaratriDay,
+            int saka,
+            Constants.Sasih sasih,
+            boolean isNampihSasih) {
 
             this.calendar           = new GregorianCalendar(year, month, dayOfMonth);
             this.pawukonDayInYear   = pawukonDayInYear;
             this.penanggal          = penanggal;
             this.ngunaratriDay      = ngunaratriDay;
+            this.saka               = saka;
+            this.sasih              = sasih;
+            this.isNampihSasih      = isNampihSasih;
         }
 
         public GregorianCalendar getCalendar() {
@@ -645,6 +670,27 @@ public final class Constants {
 
         public int getNgunaratriDay() {
             return ngunaratriDay;
+        }
+
+        /**
+         * @return the saka
+         */
+        public int getSaka() {
+            return saka;
+        }
+
+        /**
+         * @return the sasih
+         */
+        public Constants.Sasih getSasih() {
+            return sasih;
+        }
+
+        /**
+         * @return the isNampihSasih
+         */
+        public boolean isNampihSasih() {
+            return isNampihSasih;
         }
 
     }
