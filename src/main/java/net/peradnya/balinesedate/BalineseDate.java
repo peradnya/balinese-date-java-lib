@@ -10,16 +10,16 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
     // Start of Pengalantaka Eka Sungsang to Pon (need to be confirmed)
     // Web: http://erwandigunawandly.blogspot.co.id/2014/06/luni-solar-shofiyulloh-st.html
-    private static final GregorianCalendar DATE_TRANSITION_PON      = new GregorianCalendar(1971, 1, 27);
+    private static final GregorianCalendar DATE_TRANSITION_PON      = new GregorianCalendar(1971, 0, 27);
 
     // Start of Pengalantaka Eka Sungsang to Paing (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_PAING    = new GregorianCalendar(2000, 1, 6);
+    private static final GregorianCalendar DATE_TRANSITION_PAING    = new GregorianCalendar(2000, 0, 6);
 
     // Start of Sasih Berkesinambungan (Kawolu, Caka 1914) (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_SK_START  = new GregorianCalendar(1993, 1, 24);
+    private static final GregorianCalendar DATE_TRANSITION_SK_START  = new GregorianCalendar(1993, 0, 24);
 
     // Finish of Sasih Berkesinambungan (Kawolu, Caka 1924) (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_SK_FINISH  = new GregorianCalendar(2003, 1, 3);
+    private static final GregorianCalendar DATE_TRANSITION_SK_FINISH  = new GregorianCalendar(2003, 0, 3);
 
     // Lookup table for sasih
     private static final Constants.Sasih[] lookupSasih              = Constants.Sasih.values();
@@ -194,12 +194,15 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         int daySkip     = (int) Math.ceil((double) dayDiff / Constants.NGUNARATRI);
         int dayTotal    = pivot.getPenanggal() + dayDiff + daySkip;
 
-        // calc number of sasih
-        int totalSasih  = (int) Math.ceil((double) dayTotal / 30) - 1;
+        // sometime pivot is tilem and also ngunaratri, so need to normalize.
+        int pivotOffset = pivot.getPenanggal() == 0 && pivot.getNgunaratriDay() == 0 ? 0 : 1;
 
-        int     currentSasih  = pivot.getSasih().getId();
-        int     currentSaka   = pivot.getSaka() - (currentSasih == Constants.Sasih.KADASA.getId() ? 1 : 0);
-        int     nampihCount   = pivot.isNampihSasih() ? 1 : 0;
+        // calc number of sasih
+        int totalSasih  = (int) Math.ceil((double) dayTotal / 30) - pivotOffset;
+
+        int currentSasih  = pivot.getSasih().getId();
+        int currentSaka   = pivot.getSaka() - (currentSasih == Constants.Sasih.KADASA.getId() ? 1 : 0);
+        int nampihCount   = pivot.isNampihSasih() ? 1 : 0;
 
         // flags
         boolean nyepiFix = false;

@@ -8,7 +8,7 @@ import java.util.GregorianCalendar;
 public class BalineseDateTest {
 
     @Test public void test_date_1969_01_01() {
-        GregorianCalendar date  = new GregorianCalendar(1969,01,01);
+        GregorianCalendar date  = new GregorianCalendar(1969,00,01);
         BalineseDate bDate      = new BalineseDate(date);
 
         // Wuku
@@ -47,7 +47,7 @@ public class BalineseDateTest {
     }
 
     @Test public void test_date_1970_01_01() {
-        GregorianCalendar date  = new GregorianCalendar(1970,01,01);
+        GregorianCalendar date  = new GregorianCalendar(1970,00,01);
         BalineseDate bDate      = new BalineseDate(date);
 
         // Wuku
@@ -85,8 +85,86 @@ public class BalineseDateTest {
         assertEquals(false, bDate.isNampihSasih());
     }
 
+    @Test public void test_date_1976_03_31() {
+        GregorianCalendar date  = new GregorianCalendar(1976,02,31);
+        BalineseDate bDate      = new BalineseDate(date);
+
+        // Wuku
+        assertEquals(Constants.Wuku.SINTA, bDate.getPawukon().getWuku());
+
+        // Wewaran
+        assertEquals(Constants.Ekawara.LUANG, bDate.getPawukon().getEkawara());
+        assertEquals(Constants.Dwiwara.PEPET, bDate.getPawukon().getDwiwara());
+        assertEquals(Constants.Triwara.PASAH, bDate.getPawukon().getTriwara());
+        assertEquals(Constants.Caturwara.MENALA, bDate.getPawukon().getCaturwara());
+        assertEquals(Constants.Pancawara.KLIWON, bDate.getPawukon().getPancawara());
+        assertEquals(Constants.Sadwara.PANIRON, bDate.getPawukon().getSadwara());
+        assertEquals(Constants.Saptawara.BUDA, bDate.getPawukon().getSaptawara());
+        assertEquals(Constants.Astawara.YAMA, bDate.getPawukon().getAstawara());
+        assertEquals(Constants.Sangawara.DANGU, bDate.getPawukon().getSangawara());
+        assertEquals(Constants.Dasawara.MANUH, bDate.getPawukon().getDasawara());
+
+        // Another wewaran
+        assertEquals(Constants.Ingkel.WONG, bDate.getPawukon().getIngkel());
+        assertEquals(Constants.Jejapan.PATRA, bDate.getPawukon().getJejapan());
+        assertEquals(Constants.PawatekanMadya.WONG, bDate.getPawukon().getWatekMadya());
+        assertEquals(Constants.PawatekanAlit.LEMBU, bDate.getPawukon().getWatekAlit());
+        assertEquals(Constants.Lintang.TIWA_TIWA, bDate.getPawukon().getLintang());
+        assertEquals(Constants.Pararasan.LAKU_SURYA, bDate.getPawukon().getPararasan());
+        assertEquals(Constants.Pancasuda.LEBU_KATIUB_ANGIN, bDate.getPawukon().getPancasuda());
+
+        // Penanggal
+        assertEquals(15, bDate.getPenanggal());
+        assertEquals(true, bDate.isPangelong());
+        assertEquals(true, bDate.isNgunaratri());
+
+        // Sasih
+        assertEquals(1897, bDate.getSaka());
+        assertEquals(Constants.Sasih.KASANGA, bDate.getSasih());
+        assertEquals(false, bDate.isNampihSasih());
+    }
+
+    @Test public void test_date_1976_04_01() {
+        GregorianCalendar date  = new GregorianCalendar(1976,03,01);
+        BalineseDate bDate      = new BalineseDate(date);
+
+        // Wuku
+        assertEquals(Constants.Wuku.SINTA, bDate.getPawukon().getWuku());
+
+        // Wewaran
+        assertEquals(Constants.Ekawara.LUANG, bDate.getPawukon().getEkawara());
+        assertEquals(Constants.Dwiwara.PEPET, bDate.getPawukon().getDwiwara());
+        assertEquals(Constants.Triwara.BETENG, bDate.getPawukon().getTriwara());
+        assertEquals(Constants.Caturwara.SRI, bDate.getPawukon().getCaturwara());
+        assertEquals(Constants.Pancawara.UMANIS, bDate.getPawukon().getPancawara());
+        assertEquals(Constants.Sadwara.WAS, bDate.getPawukon().getSadwara());
+        assertEquals(Constants.Saptawara.WRESPATI, bDate.getPawukon().getSaptawara());
+        assertEquals(Constants.Astawara.LUDRA, bDate.getPawukon().getAstawara());
+        assertEquals(Constants.Sangawara.JANGUR, bDate.getPawukon().getSangawara());
+        assertEquals(Constants.Dasawara.DUKA, bDate.getPawukon().getDasawara());
+
+        // Another wewaran
+        assertEquals(Constants.Ingkel.WONG, bDate.getPawukon().getIngkel());
+        assertEquals(Constants.Jejapan.WONG, bDate.getPawukon().getJejapan());
+        assertEquals(Constants.PawatekanMadya.BUTA, bDate.getPawukon().getWatekMadya());
+        assertEquals(Constants.PawatekanAlit.ULER, bDate.getPawukon().getWatekAlit());
+        assertEquals(Constants.Lintang.SANGKA_TIKEL, bDate.getPawukon().getLintang());
+        assertEquals(Constants.Pararasan.LAKU_BINTANG, bDate.getPawukon().getPararasan());
+        assertEquals(Constants.Pancasuda.SATRIA_WIBAWA, bDate.getPawukon().getPancasuda());
+
+        // Penanggal
+        assertEquals(2, bDate.getPenanggal());
+        assertEquals(false, bDate.isPangelong());
+        assertEquals(false, bDate.isNgunaratri());
+
+        // Sasih
+        assertEquals(1898, bDate.getSaka());
+        assertEquals(Constants.Sasih.KADASA, bDate.getSasih());
+        assertEquals(false, bDate.isNampihSasih());
+    }
+
     @Test public void test_date_1999_01_01() {
-        GregorianCalendar date  = new GregorianCalendar(1999,01,01);
+        GregorianCalendar date  = new GregorianCalendar(1999,00,01);
         BalineseDate bDate      = new BalineseDate(date);
 
         // Wuku
@@ -125,7 +203,7 @@ public class BalineseDateTest {
     }
 
     @Test public void test_date_1999_03_17() {
-        GregorianCalendar date  = new GregorianCalendar(1999,03,17);
+        GregorianCalendar date  = new GregorianCalendar(1999,02,17);
         BalineseDate bDate      = new BalineseDate(date);
 
         // Wuku
@@ -164,7 +242,7 @@ public class BalineseDateTest {
     }
 
     @Test public void test_date_1999_03_18() {
-        GregorianCalendar date  = new GregorianCalendar(1999,03,18);
+        GregorianCalendar date  = new GregorianCalendar(1999,02,18);
         BalineseDate bDate      = new BalineseDate(date);
 
         // Wuku
@@ -203,7 +281,7 @@ public class BalineseDateTest {
     }
 
     @Test public void test_date_2000_01_01() {
-        GregorianCalendar date  = new GregorianCalendar(2000,01,01);
+        GregorianCalendar date  = new GregorianCalendar(2000,00,01);
         BalineseDate bDate      = new BalineseDate(date);
 
         // Wuku
@@ -242,7 +320,7 @@ public class BalineseDateTest {
     }
 
     @Test public void test_date_2000_01_17() {
-        GregorianCalendar date  = new GregorianCalendar(2000,01,17);
+        GregorianCalendar date  = new GregorianCalendar(2000,00,17);
         BalineseDate bDate      = new BalineseDate(date);
 
         // Wuku
@@ -282,7 +360,7 @@ public class BalineseDateTest {
     }
     
     @Test public void test_date_2017_01_01() {
-        GregorianCalendar date  = new GregorianCalendar(2017,01,01);
+        GregorianCalendar date  = new GregorianCalendar(2017,00,01);
         BalineseDate bDate      = new BalineseDate(date);
 
         // Wuku
