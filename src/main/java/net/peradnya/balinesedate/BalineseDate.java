@@ -226,11 +226,11 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih - 1;
                 }
 
-                // special case in 1993 & 2000, which nyepi at tilem kedasa.
+                // special case in 2000, which nyepi at tilem kedasa.
                 // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
                 if (currentSasih == Constants.Sasih.KADASA.getId() && nampihCount == 0) { 
                     currentSaka = currentSaka + 1;
-                    if (currentSaka == 1922 || currentSaka == 1915) {
+                    if (currentSaka == 1922) {
                         currentSaka = currentSaka - 1;
                         nyepiFix    = true;
                     }
@@ -256,10 +256,10 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih + 1;
                 }
 
-                // special case in 1993 & 2000, which nyepi at tilem kedasa.
+                // special case in 2000, which nyepi at tilem kedasa.
                 // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
                 if (currentSasih == Constants.Sasih.KADASA.getId() && nampihCount == 0) {
-                    if (currentSaka == 1922 || currentSaka == 1915) {
+                    if (currentSaka == 1922) {
                         currentSaka = currentSaka - 1;
                         nyepiFix    = true;
                     }

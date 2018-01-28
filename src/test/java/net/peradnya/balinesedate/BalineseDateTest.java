@@ -163,6 +163,124 @@ public class BalineseDateTest {
         assertEquals(false, bDate.isNampihSasih());
     }
 
+    @Test public void test_date_1978_05_08() {
+        GregorianCalendar date  = new GregorianCalendar(1978,04,8);
+        BalineseDate bDate      = new BalineseDate(date);
+
+        // Wuku
+        assertEquals(Constants.Wuku.MATAL, bDate.getPawukon().getWuku());
+
+        // Wewaran
+        assertEquals(Constants.Ekawara.LUANG, bDate.getPawukon().getEkawara());
+        assertEquals(Constants.Dwiwara.PEPET, bDate.getPawukon().getDwiwara());
+        assertEquals(Constants.Triwara.PASAH, bDate.getPawukon().getTriwara());
+        assertEquals(Constants.Caturwara.MENALA, bDate.getPawukon().getCaturwara());
+        assertEquals(Constants.Pancawara.PON, bDate.getPawukon().getPancawara());
+        assertEquals(Constants.Sadwara.PANIRON, bDate.getPawukon().getSadwara());
+        assertEquals(Constants.Saptawara.SOMA, bDate.getPawukon().getSaptawara());
+        assertEquals(Constants.Astawara.YAMA, bDate.getPawukon().getAstawara());
+        assertEquals(Constants.Sangawara.NOHAN, bDate.getPawukon().getSangawara());
+        assertEquals(Constants.Dasawara.PATI, bDate.getPawukon().getDasawara());
+
+        // Another wewaran
+        assertEquals(Constants.Ingkel.MINA, bDate.getPawukon().getIngkel());
+        assertEquals(Constants.Jejapan.PATRA, bDate.getPawukon().getJejapan());
+        assertEquals(Constants.PawatekanMadya.GAJAH, bDate.getPawukon().getWatekMadya());
+        assertEquals(Constants.PawatekanAlit.LEMBU, bDate.getPawukon().getWatekAlit());
+        assertEquals(Constants.Lintang.KIRIMAN, bDate.getPawukon().getLintang());
+        assertEquals(Constants.Pararasan.ARAS_TUDING, bDate.getPawukon().getPararasan());
+        assertEquals(Constants.Pancasuda.SUMUR_SINABA, bDate.getPawukon().getPancasuda());
+
+        // Penanggal
+        assertEquals(1, bDate.getPenanggal());
+        assertEquals(false, bDate.isPangelong());
+        assertEquals(false, bDate.isNgunaratri());
+
+        // Sasih
+        assertEquals(1900, bDate.getSaka());
+        assertEquals(Constants.Sasih.DESTHA, bDate.getSasih());
+        assertEquals(true, bDate.isNampihSasih());
+    }
+
+    @Test public void test_date_1993_03_24() {
+        GregorianCalendar date  = new GregorianCalendar(1993,02,24);
+        BalineseDate bDate      = new BalineseDate(date);
+
+        // Wuku
+        assertEquals(Constants.Wuku.KRULUT, bDate.getPawukon().getWuku());
+
+        // Wewaran
+        assertEquals(Constants.Ekawara.VOID, bDate.getPawukon().getEkawara());
+        assertEquals(Constants.Dwiwara.MENGA, bDate.getPawukon().getDwiwara());
+        assertEquals(Constants.Triwara.BETENG, bDate.getPawukon().getTriwara());
+        assertEquals(Constants.Caturwara.LABA, bDate.getPawukon().getCaturwara());
+        assertEquals(Constants.Pancawara.PAING, bDate.getPawukon().getPancawara());
+        assertEquals(Constants.Sadwara.ARYANG, bDate.getPawukon().getSadwara());
+        assertEquals(Constants.Saptawara.BUDA, bDate.getPawukon().getSaptawara());
+        assertEquals(Constants.Astawara.INDRA, bDate.getPawukon().getAstawara());
+        assertEquals(Constants.Sangawara.OGAN, bDate.getPawukon().getSangawara());
+        assertEquals(Constants.Dasawara.MANUSA, bDate.getPawukon().getDasawara());
+
+        // Another wewaran
+        assertEquals(Constants.Ingkel.TARU, bDate.getPawukon().getIngkel());
+        assertEquals(Constants.Jejapan.TARU, bDate.getPawukon().getJejapan());
+        assertEquals(Constants.PawatekanMadya.GAJAH, bDate.getPawukon().getWatekMadya());
+        assertEquals(Constants.PawatekanAlit.LINTAH, bDate.getPawukon().getWatekAlit());
+        assertEquals(Constants.Lintang.GAJAH_MINA, bDate.getPawukon().getLintang());
+        assertEquals(Constants.Pararasan.LAKU_AIR, bDate.getPawukon().getPararasan());
+        assertEquals(Constants.Pancasuda.WISESA_SEGARA, bDate.getPawukon().getPancasuda());
+
+        // Penanggal
+        assertEquals(1, bDate.getPenanggal());
+        assertEquals(false, bDate.isPangelong());
+        assertEquals(false, bDate.isNgunaratri());
+
+        // Sasih
+        assertEquals(1915, bDate.getSaka());
+        assertEquals(Constants.Sasih.KADASA, bDate.getSasih());
+        assertEquals(false, bDate.isNampihSasih());
+    }
+
+    @Test public void test_date_1993_09_01() {
+        GregorianCalendar date  = new GregorianCalendar(1993,8,1);
+        BalineseDate bDate      = new BalineseDate(date);
+
+        // Wuku
+        assertEquals(Constants.Wuku.SUNGSANG, bDate.getPawukon().getWuku());
+
+        // Wewaran
+        assertEquals(Constants.Ekawara.VOID, bDate.getPawukon().getEkawara());
+        assertEquals(Constants.Dwiwara.MENGA, bDate.getPawukon().getDwiwara());
+        assertEquals(Constants.Triwara.PASAH, bDate.getPawukon().getTriwara());
+        assertEquals(Constants.Caturwara.JAYA, bDate.getPawukon().getCaturwara());
+        assertEquals(Constants.Pancawara.PON, bDate.getPawukon().getPancawara());
+        assertEquals(Constants.Sadwara.TUNGLEH, bDate.getPawukon().getSadwara());
+        assertEquals(Constants.Saptawara.BUDA, bDate.getPawukon().getSaptawara());
+        assertEquals(Constants.Astawara.GURU, bDate.getPawukon().getAstawara());
+        assertEquals(Constants.Sangawara.DANGU, bDate.getPawukon().getSangawara());
+        assertEquals(Constants.Dasawara.SRI, bDate.getPawukon().getDasawara());
+
+        // Another wewaran
+        assertEquals(Constants.Ingkel.MANUK, bDate.getPawukon().getIngkel());
+        assertEquals(Constants.Jejapan.MINA, bDate.getPawukon().getJejapan());
+        assertEquals(Constants.PawatekanMadya.SUKU, bDate.getPawukon().getWatekMadya());
+        assertEquals(Constants.PawatekanAlit.GAJAH, bDate.getPawukon().getWatekAlit());
+        assertEquals(Constants.Lintang.LUMBUNG, bDate.getPawukon().getLintang());
+        assertEquals(Constants.Pararasan.LAKU_BULAN, bDate.getPawukon().getPararasan());
+        assertEquals(Constants.Pancasuda.BUMI_KAPETAK, bDate.getPawukon().getPancasuda());
+
+        // Penanggal
+        assertEquals(14, bDate.getPenanggal());
+        assertEquals(false, bDate.isPangelong());
+        assertEquals(true, bDate.isNgunaratri());
+
+        // Sasih
+        assertEquals(1915, bDate.getSaka());
+        assertEquals(Constants.Sasih.KARO, bDate.getSasih());
+        assertEquals(true, bDate.isNampihSasih());
+    }
+
+
     @Test public void test_date_1999_01_01() {
         GregorianCalendar date  = new GregorianCalendar(1999,00,01);
         BalineseDate bDate      = new BalineseDate(date);
