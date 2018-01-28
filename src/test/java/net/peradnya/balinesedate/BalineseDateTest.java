@@ -276,7 +276,7 @@ public class BalineseDateTest {
 
         // Sasih
         assertEquals(1921, bDate.getSaka());
-        assertEquals(Constants.Sasih.KAPITU, bDate.getSasih());
+        assertEquals(Constants.Sasih.KAWOLU, bDate.getSasih());
         assertEquals(false, bDate.isNampihSasih());
 
     }

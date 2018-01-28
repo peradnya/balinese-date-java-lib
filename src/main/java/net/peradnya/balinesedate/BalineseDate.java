@@ -195,11 +195,14 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         int dayTotal    = pivot.getPenanggal() + dayDiff + daySkip;
 
         // calc number of sasih
-        int totalSasih  = (int) Math.ceil((double) dayTotal / 30);
+        int totalSasih  = (int) Math.ceil((double) dayTotal / 30) - 1;
 
         int     currentSasih  = pivot.getSasih().getId();
-        int     currentSaka   = pivot.getSaka() - (currentSasih == 9 ? 1 : 0);
+        int     currentSaka   = pivot.getSaka() - (currentSasih == Constants.Sasih.KADASA.getId() ? 1 : 0);
         int     nampihCount   = pivot.isNampihSasih() ? 1 : 0;
+
+        // flags
+        boolean nyepiFix = false;
 
         // in sasih kesinambungan period (1993 - 2002)
         boolean inSK        = false;
@@ -210,7 +213,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
         while (totalSasih != 0) {
 
-            if (dayTotal >= 0) {
+            if (dayDiff >= 0) {
 
                 if (nampihCount == 0 || nampihCount == 2) {
                     nampihCount     = 0;
@@ -220,8 +223,18 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih - 1;
                 }
 
+                // special case in 1993 & 2000, which nyepi at tilem kedasa.
+                // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
                 if (currentSasih == Constants.Sasih.KADASA.getId() && nampihCount == 0) { 
-                    currentSaka = currentSaka + 1; 
+                    currentSaka = currentSaka + 1;
+                    if (currentSaka == 1922 || currentSaka == 1915) {
+                        currentSaka = currentSaka - 1;
+                        nyepiFix    = true;
+                    }
+                } else if (currentSasih == Constants.Sasih.DESTHA.getId() && 
+                    nampihCount == 0 && nyepiFix) {
+                        currentSaka = currentSaka + 1;
+                        nyepiFix    = false;
                 }
 
                 if (currentSasih == Constants.Sasih.KAWOLU.getId() && currentSaka == 1914) {
@@ -230,7 +243,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     inSK = false; 
                 }
 
-            } else {
+            } else if (dayDiff < 0) {
 
                 if (nampihCount == 0 || nampihCount == 2) {
                     nampihCount     = 0;
@@ -240,8 +253,19 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih + 1;
                 }
 
-                if (currentSasih == Constants.Sasih.KASANGA.getId()) { 
-                    currentSaka = currentSaka - 1; 
+                // special case in 1993 & 2000, which nyepi at tilem kedasa.
+                // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
+                if (currentSasih == Constants.Sasih.KADASA.getId() && nampihCount == 0) {
+                    if (currentSaka == 1922 || currentSaka == 1915) {
+                        currentSaka = currentSaka - 1;
+                        nyepiFix    = true;
+                    }
+                } else if (currentSasih == Constants.Sasih.KASANGA.getId() && nampihCount == 0) { 
+                    if (!nyepiFix) {
+                        currentSaka = currentSaka - 1; 
+                    } else {
+                        nyepiFix = false;
+                    }
                 }
 
                 if (currentSasih == Constants.Sasih.KAPITU.getId() && currentSaka == 1914) {
