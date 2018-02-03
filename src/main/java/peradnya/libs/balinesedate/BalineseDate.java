@@ -1,4 +1,4 @@
-package net.peradnya.balinesedate;
+package peradnya.libs.balinesedate;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -10,32 +10,32 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
     // Start of Pengalantaka Eka Sungsang to Pon (need to be confirmed)
     // Web: http://erwandigunawandly.blogspot.co.id/2014/06/luni-solar-shofiyulloh-st.html
-    private static final GregorianCalendar DATE_TRANSITION_PON      = new GregorianCalendar(1971, 0, 27);
+    private static final GregorianCalendar DATE_TRANSITION_PON          = new GregorianCalendar(1971, 0, 27);
 
     // Start of Pengalantaka Eka Sungsang to Paing (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_PAING    = new GregorianCalendar(2000, 0, 6);
+    private static final GregorianCalendar DATE_TRANSITION_PAING        = new GregorianCalendar(2000, 0, 6);
 
     // Start of Sasih Berkesinambungan (Kawolu, Caka 1914) (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_SK_START  = new GregorianCalendar(1993, 0, 24);
+    private static final GregorianCalendar DATE_TRANSITION_SK_START     = new GregorianCalendar(1993, 0, 24);
 
     // Finish of Sasih Berkesinambungan (Kawolu, Caka 1924) (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_SK_FINISH  = new GregorianCalendar(2003, 0, 3);
+    private static final GregorianCalendar DATE_TRANSITION_SK_FINISH    = new GregorianCalendar(2003, 0, 3);
 
     // Lookup table for sasih
-    private static final Constants.Sasih[] lookupSasih              = Constants.Sasih.values();
+    private static final BalineseDateConst.Sasih[] lookupSasih          = BalineseDateConst.Sasih.values();
 
-    private final Constants.BalineseDatePivot pivot;
+    private final BalineseDateConst.BalineseDatePivot pivot;
     
     private final int penanggal;
     private final boolean isPangelong;
     private final boolean isNgunaratri;
 
     private final int saka;
-    private final Constants.Sasih sasih;
+    private final BalineseDateConst.Sasih sasih;
     private final boolean isNampihSasih;
 
     private final GregorianCalendar calendar;
-    private final BalinesePawukon pawukon;
+    private final BalineseDatePawukon pawukon;
 
 
     public BalineseDate() {
@@ -61,7 +61,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         this.pivot              = chooseBestPivot(this.calendar);
 
         int pDIY                = calcPawukonDayInYear(this.pivot, this.calendar);
-        this.pawukon            = new BalinesePawukon(pDIY);
+        this.pawukon            = new BalineseDatePawukon(pDIY);
 
         int[] resPenanggal      = calcPenanggal(this.pivot, this.calendar);
 
@@ -80,7 +80,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         return (GregorianCalendar) calendar.clone();
     }
 
-    public BalinesePawukon getPawukon() {
+    public BalineseDatePawukon getPawukon() {
         return pawukon;
     }
 
@@ -109,7 +109,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     /**
      * @return the sasih
      */
-    public Constants.Sasih getSasih() {
+    public BalineseDateConst.Sasih getSasih() {
         return sasih;
     }
 
@@ -144,45 +144,45 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         return "";
     }
 
-    private static Constants.BalineseDatePivot chooseBestPivot(GregorianCalendar calendar) {
+    private static BalineseDateConst.BalineseDatePivot chooseBestPivot(GregorianCalendar calendar) {
         return (calendar.compareTo(DATE_TRANSITION_PAING) < 0) ? 
-            Constants.BalineseDatePivot.PIVOT_NG_PON : 
-            Constants.BalineseDatePivot.PIVOT_NG_PAING;
+            BalineseDateConst.BalineseDatePivot.PIVOT_NG_PON : 
+            BalineseDateConst.BalineseDatePivot.PIVOT_NG_PAING;
     }
 
     private static int calcPawukonDayInYear(
-        Constants.BalineseDatePivot pivot, 
+        BalineseDateConst.BalineseDatePivot pivot, 
         GregorianCalendar calendar) {
 
-        int diff = Utils.getDeltaDay(pivot.getCalendar(), calendar);
-        return Utils.mod(pivot.getPawukonDayInYear() + diff, Constants.DAYS_IN_YEAR_PAWUKON);
+        int diff = BalineseDateUtil.getDeltaDay(pivot.getCalendar(), calendar);
+        return BalineseDateUtil.mod(pivot.getPawukonDayInYear() + diff, BalineseDateConst.DAYS_IN_YEAR_PAWUKON);
     }
 
-    private static int[] calcPenanggal(Constants.BalineseDatePivot pivot, GregorianCalendar calendar) {
+    private static int[] calcPenanggal(BalineseDateConst.BalineseDatePivot pivot, GregorianCalendar calendar) {
         int[]   res     = new int[3];
 
-        int dayDiff     = Utils.getDeltaDay(pivot.getCalendar(), calendar);
-        int daySkip     = (int) Math.ceil((double) dayDiff / Constants.NGUNARATRI);
+        int dayDiff     = BalineseDateUtil.getDeltaDay(pivot.getCalendar(), calendar);
+        int daySkip     = (int) Math.ceil((double) dayDiff / BalineseDateConst.NGUNARATRI);
         int dayTotal    = pivot.getPenanggal() + dayDiff + daySkip;
 
         // calc penanggal
-        res[0]  = Utils.mod(dayTotal, 30);
+        res[0]  = BalineseDateUtil.mod(dayTotal, 30);
 
         // calc if this pangelong
         res[1]  = (res[0] == 0 || res[0] > 15) ? 1 : 0;
 
         // calc if this ngunaratri
-        res[2]  = Utils.mod(dayDiff, Constants.NGUNARATRI) == 0 ? 1 : 0;
+        res[2]  = BalineseDateUtil.mod(dayDiff, BalineseDateConst.NGUNARATRI) == 0 ? 1 : 0;
 
         // if penanggal 0, change to penanggal 15
-        res[0] = Utils.mod(res[0], 15);
+        res[0] = BalineseDateUtil.mod(res[0], 15);
         res[0] = (res[0] == 0) ? 15 : res[0];
 
         return res;
     }
 
     private static int[] calcSasih(
-        Constants.BalineseDatePivot pivot, 
+        BalineseDateConst.BalineseDatePivot pivot, 
         int penanggal, 
         boolean isPangelong, 
         boolean isNgunaratri, 
@@ -190,8 +190,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
         int[]   res     = new int[3];
 
-        int dayDiff     = Utils.getDeltaDay(pivot.getCalendar(), calendar);
-        int daySkip     = (int) Math.ceil((double) dayDiff / Constants.NGUNARATRI);
+        int dayDiff     = BalineseDateUtil.getDeltaDay(pivot.getCalendar(), calendar);
+        int daySkip     = (int) Math.ceil((double) dayDiff / BalineseDateConst.NGUNARATRI);
         int dayTotal    = pivot.getPenanggal() + dayDiff + daySkip;
 
         // sometime pivot is tilem and also ngunaratri, so need to normalize.
@@ -201,13 +201,13 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         int totalSasih  = (int) Math.ceil((double) dayTotal / 30) - pivotOffset;
 
         int currentSasih  = pivot.getSasih().getId();
-        int currentSaka   = pivot.getSaka() - (currentSasih == Constants.Sasih.KADASA.getId() ? 1 : 0);
+        int currentSaka   = pivot.getSaka() - (currentSasih == BalineseDateConst.Sasih.KADASA.getId() ? 1 : 0);
         int nampihCount   = pivot.isNampihSasih() ? 1 : 0;
 
         // flags
         boolean nyepiFix = false;
 
-        // in sasih kesinambungan period (1993 - 2002)
+        // in Sasih Kesinambungan (SK) period (1993 - 2002)
         boolean inSK        = false;
         if (pivot.getCalendar().compareTo(DATE_TRANSITION_SK_START) >= 0 && 
             pivot.getCalendar().compareTo(DATE_TRANSITION_SK_FINISH) < 0) {
@@ -221,7 +221,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 if (nampihCount == 0 || nampihCount == 2) {
                     nampihCount     = 0;
                     totalSasih      = totalSasih - 1;
-                    currentSasih    = Utils.mod(currentSasih + 1, 12);
+                    currentSasih    = BalineseDateUtil.mod(currentSasih + 1, 12);
                 } else {
                     totalSasih      = totalSasih - 1;
                 }
@@ -229,21 +229,21 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 // special case in 1995, 1997 which nyepi at tilem kedasa.
                 // Tilem kasanga that year happened in the same day as another religion holy day.
                 // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
-                if (currentSasih == Constants.Sasih.KADASA.getId() && nampihCount == 0) { 
+                if (currentSasih == BalineseDateConst.Sasih.KADASA.getId() && nampihCount == 0) { 
                     currentSaka = currentSaka + 1;
                     if (currentSaka == 1917 || currentSaka == 1919) {
                         currentSaka = currentSaka - 1;
                         nyepiFix    = true;
                     }
-                } else if (currentSasih == Constants.Sasih.DESTHA.getId() && 
+                } else if (currentSasih == BalineseDateConst.Sasih.DESTHA.getId() && 
                     nampihCount == 0 && nyepiFix) {
                         currentSaka = currentSaka + 1;
                         nyepiFix    = false;
                 }
 
-                if (currentSasih == Constants.Sasih.KAWOLU.getId() && currentSaka == 1914) {
+                if (currentSasih == BalineseDateConst.Sasih.KAWOLU.getId() && currentSaka == 1914) {
                     inSK = true;
-                } else if (currentSasih == Constants.Sasih.KAWOLU.getId() && currentSaka == 1924) {
+                } else if (currentSasih == BalineseDateConst.Sasih.KAWOLU.getId() && currentSaka == 1924) {
                     inSK = false; 
                 }
 
@@ -252,7 +252,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 if (nampihCount == 0 || nampihCount == 2) {
                     nampihCount     = 0;
                     totalSasih      = totalSasih + 1;
-                    currentSasih    = Utils.mod(currentSasih - 1, 12);
+                    currentSasih    = BalineseDateUtil.mod(currentSasih - 1, 12);
                 } else {
                     totalSasih      = totalSasih + 1;
                 }
@@ -260,12 +260,12 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 // special case in 1995, 1997 which nyepi at tilem kedasa.
                 // Tilem kasanga that year happened in the same day as another religion holy day.
                 // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
-                if (currentSasih == Constants.Sasih.KADASA.getId() && nampihCount == 0) {
+                if (currentSasih == BalineseDateConst.Sasih.KADASA.getId() && nampihCount == 0) {
                     if (currentSaka == 1917 || currentSaka == 1919) {
                         currentSaka = currentSaka - 1;
                         nyepiFix    = true;
                     }
-                } else if (currentSasih == Constants.Sasih.KASANGA.getId() && nampihCount == 0) { 
+                } else if (currentSasih == BalineseDateConst.Sasih.KASANGA.getId() && nampihCount == 0) { 
                     if (!nyepiFix) {
                         currentSaka = currentSaka - 1; 
                     } else {
@@ -273,9 +273,9 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     }
                 }
 
-                if (currentSasih == Constants.Sasih.KAPITU.getId() && currentSaka == 1914) {
+                if (currentSasih == BalineseDateConst.Sasih.KAPITU.getId() && currentSaka == 1914) {
                     inSK = false;
-                } else if (currentSasih == Constants.Sasih.KAPITU.getId() && currentSaka == 1924) {
+                } else if (currentSasih == BalineseDateConst.Sasih.KAPITU.getId() && currentSaka == 1924) {
                     inSK = true; 
                 }
             }
@@ -284,7 +284,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 case 0:
                 case 6:
                 case 11:
-                    if (currentSasih == Constants.Sasih.DESTHA.getId() && !inSK) {
+                    if (currentSasih == BalineseDateConst.Sasih.DESTHA.getId() && !inSK) {
                         //TODO: find out is mala desta happened in 2003.
                         if (currentSaka != 1925) {
                             nampihCount++;
@@ -295,38 +295,38 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 case 8:
                 case 14:
                 case 16:
-                    if (currentSasih == Constants.Sasih.SADHA.getId() && !inSK) {
+                    if (currentSasih == BalineseDateConst.Sasih.SADHA.getId() && !inSK) {
                         nampihCount++;
                     }
                     break;
                 case 2:
                 case 10:
-                    if (currentSasih == Constants.Sasih.DESTHA.getId() && inSK) {
+                    if (currentSasih == BalineseDateConst.Sasih.DESTHA.getId() && inSK) {
                         nampihCount++;
                     }
                     break;
                 case 4:
-                    if (currentSasih == Constants.Sasih.KATIGA.getId() && inSK) {
+                    if (currentSasih == BalineseDateConst.Sasih.KATIGA.getId() && inSK) {
                         nampihCount++;
                     }
                     break;
                 case 7:
-                    if (currentSasih == Constants.Sasih.KASA.getId() &&  inSK) {
+                    if (currentSasih == BalineseDateConst.Sasih.KASA.getId() &&  inSK) {
                         nampihCount++;
                     }
                     break;
                 case 13:
-                    if (currentSasih == Constants.Sasih.KADASA.getId() && inSK) {
+                    if (currentSasih == BalineseDateConst.Sasih.KADASA.getId() && inSK) {
                         nampihCount++;
                     }
                     break;
                 case 15:
-                    if (currentSasih == Constants.Sasih.KARO.getId() && inSK) {
+                    if (currentSasih == BalineseDateConst.Sasih.KARO.getId() && inSK) {
                         nampihCount++;
                     }
                     break;
                 case 18:
-                    if (currentSasih == Constants.Sasih.SADHA.getId() && inSK) {
+                    if (currentSasih == BalineseDateConst.Sasih.SADHA.getId() && inSK) {
                         nampihCount++;
                     }
                     break;

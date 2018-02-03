@@ -1,8 +1,8 @@
-package net.peradnya.balinesedate;
+package peradnya.libs.balinesedate;
 
 import java.util.GregorianCalendar;
 
-public final class Utils {
+public final class BalineseDateUtil {
 
     private static final long DAY_IN_MS = 86400000L;
     
@@ -28,6 +28,7 @@ public final class Utils {
     }
 
     public static int mod(int a, int b) {
+        // try to fix negative mod
         return ((a % b) + b) % b;
     }
 

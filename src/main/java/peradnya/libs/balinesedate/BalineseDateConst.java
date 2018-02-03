@@ -1,8 +1,8 @@
-package net.peradnya.balinesedate;
+package peradnya.libs.balinesedate;
 
 import java.util.GregorianCalendar;
 
-public final class Constants {
+public final class BalineseDateConst {
 
     public static final int NGUNARATRI              = 63;
     public static final int DAYS_IN_YEAR_PAWUKON    = 210;
@@ -614,16 +614,20 @@ public final class Constants {
         }
     }
 
-    public enum MoonStatus {
+    public enum PenanggalInfo {
         TILEM,
         PENANGGAL,
         PURNAMA,
-        PANGELONG
+        PANGELONG;
+
+        public String getName() {
+            return this.name();
+        }
     }
 
     public enum BalineseDatePivot {
-        PIVOT_NG_PON(1971, 0, 27, 3, 0, 0, 1892, Constants.Sasih.KAPITU, false),
-        PIVOT_NG_PAING(2000, 0, 18, 86, 12, 0, 1921, Constants.Sasih.KAPITU, false);
+        PIVOT_NG_PON(1971, 0, 27, 3, 0, 0, 1892, BalineseDateConst.Sasih.KAPITU, false),
+        PIVOT_NG_PAING(2000, 0, 18, 86, 12, 0, 1921, BalineseDateConst.Sasih.KAPITU, false);
 
         private final GregorianCalendar calendar;
 
@@ -632,7 +636,7 @@ public final class Constants {
         private final int ngunaratriDay;
 
         private final int saka;
-        private final Constants.Sasih sasih;
+        private final BalineseDateConst.Sasih sasih;
         private final boolean isNampihSasih;
 
 
@@ -644,7 +648,7 @@ public final class Constants {
             int penanggal,
             int ngunaratriDay,
             int saka,
-            Constants.Sasih sasih,
+            BalineseDateConst.Sasih sasih,
             boolean isNampihSasih) {
 
             this.calendar           = new GregorianCalendar(year, month, dayOfMonth);
@@ -682,7 +686,7 @@ public final class Constants {
         /**
          * @return the sasih
          */
-        public Constants.Sasih getSasih() {
+        public BalineseDateConst.Sasih getSasih() {
             return sasih;
         }
 
