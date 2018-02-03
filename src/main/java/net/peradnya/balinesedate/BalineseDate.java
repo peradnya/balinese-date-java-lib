@@ -226,11 +226,12 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih - 1;
                 }
 
-                // special case in 2000, which nyepi at tilem kedasa.
+                // special case in 1995, 1997 which nyepi at tilem kedasa.
+                // Tilem kasanga that year happened in the same day as another religion holy day.
                 // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
                 if (currentSasih == Constants.Sasih.KADASA.getId() && nampihCount == 0) { 
                     currentSaka = currentSaka + 1;
-                    if (currentSaka == 1922) {
+                    if (currentSaka == 1917 || currentSaka == 1919) {
                         currentSaka = currentSaka - 1;
                         nyepiFix    = true;
                     }
@@ -256,10 +257,11 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih + 1;
                 }
 
-                // special case in 2000, which nyepi at tilem kedasa.
+                // special case in 1995, 1997 which nyepi at tilem kedasa.
+                // Tilem kasanga that year happened in the same day as another religion holy day.
                 // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
                 if (currentSasih == Constants.Sasih.KADASA.getId() && nampihCount == 0) {
-                    if (currentSaka == 1922) {
+                    if (currentSaka == 1917 || currentSaka == 1919) {
                         currentSaka = currentSaka - 1;
                         nyepiFix    = true;
                     }
@@ -283,7 +285,10 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 case 6:
                 case 11:
                     if (currentSasih == Constants.Sasih.DESTHA.getId() && !inSK) {
-                        nampihCount++;
+                        //TODO: find out is mala desta happened in 2003.
+                        if (currentSaka != 1925) {
+                            nampihCount++;
+                        }
                     }
                     break;
                 case 3:

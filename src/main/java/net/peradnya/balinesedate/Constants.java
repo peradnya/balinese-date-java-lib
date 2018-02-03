@@ -623,7 +623,7 @@ public final class Constants {
 
     public enum BalineseDatePivot {
         PIVOT_NG_PON(1971, 0, 27, 3, 0, 0, 1892, Constants.Sasih.KAPITU, false),
-        PIVOT_NG_PAING(2000, 0, 18, 86, 12, 0, 1921, Constants.Sasih.KAWOLU, false);
+        PIVOT_NG_PAING(2000, 0, 18, 86, 12, 0, 1921, Constants.Sasih.KAPITU, false);
 
         private final GregorianCalendar calendar;
 
