@@ -4,12 +4,27 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * BalineseDate provides representation of Saka Calendar used by Indonesia Hindu's.
+ * <p>
+ * BalineseDate provides information about:
+ * <ul>
+ *  <li>Pawukon info (Wewaran, Wuku, Paringkelan, etc.)</li>
+ *  <li>Sasih info (Penanggal, Sasih name, etc.)</li>
+ *  <li>Saka info (Saka year)</li>
+ * </ul>
+ * 
+ * @author Ida Bagus Putu Peradnya Dinata
+ * @version 0.1.0-beta
+ * @since 0.1.0-beta
+ * 
+ * @see BalineseDatePawukon
+ */
 public final class BalineseDate implements Serializable, Cloneable, Comparable<BalineseDate> {
 
     private static final long serialVersionUID = 1001L;
 
     // Start of Pengalantaka Eka Sungsang to Pon (need to be confirmed)
-    // Web: http://erwandigunawandly.blogspot.co.id/2014/06/luni-solar-shofiyulloh-st.html
     private static final GregorianCalendar DATE_TRANSITION_PON          = new GregorianCalendar(1971, 0, 27);
 
     // Start of Pengalantaka Eka Sungsang to Paing (need to be confirmed)
@@ -38,15 +53,31 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     private final GregorianCalendar calendar;
     private final BalineseDatePawukon pawukon;
 
-
+    /**
+     * Construct balinese date with current date.
+     */
     public BalineseDate() {
         this(new GregorianCalendar(), false);
     }
 
+    /**
+     * Construct balinese date with specific date.
+     * 
+     * @param year the gregorian year.
+     * @param month the gregorian month of year. Start from 0 (January) to 11 (December).
+     * @param dayOfMonth the gregorian day of month. Start from 1 - 31.
+     * 
+     * @see java.util.GregorianCalendar
+     */
     public BalineseDate(int year, int month, int dayOfMonth) {
         this(new GregorianCalendar(year, month, dayOfMonth), false);
     }
 
+    /**
+     * Construct balinese date with specific date.
+     * 
+     * @param calendar the gregorian calendar.
+     */
     public BalineseDate(GregorianCalendar calendar)  {
         this(calendar, true);
     }
@@ -83,33 +114,48 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                                                     this.saka);
     }
 
-    public GregorianCalendar getCalendar() {
+    /**
+     * Convert balinese date into gregorian calendar.
+     * @return the gregorian representation of balinese date
+     */
+    public GregorianCalendar toCalendar() {
         return (GregorianCalendar) calendar.clone();
     }
 
+    /**
+     * Get pawukon information.
+     * @return the pawukon information.
+     */
     public BalineseDatePawukon getPawukon() {
         return pawukon;
     }
 
+    /**
+     * Get penanggal (1 - 15).
+     * @return the penanggal.
+     */
     public int getPenanggal() {
         return penanggal;
     }
 
     /**
-     * @return the penanggalInfo
+     * Get penanggal information (Penanggal, Pangelong, Purnama, or Tilem).
+     * @return the penanggal information.
      */
     public BalineseDateConst.PenanggalInfo getPenanggalInfo() {
         return penanggalInfo;
     }
 
     /**
-     * @return the isNgunaratri
+     * Check if penanggal is NgunaRatri (2 penanggals in 1 date).
+     * @return the NgunaRatri status
      */
     public boolean isNgunaRatri() {
         return isNgunaRatri;
     }
 
     /**
+     * Get saka year.
      * @return the saka
      */
     public int getSaka() {
@@ -117,6 +163,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     }
 
     /**
+     * Get sasih.
      * @return the sasih
      */
     public BalineseDateConst.Sasih getSasih() {
@@ -125,12 +172,12 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
     @Override
     public Object clone() {
-        return new BalineseDate(this.getCalendar());
+        return new BalineseDate(this.toCalendar());
     }
 
     @Override
 	public int compareTo(BalineseDate that) {
-		return this.calendar.compareTo(that.getCalendar());
+		return this.calendar.compareTo(that.toCalendar());
     }
 
     @Override

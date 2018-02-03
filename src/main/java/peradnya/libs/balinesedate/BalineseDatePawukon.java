@@ -2,6 +2,23 @@ package peradnya.libs.balinesedate;
 
 import java.io.Serializable;
 
+/**
+ * BalineseDatePawukon provides representation of Pawukon used by BalineseDate.
+ * <p>
+ * BalineseDatePawukon provides information about:
+ * <ul>
+ *  <li>Wuku (Sinta - Watugunung)</li>
+ *  <li>Wewaran (Ekawara - Dasawara)</li>
+ *  <li>Paringkelan (Ingkel, Jejapan, Watek, Lintang, Pancasuda, Pararasan, Rakam)</li>
+ * </ul>
+ * <p>
+ * Calculation of pawukon that used by this class, is based on documentation from 
+ * <a href='http://www.babadbali.com/pewarigaan/paringkelan.htm'>babadbali.com</a>.
+ * 
+ * @author Ida Bagus Putu Peradnya Dinata
+ * @version 0.1.0-beta
+ * @since 0.1.0-beta
+ */
 public final class BalineseDatePawukon implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1002L;
@@ -54,6 +71,12 @@ public final class BalineseDatePawukon implements Serializable, Cloneable {
     private final BalineseDateConst.Pararasan       pararasan;
     private final BalineseDateConst.Rakam           rakam;
 
+    /**
+     * Construct balinese pawukon.
+     * 
+     * @param pawukonDayInYear number of day in 1 year (cycle) of pawukon. 
+     *                         Number is from 0 (Redite Sinta) to 209 (Saniscara Watugunung).
+     */
     public BalineseDatePawukon(int pawukonDayInYear) {
         if (pawukonDayInYear >= BalineseDateConst.DAYS_IN_YEAR_PAWUKON || pawukonDayInYear < 0) { 
             throw new IllegalArgumentException(INVALID_DAY_IN_YEAR);
@@ -88,86 +111,192 @@ public final class BalineseDatePawukon implements Serializable, Cloneable {
         rakam      = lookupRakam        [(saptawara.getKupih() + pancawara.getKupih()) % 6];
     }
 
+    /**
+     * Get number of day in 1 year (cycle) of pawukon.
+     * 
+     * @return number of day in 1 year (cycle) of pawukon. 
+     *         Number is from 0 (Redite Sinta) to 209 (Saniscara Watugunung).
+     */
     public int getPawukonDayInYear() {
         return dayInYear;
     }
 
+    /**
+     * Get Wuku.
+     * 
+     * @return the wuku
+     */
     public BalineseDateConst.Wuku getWuku() {
         return wuku;
     }
 
+    /**
+     * Get Ekawara.
+     * 
+     * @return the ekawara
+     */
     public BalineseDateConst.Ekawara getEkawara() {
         return ekawara;
     }
 
+    /**
+     * Get Dwiwara.
+     * 
+     * @return the dwiwara
+     */
     public BalineseDateConst.Dwiwara getDwiwara() {
         return dwiwara;
     }
 
+    /**
+     * Get Triwara.
+     * 
+     * @return the triwara
+     */
     public BalineseDateConst.Triwara getTriwara() {
         return triwara;
     }
 
+    /**
+     * Get Caturwara.
+     * 
+     * @return the caturwara
+     */
     public BalineseDateConst.Caturwara getCaturwara() {
         return caturwara;
     }
 
+    /**
+     * Get Pancawara.
+     * 
+     * @return the pancawara
+     */
     public BalineseDateConst.Pancawara getPancawara() {
         return pancawara;
     }
 
+    /**
+     * Get Sadwara.
+     * 
+     * @return the sadwara
+     */
     public BalineseDateConst.Sadwara getSadwara() {
         return sadwara;
     }
 
+    /**
+     * Get Saptawara.
+     * 
+     * @return the saptawara
+     */
     public BalineseDateConst.Saptawara getSaptawara() {
         return saptawara;
     }
 
+    /**
+     * Get Astawara.
+     * 
+     * @return the astawara
+     */
     public BalineseDateConst.Astawara getAstawara() {
         return astawara;
     }
 
+    /**
+     * Get Sangawara.
+     * 
+     * @return the sangawara
+     */
     public BalineseDateConst.Sangawara getSangawara() {
         return sangawara;
     }
 
+    /**
+     * Get Dasawara.
+     * 
+     * @return the dasawara
+     */
     public BalineseDateConst.Dasawara getDasawara() {
         return dasawara;
     }
 
+    /**
+     * Get Ingkel.
+     * 
+     * @return the ingkel
+     */
     public BalineseDateConst.Ingkel getIngkel() {
         return ingkel;
     }
 
+    /**
+     * Get Jejapan.
+     * 
+     * @return the jejapan
+     */
     public BalineseDateConst.Jejapan getJejapan() {
         return jejapan;
     }
 
+    /**
+     * Get Pawatekan Alit.
+     * 
+     * @return the watek alit
+     */
     public BalineseDateConst.PawatekanAlit getWatekAlit() {
         return watekAlit;
     }
 
+    /**
+     * Get Pewatekan Madya.
+     * 
+     * @return the watek madya
+     */
     public BalineseDateConst.PawatekanMadya getWatekMadya() {
         return watekMadya;
     }
 
+    /**
+     * Get Lintang.
+     * 
+     * @return the lintang
+     */
     public BalineseDateConst.Lintang getLintang() {
         return lintang;
     }
 
+    /**
+     * Get Pancasuda.
+     * 
+     * @return the pancasuda
+     */
     public BalineseDateConst.Pancasuda getPancasuda() {
         return pancasuda;
     }
 
+    /**
+     * Get Pararasan.
+     * 
+     * @return the pararasan
+     */
     public BalineseDateConst.Pararasan getPararasan() {
         return pararasan;
     }
 
+    /**
+     * Get Rakam.
+     * 
+     * @return the rakam
+     */
     public BalineseDateConst.Rakam getRakam() {
         return rakam;
     }
 
+    /**
+     * Get sum of urip pancawara and urip saptawara.
+     * 
+     * @return the sum of urip pancawara and urip saptawara
+     */
     public int GetUrip() {
         return urip;
     }

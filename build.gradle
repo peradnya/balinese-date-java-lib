@@ -27,7 +27,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-version = '0.0.1'
+version = '0.1.0-beta'
 
 jar {
     manifest {
