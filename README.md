@@ -2,7 +2,7 @@
 ## Introduction
 BalineseDate provides a library to build Balinese Saka Calendar in Java based application. 
 
-**NB**: This library is in Beta. Feedbacks, suggestions, and bug reports are welcomed ... :)
+**Disclaimer**: This library is in **Beta Phase**. Feedbacks, corrections, or bug reports are welcomed ... :)
 
 ## Features
 Balinese Date Java Libs provide a way to convert gregorian calendar into:
@@ -79,12 +79,11 @@ BalineseDateConst.PenanggalInfo penanggalInfo   = bDate2.getPenanggalInfo();
 // etc... Lelah :)
 ```
 
-## Disclaimer
-### Related Project
+## Related Project
 There is another related project about Balinese Saka Calendar:
 * Saka Calendar 2.0 by [Edy Santosa](https://github.com/edysantosa/sakacalendar).
 
-### References
+## References
 * babadbali.com (Yayasan Bali Galang) for [wewaran](http://www.babadbali.com/pewarigaan/perhitungan.htm) and [paringkelan](http://www.babadbali.com/pewarigaan/paringkelan.htm) algorithm.
 * kalenderbali.org and kalenderbali.info for cross-checking and building sample test-cases.
 * Pendit, Nyoman.(2001). *"Nyepi: kebangkitan, toleransi, dan kerukunan"*. Jakarta : Gramedia. Retrieved at [google book](https://books.google.co.id/books?id=4ND9KPn2o8AC).
