@@ -28,7 +28,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     
     private final int penanggal;
     private final boolean isPangelong;
-    private final boolean isNgunaratri;
+    private final boolean isNgunaRatri;
+    private final BalineseDateConst.PenanggalInfo penanggalInfo;
 
     private final int saka;
     private final BalineseDateConst.Sasih sasih;
@@ -67,13 +68,19 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
         this.penanggal          = resPenanggal[0];
         this.isPangelong        = resPenanggal[1] == 1;
-        this.isNgunaratri       = resPenanggal[2] == 1;
+        this.isNgunaRatri       = resPenanggal[2] == 1;
 
-        int[] resSasih          = calcSasih(this.pivot, this.penanggal, this.isPangelong, this.isNgunaratri, this.calendar);
+        int[] resSasih          = calcSasih(this.pivot, this.calendar);
 
         this.saka               = resSasih[0];
-        this.sasih              = lookupSasih[resSasih[1]];
         this.isNampihSasih      = resSasih[2] == 1;
+        this.sasih              = calcSasihInfo(resSasih[1], this.isNampihSasih, this.saka);
+
+        this.penanggalInfo      = calcPenanggalInfo(this.penanggal, 
+                                                    this.isPangelong, 
+                                                    this.isNgunaRatri,
+                                                    this.sasih,
+                                                    this.saka);
     }
 
     public GregorianCalendar getCalendar() {
@@ -88,15 +95,18 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         return penanggal;
     }
 
-    public boolean isPangelong() {
-        return isPangelong;
+    /**
+     * @return the penanggalInfo
+     */
+    public BalineseDateConst.PenanggalInfo getPenanggalInfo() {
+        return penanggalInfo;
     }
 
     /**
      * @return the isNgunaratri
      */
-    public boolean isNgunaratri() {
-        return isNgunaratri;
+    public boolean isNgunaRatri() {
+        return isNgunaRatri;
     }
 
     /**
@@ -111,13 +121,6 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
      */
     public BalineseDateConst.Sasih getSasih() {
         return sasih;
-    }
-
-    /**
-     * @return the isNampihSasih
-     */
-    public boolean isNampihSasih() {
-        return isNampihSasih;
     }
 
     @Override
@@ -181,12 +184,36 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         return res;
     }
 
-    private static int[] calcSasih(
-        BalineseDateConst.BalineseDatePivot pivot, 
+    private static BalineseDateConst.PenanggalInfo calcPenanggalInfo(
         int penanggal, 
-        boolean isPangelong, 
-        boolean isNgunaratri, 
-        GregorianCalendar calendar) {
+        boolean isPangelong,
+        boolean isNgunaRatri,
+        BalineseDateConst.Sasih sasih,
+        int saka) {
+
+        if (isPangelong) {
+            if (penanggal == 15 || (penanggal == 14 && isNgunaRatri)) {
+                return BalineseDateConst.PenanggalInfo.TILEM;
+            } else if (penanggal        == 14 && 
+                       isNgunaRatri     == false &&
+                       sasih            == BalineseDateConst.Sasih.KAPITU &&
+                       saka             == 1921) {
+                //TODO: find out penanggal between Desember 1999 - January 2000.
+                return BalineseDateConst.PenanggalInfo.TILEM;
+            } else {
+                return BalineseDateConst.PenanggalInfo.PANGELONG;
+            }
+        } else {
+            if (penanggal == 15 || (penanggal == 14 && isNgunaRatri)) {
+                return BalineseDateConst.PenanggalInfo.PURNAMA;
+            } else {
+                return BalineseDateConst.PenanggalInfo.PENANGGAL;
+            }
+        }
+
+    }
+
+    private static int[] calcSasih(BalineseDateConst.BalineseDatePivot pivot, GregorianCalendar calendar) {
 
         int[]   res     = new int[3];
 
@@ -344,6 +371,38 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
         return res;
 
+    }
+
+    private static BalineseDateConst.Sasih calcSasihInfo(
+        int sasih, 
+        boolean isNampihSasih,
+        int saka) {
+
+        if (isNampihSasih) {
+            if (saka >= 1914 && saka <= 1924) {
+                if (sasih == BalineseDateConst.Sasih.DESTHA.getId()) {
+                    return BalineseDateConst.Sasih.NAMPIH_DESTHA;
+                } else if (sasih == BalineseDateConst.Sasih.KATIGA.getId()) {
+                    return BalineseDateConst.Sasih.NAMPIH_KATIGA;
+                } else if (sasih == BalineseDateConst.Sasih.KASA.getId()) {
+                    return BalineseDateConst.Sasih.NAMPIH_KASA;
+                } else if (sasih == BalineseDateConst.Sasih.KADASA.getId()) {
+                    return BalineseDateConst.Sasih.NAMPIH_KADASA;
+                } else if (sasih == BalineseDateConst.Sasih.KARO.getId()) {
+                    return BalineseDateConst.Sasih.NAMPIH_KARO;
+                } else if (sasih == BalineseDateConst.Sasih.SADHA.getId()) {
+                    return BalineseDateConst.Sasih.NAMPIH_SADHA;
+                }
+            } else {
+                if (sasih == BalineseDateConst.Sasih.DESTHA.getId()) {
+                    return BalineseDateConst.Sasih.MALA_DESTHA;
+                } else if (sasih == BalineseDateConst.Sasih.SADHA.getId()) {
+                    return BalineseDateConst.Sasih.MALA_SADHA;
+                }
+            }
+        }
+
+        return lookupSasih[sasih];
     }
 	
 }

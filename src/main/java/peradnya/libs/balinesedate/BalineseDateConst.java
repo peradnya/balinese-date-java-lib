@@ -586,6 +586,7 @@ public final class BalineseDateConst {
     }
 
     public enum Sasih {
+        // Standard
         KASA(0),
         KARO(1),
         KATIGA(2),
@@ -597,7 +598,18 @@ public final class BalineseDateConst {
         KASANGA(8),
         KADASA(9),
         DESTHA(10),
-        SADHA(11);
+        SADHA(11),
+
+        // Nampih/Mala Sasih
+        MALA_DESTHA(12),
+        MALA_SADHA(13),
+        NAMPIH_DESTHA(14),
+        NAMPIH_KATIGA(15),
+        NAMPIH_KASA(16),
+        NAMPIH_KADASA(17),
+        NAMPIH_KARO(18),
+        NAMPIH_SADHA(19);
+
 
         private final int id;
 

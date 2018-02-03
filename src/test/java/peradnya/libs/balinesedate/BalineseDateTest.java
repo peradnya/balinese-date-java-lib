@@ -37,13 +37,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(12, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(true, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(true, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1890, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KAPITU, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
     }
 
     @Test public void test_date_1970_01_01() {
@@ -76,13 +75,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(8, bDate.getPenanggal());
-        assertEquals(true, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PANGELONG, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1891, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KAPITU, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
     }
 
     @Test public void test_date_1976_03_31() {
@@ -115,13 +113,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(15, bDate.getPenanggal());
-        assertEquals(true, bDate.isPangelong());
-        assertEquals(true, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.TILEM, bDate.getPenanggalInfo());
+        assertEquals(true, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1897, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KASANGA, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
     }
 
     @Test public void test_date_1976_04_01() {
@@ -154,13 +151,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(2, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1898, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KADASA, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
     }
 
     @Test public void test_date_1978_05_08() {
@@ -193,13 +189,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(1, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1900, bDate.getSaka());
-        assertEquals(BalineseDateConst.Sasih.DESTHA, bDate.getSasih());
-        assertEquals(true, bDate.isNampihSasih());
+        assertEquals(BalineseDateConst.Sasih.MALA_DESTHA, bDate.getSasih());
     }
 
     @Test public void test_date_1993_03_24() {
@@ -232,13 +227,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(1, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1915, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KADASA, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
     }
 
     @Test public void test_date_1993_09_01() {
@@ -271,13 +265,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(14, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(true, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PURNAMA, bDate.getPenanggalInfo());
+        assertEquals(true, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1915, bDate.getSaka());
-        assertEquals(BalineseDateConst.Sasih.KARO, bDate.getSasih());
-        assertEquals(true, bDate.isNampihSasih());
+        assertEquals(BalineseDateConst.Sasih.NAMPIH_KARO, bDate.getSasih());
     }
 
     @Test public void test_date_1999_01_01() {
@@ -310,13 +303,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(13, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1920, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KAPITU, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
     }
 
     @Test public void test_date_1999_03_17() {
@@ -349,13 +341,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(15, bDate.getPenanggal());
-        assertEquals(true, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.TILEM, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1920, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KASANGA, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
     }
 
     @Test public void test_date_1999_03_18() {
@@ -388,13 +379,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(1, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1921, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KADASA, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
     }
 
     @Test public void test_date_2000_01_01() {
@@ -427,13 +417,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(9, bDate.getPenanggal());
-        assertEquals(true, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PANGELONG, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1921, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KANEM, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
     }
 
     @Test public void test_date_2000_01_17() {
@@ -466,14 +455,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(11, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1921, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KAPITU, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
-
     }
 
     @Test public void test_date_2001_08_18() {
@@ -506,13 +493,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(15, bDate.getPenanggal());
-        assertEquals(true, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.TILEM, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1923, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KARO, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
 
     }
 
@@ -546,14 +532,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(15, bDate.getPenanggal());
-        assertEquals(true, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.TILEM, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1923, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KATIGA, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
-
     }
 
     @Test public void test_date_2001_09_24() {
@@ -586,14 +570,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(7, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1923, bDate.getSaka());
-        assertEquals(BalineseDateConst.Sasih.KATIGA, bDate.getSasih());
-        assertEquals(true, bDate.isNampihSasih());
-
+        assertEquals(BalineseDateConst.Sasih.NAMPIH_KATIGA, bDate.getSasih());
     }
 
     @Test public void test_date_2003_01_03() {
@@ -626,14 +608,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(1, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1924, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KAPITU, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
-
     }
 
     @Test public void test_date_2003_05_01() {
@@ -666,14 +646,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(7, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1923, bDate.getSaka());
-        assertEquals(BalineseDateConst.Sasih.KATIGA, bDate.getSasih());
-        assertEquals(true, bDate.isNampihSasih());
-
+        assertEquals(BalineseDateConst.Sasih.NAMPIH_KATIGA, bDate.getSasih());
     }
     
     @Test public void test_date_2017_01_01() {
@@ -706,14 +684,12 @@ public class BalineseDateTest {
 
         // Penanggal
         assertEquals(4, bDate.getPenanggal());
-        assertEquals(false, bDate.isPangelong());
-        assertEquals(false, bDate.isNgunaratri());
+        assertEquals(BalineseDateConst.PenanggalInfo.PENANGGAL, bDate.getPenanggalInfo());
+        assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
         assertEquals(1938, bDate.getSaka());
         assertEquals(BalineseDateConst.Sasih.KAPITU, bDate.getSasih());
-        assertEquals(false, bDate.isNampihSasih());
-
     }
 
 
