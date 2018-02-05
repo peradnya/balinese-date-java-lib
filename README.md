@@ -1,11 +1,14 @@
-# Balinese Date Java Libs
+# BalineseDate Java Library
+[![pipeline status](https://gitlab.com/peradnya/balinese-date-java-lib/badges/master/pipeline.svg)](https://gitlab.com/peradnya/balinese-date-java-lib/commits/master)
 ## Introduction
 BalineseDate provides a library to build Balinese Saka Calendar in Java based application. 
 
 **Disclaimer**: This library is in **Beta Phase**. Feedbacks, corrections, or bug reports are welcomed ... :)
 
 ## Features
-Balinese Date Java Libs provide a way to convert gregorian calendar into:
+BalineseDate provide a easy way to convert gregorian date into balinese date. 
+
+BalineseDate support several features:
 1. Sasih
     1. Penanggal / Pangelong
     2. Purnama / Tilem
@@ -23,7 +26,7 @@ Balinese Date Java Libs provide a way to convert gregorian calendar into:
     8. Pararasan
     9. Rakam
 
-## Build
+## How to Build
 ### Requirement
 The recomended requirement to build this project is:
 1. Oracle Java JDK 7 (minimum), JDK 8 (recomended)
@@ -32,25 +35,39 @@ The recomended requirement to build this project is:
 
 for Gradle installation, you could follow this [Gradle installation instuction](https://gradle.org/install/).
 
-### Build JAR File
-JAR file of this project can be build by using this command:
+### Building JAR File
+JAR file of BalineseDate Library could be built by using following command:
 ```sh
 [project root]$ gradle build
 ```
+You could find the compiled JAR at:
+```sh
+[project root]/build/libs/balinese-date-java-lib-[version].jar
+```
 
-### Build Documentation (Javadoc)
-Documentation of this project can be build by using this command:
+### Building Documentation (Javadoc)
+Documentation of BalineseDate Library could be built by using following command:
 ```sh
 [project root]$ gradle javadoc
 ```
 
-### Testing
-Testing for this project can be done by using this command:
+You could find the documentation at:
 ```sh
-[project root]$ gradle test
+[project root]/build/docs/javadoc/index.html
 ```
 
-## Use in Code
+### Testing & Checking
+Testing and Checking of BalineseDate Library could be done by using following command:
+```sh
+[project root]$ gradle check
+```
+
+You could find the test result at:
+```sh
+[project root]/build/reports/tests/test/index.html
+```
+
+## Using in Code
 ### Creating BalineseDate Object
 ```java
 import peradnya.libs.balinesedate.*;

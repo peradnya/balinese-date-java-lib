@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package peradnya.libs.balinesedate;
+package peradnya.lib.balinesedate;
 
 import java.util.GregorianCalendar;
 
