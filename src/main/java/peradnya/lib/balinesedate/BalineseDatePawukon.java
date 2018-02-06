@@ -313,7 +313,7 @@ public final class BalineseDatePawukon implements Serializable, Cloneable {
      * 
      * @return the sum of urip pancawara and urip saptawara
      */
-    public int GetUrip() {
+    public int getUrip() {
         return urip;
     }
 
@@ -323,9 +323,13 @@ public final class BalineseDatePawukon implements Serializable, Cloneable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        BalineseDatePawukon that = (BalineseDatePawukon) obj;
-        return getPawukonDayInYear() == that.getPawukonDayInYear();
+    public boolean equals(Object that) {
+        return this == that;
+    }
+
+    @Override
+    public int hashCode() {
+        return dayInYear;
     }
 
     @Override

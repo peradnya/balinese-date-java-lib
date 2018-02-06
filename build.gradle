@@ -7,8 +7,20 @@
  */
 
 // Apply the java-library plugin to add support for Java Library
+buildscript {
+  repositories {
+    maven {
+      url 'https://plugins.gradle.org/m2/'
+    }
+  }
+  dependencies {
+    classpath 'gradle.plugin.com.github.spotbugs:gradlePlugin:1.6.0'
+  }
+}
+
 apply plugin: 'java-library'
 apply plugin: 'jacoco'
+apply plugin: 'com.github.spotbugs'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -38,4 +50,11 @@ jar {
 
 test { 
     finalizedBy jacocoTestReport 
-} 
+}
+
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+  reports {
+    xml.enabled = false
+    html.enabled = true
+  }
+}

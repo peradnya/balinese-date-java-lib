@@ -193,16 +193,21 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
     @Override
 	public int compareTo(BalineseDate that) {
-		return this.calendar.compareTo(that.toCalendar());
+        if (that == null) {
+            return -1;
+        } else {
+            return this.calendar.compareTo(that.toCalendar());
+        }
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        } else {
-            return this.compareTo((BalineseDate) obj) == 0;
-        }
+    public boolean equals(Object that) {
+        return this == that;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.calendar.hashCode();
     }
     
     @Override
@@ -419,6 +424,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     if (currentSasih == BalineseDateConst.Sasih.SADHA.getId() && inSK) {
                         nampihCount++;
                     }
+                    break;
+                default:
                     break;
             }
         }
