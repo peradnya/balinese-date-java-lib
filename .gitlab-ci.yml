@@ -27,7 +27,9 @@ build:
 
 test:
   stage: test
-  script: gradle check
+  script: 
+    - gradle check
+    - grep -Eo "Total.*?%" build/reports/jacoco/test/html/index.html
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
