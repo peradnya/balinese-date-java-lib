@@ -58,14 +58,22 @@ You could find the documentation at:
 ```
 
 ### Testing & Checking
-Testing and Checking of BalineseDate Library could be done by using following command:
+Testing and checking of BalineseDate Library could be done by using following command:
 ```sh
 [project root]$ gradle check
 ```
 
-You could find the test result at:
+You could find the test results at:
 ```sh
+# JUnit (Unit Test) Result
 [project root]/build/reports/tests/test/index.html
+
+# Jacoco (Coverage) Result
+[project root]/build/reports/jacoco/test/html/index.html
+
+# SpotBugs (Bug Analysis) Result
+[project root]/build/reports/spotbugs/main.html
+
 ```
 
 ## Using in Code
