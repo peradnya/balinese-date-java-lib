@@ -708,5 +708,40 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Sasih.KAPITU, bDate.getSasih());
     }
 
+    @Test public void test_date_2017_01_01_string() {
+        GregorianCalendar date  = new GregorianCalendar(2017,00,01);
+        BalineseDate bDate      = new BalineseDate(date);
+
+        // Wuku
+        assertEquals("Klawu", bDate.getPawukon().getWuku().getName());
+
+        // Wewaran
+        assertEquals("Void", bDate.getPawukon().getEkawara().getName());
+        assertEquals("Menga", bDate.getPawukon().getDwiwara().getName());
+        assertEquals("Pasah", bDate.getPawukon().getTriwara().getName());
+        assertEquals("Menala", bDate.getPawukon().getCaturwara().getName());
+        assertEquals("Umanis", bDate.getPawukon().getPancawara().getName());
+        assertEquals("Paniron", bDate.getPawukon().getSadwara().getName());
+        assertEquals("Redite", bDate.getPawukon().getSaptawara().getName());
+        assertEquals("Yama", bDate.getPawukon().getAstawara().getName());
+        assertEquals("Urungan", bDate.getPawukon().getSangawara().getName());
+        assertEquals("Pandita", bDate.getPawukon().getDasawara().getName());
+
+        // Another wewaran
+        assertEquals("Manuk", bDate.getPawukon().getIngkel().getName());
+        assertEquals("Patra", bDate.getPawukon().getJejapan().getName());
+        assertEquals("Wong", bDate.getPawukon().getWatekMadya().getName());
+        assertEquals("Gajah", bDate.getPawukon().getWatekAlit().getName());
+        assertEquals("Kala Sungsang", bDate.getPawukon().getLintang().getName());
+        assertEquals("Laku Pandita Sakti", bDate.getPawukon().getPararasan().getName());
+        assertEquals("Sumur Sinaba", bDate.getPawukon().getPancasuda().getName());
+
+        // Penanggal
+        assertEquals("Penanggal", bDate.getPenanggalInfo().getName());
+
+        // Sasih
+        assertEquals("Kapitu", bDate.getSasih().getName());
+    }
+
 
 }
