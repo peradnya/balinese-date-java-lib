@@ -2,7 +2,7 @@
 [![pipeline status](https://gitlab.com/peradnya/balinese-date-java-lib/badges/master/pipeline.svg)](https://gitlab.com/peradnya/balinese-date-java-lib/commits/master)
 [![coverage report](https://gitlab.com/peradnya/balinese-date-java-lib/badges/master/coverage.svg)](https://gitlab.com/peradnya/balinese-date-java-lib/commits/master)
 ## Introduction
-BalineseDate provides a library to build Balinese Saka Calendar in Java based application. 
+BalineseDate is an open source library to build Balinese Saka Calendar in Java based application. 
 
 **Disclaimer**: This library is in **Beta Phase**. Feedbacks, corrections, or bug reports are welcomed ... :)
 
