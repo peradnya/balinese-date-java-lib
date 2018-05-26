@@ -85,10 +85,6 @@ jar {
     }
 }
 
-javadoc {
-  options.addBooleanOption('html5', true)
-}
-
 test { 
     finalizedBy jacocoTestReport 
 }
