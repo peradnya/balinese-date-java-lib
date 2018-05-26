@@ -17,23 +17,15 @@ before_script:
 build:
   stage: build
   script: gradle --build-cache assemble
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
+  artifacts:
     paths:
-      - build
-      - .gradle
-
+    - build/libs
 
 test:
   stage: test
   script: 
     - gradle check
     - grep -Eo "Total.*?%" build/reports/jacoco/test/html/index.html
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - build
-      - .gradle
+  dependencies:
+  - build
 
