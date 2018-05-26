@@ -18,6 +18,7 @@ build:
   stage: build
   script: gradle --build-cache assemble
   artifacts:
+    expire_in: 1 day
     paths:
     - build/libs
 

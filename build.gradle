@@ -46,7 +46,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-version = '0.1.0'
+version = '0.2.0'
 group = 'com.gitlab.peradnya'
 
 task sourcesJar(type: Jar, dependsOn: classes) {

@@ -1,5 +1,6 @@
 # BalineseDate Java Library
 
+[![build version](https://jitpack.io/v/com.gitlab.peradnya/balinese-date-java-lib.svg)](https://jitpack.io/#com.gitlab.peradnya/balinese-date-java-lib)
 [![pipeline status](https://gitlab.com/peradnya/balinese-date-java-lib/badges/master/pipeline.svg)](https://gitlab.com/peradnya/balinese-date-java-lib/commits/master)
 [![coverage report](https://gitlab.com/peradnya/balinese-date-java-lib/badges/master/coverage.svg)](https://gitlab.com/peradnya/balinese-date-java-lib/commits/master)
 
@@ -95,6 +96,10 @@ You could find the test results at:
 ```
 
 ## Using in Code
+
+### Add Repository (Gradle, Maven)
+
+If you have project using Gradle or Maven, you can add the repository of BalineseDate Library by following this [procedure to add repository in maven or gradle](https://jitpack.io/#com.gitlab.peradnya/balinese-date-java-lib).
 
 ### Creating BalineseDate Object
 
