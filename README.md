@@ -1,15 +1,20 @@
 # BalineseDate Java Library
+
 [![pipeline status](https://gitlab.com/peradnya/balinese-date-java-lib/badges/master/pipeline.svg)](https://gitlab.com/peradnya/balinese-date-java-lib/commits/master)
 [![coverage report](https://gitlab.com/peradnya/balinese-date-java-lib/badges/master/coverage.svg)](https://gitlab.com/peradnya/balinese-date-java-lib/commits/master)
+
 ## Introduction
-BalineseDate is an open source library to build Balinese Saka Calendar in Java based application. 
+
+BalineseDate is an open source library to build Balinese Saka Calendar in Java based application.
 
 **Disclaimer**: This library is in **Beta Phase**. Feedbacks, corrections, or bug reports are welcomed ... :)
 
 ## Features
-BalineseDate provide a easy way to convert gregorian date into balinese date. 
+
+BalineseDate provide a easy way to convert gregorian date into balinese date.
 
 BalineseDate support several features:
+
 1. Sasih
     1. Penanggal / Pangelong
     2. Purnama / Tilem
@@ -28,42 +33,55 @@ BalineseDate support several features:
     9. Rakam
 
 ## How to Build
+
 ### Requirement
+
 The recomended requirement to build this project is:
-1. Oracle Java JDK 7 (minimum), JDK 8 (recomended)
-2. Gradle 4.4.0 (minimum)
-3. Git Client
+
+1. Latest Oracle Java JDK (Recomended >= 8.x)
+2. Latest Gradle (Recomended >= 4.4.0)
+3. Latest Git Client
 
 for Gradle installation, you could follow this [Gradle installation instuction](https://gradle.org/install/).
 
 ### Building JAR File
+
 JAR file of BalineseDate Library could be built by using following command:
+
 ```sh
 [project root]$ gradle build
 ```
+
 You could find the compiled JAR at:
+
 ```sh
 [project root]/build/libs/balinese-date-java-lib-[version].jar
 ```
 
 ### Building Documentation (Javadoc)
+
 Documentation of BalineseDate Library could be built by using following command:
+
 ```sh
 [project root]$ gradle javadoc
 ```
 
 You could find the documentation at:
+
 ```sh
 [project root]/build/docs/javadoc/index.html
 ```
 
 ### Testing & Checking
+
 Testing and checking of BalineseDate Library could be done by using following command:
+
 ```sh
 [project root]$ gradle check
 ```
 
 You could find the test results at:
+
 ```sh
 # JUnit (Unit Test) Result
 [project root]/build/reports/tests/test/index.html
@@ -77,7 +95,9 @@ You could find the test results at:
 ```
 
 ## Using in Code
+
 ### Creating BalineseDate Object
+
 ```java
 import peradnya.libs.balinesedate.*;
 import java.util.GregorianCalendar;
@@ -95,6 +115,7 @@ BalineseDate bDate2     = new BalineseDate(date);
 ```
 
 ### Using BalineseDate Method
+
 ```java
 // get penanggal (1 - 15)
 int penanggal                                   = bDate2.getPenanggal();
@@ -106,10 +127,13 @@ BalineseDateConst.PenanggalInfo penanggalInfo   = bDate2.getPenanggalInfo();
 ```
 
 ## Related Project
+
 There is another related project about Balinese Saka Calendar:
+
 * Saka Calendar 2.0 by [Edy Santosa](https://github.com/edysantosa/sakacalendar).
 
 ## References
+
 * babadbali.com (Yayasan Bali Galang) for [wewaran](http://www.babadbali.com/pewarigaan/perhitungan.htm) and [paringkelan](http://www.babadbali.com/pewarigaan/paringkelan.htm) algorithm.
 * kalenderbali.org and kalenderbali.info for cross-checking and building sample test-cases.
 * Pendit, Nyoman.(2001). *"Nyepi: kebangkitan, toleransi, dan kerukunan"*. Jakarta : Gramedia. Retrieved at [google book](https://books.google.co.id/books?id=4ND9KPn2o8AC).

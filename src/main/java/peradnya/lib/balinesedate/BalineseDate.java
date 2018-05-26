@@ -31,9 +31,6 @@ import java.util.GregorianCalendar;
  * </ul>
  * 
  * @author Ida Bagus Putu Peradnya Dinata
- * @version 0.1.0-beta
- * @since 0.1.0-beta
- * 
  * @see BalineseDatePawukon
  */
 public final class BalineseDate implements Serializable, Cloneable, Comparable<BalineseDate> {
@@ -212,7 +209,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     
     @Override
     public String toString() {
-        return "";
+        return pawukon.toString() + (isPangelong ? ", Pengelong " : ", Penanggal ") + penanggal + ", Sasih " + sasih.getName() + ", Saka " + saka;
     }
 
     private static BalineseDateConst.BalineseDatePivot chooseBestPivot(GregorianCalendar calendar) {
@@ -225,28 +222,28 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         BalineseDateConst.BalineseDatePivot pivot, 
         GregorianCalendar calendar) {
 
-        int diff = BalineseDateUtil.getDeltaDay(pivot.getCalendar(), calendar);
-        return BalineseDateUtil.mod(pivot.getPawukonDayInYear() + diff, BalineseDateConst.DAYS_IN_YEAR_PAWUKON);
+        int diff = getDeltaDay(pivot.getCalendar(), calendar);
+        return mod(pivot.getPawukonDayInYear() + diff, BalineseDateConst.DAYS_IN_YEAR_PAWUKON);
     }
 
     private static int[] calcPenanggal(BalineseDateConst.BalineseDatePivot pivot, GregorianCalendar calendar) {
         int[]   res     = new int[3];
 
-        int dayDiff     = BalineseDateUtil.getDeltaDay(pivot.getCalendar(), calendar);
+        int dayDiff     = getDeltaDay(pivot.getCalendar(), calendar);
         int daySkip     = (int) Math.ceil((double) dayDiff / BalineseDateConst.NGUNARATRI);
         int dayTotal    = pivot.getPenanggal() + dayDiff + daySkip;
 
         // calc penanggal
-        res[0]  = BalineseDateUtil.mod(dayTotal, 30);
+        res[0]  = mod(dayTotal, 30);
 
         // calc if this pangelong
         res[1]  = (res[0] == 0 || res[0] > 15) ? 1 : 0;
 
         // calc if this ngunaratri
-        res[2]  = BalineseDateUtil.mod(dayDiff, BalineseDateConst.NGUNARATRI) == 0 ? 1 : 0;
+        res[2]  = mod(dayDiff, BalineseDateConst.NGUNARATRI) == 0 ? 1 : 0;
 
         // if penanggal 0, change to penanggal 15
-        res[0] = BalineseDateUtil.mod(res[0], 15);
+        res[0] = mod(res[0], 15);
         res[0] = (res[0] == 0) ? 15 : res[0];
 
         return res;
@@ -285,7 +282,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
         int[]   res     = new int[3];
 
-        int dayDiff     = BalineseDateUtil.getDeltaDay(pivot.getCalendar(), calendar);
+        int dayDiff     = getDeltaDay(pivot.getCalendar(), calendar);
         int daySkip     = (int) Math.ceil((double) dayDiff / BalineseDateConst.NGUNARATRI);
         int dayTotal    = pivot.getPenanggal() + dayDiff + daySkip;
 
@@ -316,7 +313,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 if (nampihCount == 0 || nampihCount == 2) {
                     nampihCount     = 0;
                     totalSasih      = totalSasih - 1;
-                    currentSasih    = BalineseDateUtil.mod(currentSasih + 1, 12);
+                    currentSasih    = mod(currentSasih + 1, 12);
                 } else {
                     totalSasih      = totalSasih - 1;
                 }
@@ -347,7 +344,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 if (nampihCount == 0 || nampihCount == 2) {
                     nampihCount     = 0;
                     totalSasih      = totalSasih + 1;
-                    currentSasih    = BalineseDateUtil.mod(currentSasih - 1, 12);
+                    currentSasih    = mod(currentSasih - 1, 12);
                 } else {
                     totalSasih      = totalSasih + 1;
                 }
@@ -473,6 +470,17 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         }
 
         return lookupSasih[sasih];
+    }
+
+    private static int getDeltaDay(GregorianCalendar a, GregorianCalendar b) {
+        // try to fix precision error
+        double deltaMillis = (double) (b.getTimeInMillis() - a.getTimeInMillis());
+        return (int) Math.ceil(deltaMillis / 86400000L);
+    }
+
+    private static int mod(int a, int b) {
+        // try to fix negative mod
+        return ((a % b) + b) % b;
     }
 	
 }

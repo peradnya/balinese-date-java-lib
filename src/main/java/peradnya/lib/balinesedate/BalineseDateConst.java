@@ -23,6 +23,21 @@ public final class BalineseDateConst {
     public static final int NGUNARATRI              = 63;
     public static final int DAYS_IN_YEAR_PAWUKON    = 210;
 
+    private static String toTitleCase(String text) {
+        char[] arr = text.toCharArray();
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == '_') {
+                arr[i] = ' ';
+            } else if (arr[i] >= 'A' && arr[i] <= 'Z') {
+                if (i >= 1 && arr[i - 1] != ' ') {
+                    arr[i] = Character.toLowerCase(arr[i]);
+                } 
+            }
+        }
+
+        return new String(arr);
+    }
+
     public enum Jejapan {
         MINA(0),
         TARU(1),
@@ -42,7 +57,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 
@@ -65,7 +80,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 
@@ -87,7 +102,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 
@@ -108,7 +123,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 
@@ -160,7 +175,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 
@@ -184,7 +199,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 
@@ -211,7 +226,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 
@@ -234,7 +249,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 
@@ -283,7 +298,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -309,7 +324,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -334,7 +349,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -360,7 +375,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -387,7 +402,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -417,7 +432,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -450,7 +465,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -489,7 +504,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -528,7 +543,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -560,7 +575,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -593,7 +608,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
 
         public int getUrip() { 
@@ -638,7 +653,7 @@ public final class BalineseDateConst {
         }
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 
@@ -649,7 +664,7 @@ public final class BalineseDateConst {
         PANGELONG;
 
         public String getName() {
-            return BalineseDateUtil.toTitleCase(this.name());
+            return toTitleCase(this.name());
         }
     }
 

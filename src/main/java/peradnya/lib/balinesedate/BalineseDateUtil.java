@@ -16,36 +16,52 @@
 
 package peradnya.lib.balinesedate;
 
-import java.util.GregorianCalendar;
+import java.util.ArrayList;
 
 public final class BalineseDateUtil {
-
-    private static final long DAY_IN_MS = 86400000L;
     
-    public static String toTitleCase(String text) {
-        char[] arr = text.toCharArray();
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == '_') {
-                arr[i] = ' ';
-            } else if (arr[i] >= 'A' && arr[i] <= 'Z') {
-                if (i >= 1 && arr[i - 1] != ' ') {
-                    arr[i] = Character.toLowerCase(arr[i]);
-                } 
-            }
-        }
+    public static ArrayList<BalineseDate> findBalineseDateByPawukonInSaka(
+        BalineseDateConst.Saptawara saptawara, 
+        BalineseDateConst.Pancawara pancawara, 
+        BalineseDateConst.Wuku wuku,
+        int saka) {
 
-        return new String(arr);
+        ArrayList<BalineseDate> res = new ArrayList<BalineseDate>();
+
+        return res;
     }
 
-    public static int getDeltaDay(GregorianCalendar a, GregorianCalendar b) {
-        // try to fix precision error
-        double deltaMillis = (double) (b.getTimeInMillis() - a.getTimeInMillis());
-        return (int) Math.ceil(deltaMillis / DAY_IN_MS);
+    public static ArrayList<BalineseDate> findBalineseDateByPawukonInYear(
+        BalineseDateConst.Saptawara saptawara, 
+        BalineseDateConst.Pancawara pancawara, 
+        BalineseDateConst.Wuku wuku,
+        int year) {
+
+        ArrayList<BalineseDate> res = new ArrayList<BalineseDate>();
+
+        return res;
     }
 
-    public static int mod(int a, int b) {
-        // try to fix negative mod
-        return ((a % b) + b) % b;
+    public static ArrayList<BalineseDate> findBalineseDateBySasihInSaka(
+        BalineseDateConst.Sasih sasih, 
+        boolean isPangelong,
+        int penanggal,
+        int saka) {
+
+        ArrayList<BalineseDate> res = new ArrayList<BalineseDate>();
+
+        return res;
+    }
+
+    public static ArrayList<BalineseDate> findBalineseDateBySasihInYear(
+        BalineseDateConst.Sasih sasih, 
+        boolean isPangelong,
+        int penanggal,
+        int saka) {
+
+        ArrayList<BalineseDate> res = new ArrayList<BalineseDate>();
+
+        return res;
     }
 
 }

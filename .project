@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>balinese-date-java-lib</name>
-	<comment>Project balinese-date-java-lib created by Buildship.</comment>
+	<comment>Open source library to build Balinese Saka Calendar in Java based application</comment>
 	<projects>
 	</projects>
 	<buildSpec>

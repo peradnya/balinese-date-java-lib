@@ -32,8 +32,6 @@ import java.io.Serializable;
  * <a href='http://www.babadbali.com/pewarigaan/paringkelan.htm'>babadbali.com</a>.
  * 
  * @author Ida Bagus Putu Peradnya Dinata
- * @version 0.1.0-beta
- * @since 0.1.0-beta
  */
 public final class BalineseDatePawukon implements Serializable, Cloneable {
 
@@ -334,7 +332,7 @@ public final class BalineseDatePawukon implements Serializable, Cloneable {
 
     @Override
     public String toString() {
-        return "";
+        return saptawara.getName() + " " + pancawara.getName() + ", Wuku " + wuku.getName();
     }
 
     private static int calcCaturwaraIdx(int pawukonDayInYear) {
