@@ -52,6 +52,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     // Lookup table for sasih
     private static final BalineseDateConst.Sasih[] lookupSasih          = BalineseDateConst.Sasih.values();
 
+    private static final String NULL_CALENDAR = "Calendar value must not null.";
+
     private final BalineseDateConst.BalineseDatePivot pivot;
     
     private final int penanggal;
@@ -96,6 +98,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     }
 
     private BalineseDate(GregorianCalendar calendar, boolean copy) {
+        if (calendar == null) { throw new IllegalArgumentException(NULL_CALENDAR); }
+
         GregorianCalendar date = copy ? (GregorianCalendar) calendar.clone() : calendar;
         date.set(Calendar.HOUR_OF_DAY, 0);
         date.set(Calendar.MINUTE, 0);

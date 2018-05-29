@@ -17,9 +17,18 @@
 package peradnya.lib.balinesedate;
 
 import org.junit.Test;
+
+import peradnya.lib.balinesedate.BalineseDateConst.Pancawara;
+import peradnya.lib.balinesedate.BalineseDateConst.PenanggalInfo;
+import peradnya.lib.balinesedate.BalineseDateConst.Saptawara;
+import peradnya.lib.balinesedate.BalineseDateConst.Sasih;
+import peradnya.lib.balinesedate.BalineseDateConst.Wuku;
+
 import static org.junit.Assert.*;
 
 import java.util.GregorianCalendar;
+
+import javax.management.Query;
 
 public class BalineseDateTest {
 
@@ -703,6 +712,117 @@ public class BalineseDateTest {
 
         // Sasih
         assertEquals("Kapitu", bDate.getSasih().getName());
+    }
+
+    @Test public void test_query_1_year_watugunung() {
+        GregorianCalendar start     = new GregorianCalendar(2017,00,01);
+        GregorianCalendar finish    = new GregorianCalendar(2017,11,31);
+        BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
+
+        q.wuku = Wuku.WATUGUNUNG;
+
+        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+
+        assertEquals(arr.length, 14);
+    }
+
+    @Test public void test_query_1_year_watugunung_kliwon() {
+        GregorianCalendar start     = new GregorianCalendar(2017,00,01);
+        GregorianCalendar finish    = new GregorianCalendar(2017,11,31);
+        BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
+
+        q.wuku      = Wuku.WATUGUNUNG;
+        q.pancawara = Pancawara.KLIWON;
+
+        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+
+        assertEquals(arr.length, 4);
+    }
+
+    @Test public void test_query_1_year_watugunung_saniscara() {
+        GregorianCalendar start     = new GregorianCalendar(2017,00,01);
+        GregorianCalendar finish    = new GregorianCalendar(2017,11,31);
+        BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
+
+        q.wuku      = Wuku.WATUGUNUNG;
+        q.saptawara = Saptawara.SANISCARA;
+
+        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+
+        assertEquals(arr.length, 2);
+    }
+
+    @Test public void test_query_1_year_watugunung_saniscara_kliwon() {
+        GregorianCalendar start     = new GregorianCalendar(2017,00,01);
+        GregorianCalendar finish    = new GregorianCalendar(2017,11,31);
+        BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
+
+        q.wuku      = Wuku.WATUGUNUNG;
+        q.saptawara = Saptawara.SANISCARA;
+        q.pancawara = Pancawara.KLIWON;
+
+        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+
+        assertEquals(arr.length, 0);
+    }
+
+    @Test public void test_query_1_month_agustus_ngunaratri() {
+        GregorianCalendar start     = new GregorianCalendar(2017,07,01);
+        GregorianCalendar finish    = new GregorianCalendar(2017,07,31);
+        BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
+
+        q.isNgunaRatri      = true;
+
+        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+
+        assertEquals(arr.length, 1);
+    }
+
+    @Test public void test_query_1_month_agustus_katiga() {
+        GregorianCalendar start     = new GregorianCalendar(2017,07,01);
+        GregorianCalendar finish    = new GregorianCalendar(2017,07,31);
+        BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
+
+        q.sasih      = Sasih.KATIGA;
+
+        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+
+        assertEquals(arr.length, 9);
+    }
+
+    @Test public void test_query_1_month_agustus_1() {
+        GregorianCalendar start     = new GregorianCalendar(2017,07,01);
+        GregorianCalendar finish    = new GregorianCalendar(2017,07,31);
+        BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
+
+        q.penanggal = 1;
+
+        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+
+        assertEquals(arr.length, 1);
+    }
+
+    @Test public void test_query_1_month_agustus_penanggal_9() {
+        GregorianCalendar start     = new GregorianCalendar(2017,07,01);
+        GregorianCalendar finish    = new GregorianCalendar(2017,07,31);
+        BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
+
+        q.penanggal = 9;
+        q.penanggalInfo = PenanggalInfo.PENANGGAL;
+
+        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+
+        assertEquals(arr.length, 2);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_exception_null_1() {
+        new BalineseDate(null);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_exception_null_2() {
+        BalineseDateUtil.getBalineseDateByDate(null, null, null);
     }
 
 

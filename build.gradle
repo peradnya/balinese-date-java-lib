@@ -7,7 +7,6 @@
  */
 
 // Apply the java-library plugin to add support for Java Library
-/* SpotBug currently doesn't support Java 10.
 buildscript {
   repositories {
     maven {
@@ -15,18 +14,14 @@ buildscript {
     }
   }
   dependencies {
-    classpath 'gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:1.6.1'
+    classpath 'gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:1.6.2'
   }
 } 
-*/
 
 apply plugin: 'java-library'
 apply plugin: 'jacoco'
 apply plugin: 'maven'
-
-/* SpotBug currently doesn't support Java 10.
 apply plugin: 'com.github.spotbugs' 
-*/
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -89,11 +84,9 @@ test {
     finalizedBy jacocoTestReport 
 }
 
-/* SpotBug currently doesn't support Java 10.
 tasks.withType(com.github.spotbugs.SpotBugsTask) {
   reports {
     xml.enabled = false
     html.enabled = true
   }
 } 
-*/
