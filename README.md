@@ -34,7 +34,7 @@ BalineseDate support several features:
     9. Rakam
 4. Get the BalineseDate(s) from selected Date and Filter __(NEW v0.2.0!)__
 
-## Import BalineseDate into Your Project
+## Import BalineseDate into Project
 
 BalineseDate Java Library use [Jitpack](https://jitpack.io/#com.gitlab.peradnya/balinese-date-java-lib) to publish the binary.
 
@@ -46,7 +46,7 @@ Please add the repository of __Jitpack__ in the ```build.gradle``` of your proje
 repositories {
     ...
     jcenter()
-    maven { url 'https://jitpack.io' }  // add this line
+    maven { url 'https://jitpack.io' }
 }
 ```
 
@@ -54,7 +54,7 @@ and then, add dependency to __BalineseDate Library__ in the ```build.gradle```
 
 ```groovy
 dependencies {
-    implementation 'com.gitlab.peradnya:balinese-date-java-lib:[VERSION]'   // add this line
+    implementation 'com.gitlab.peradnya:balinese-date-java-lib:0.2.0'
 }
 ```
 
@@ -77,17 +77,16 @@ and then, add dependency to __BalineseDate Library__ in the ```pom.xml```
 <dependency>
     <groupId>com.gitlab.peradnya</groupId>
     <artifactId>balinese-date-java-lib</artifactId>
-    <version>[VERSION]</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
 ## Documentation
 
-Documentation of BalineseDate Java Library available at :
+### Version 0.x
 
-```txt
-https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/[VERSION]/javadoc/
-```
+* [__0.2.0 (Latest)__](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.2.0/javadoc/)
+* [0.1.0](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.1.0/javadoc/)
 
 ## How to Build
 
@@ -148,7 +147,6 @@ You could find the test results at:
 
 # SpotBugs (Bug Analysis) Result
 [project root]/build/reports/spotbugs/main.html
-
 ```
 
 ## Using in Code
@@ -160,37 +158,40 @@ import peradnya.libs.balinesedate.*;
 import java.util.GregorianCalendar;
 
 // get current balinese date
+
 BalineseDate now        = new BalineseDate();
 
 // get balinese date at 1 January 2018
+
 BalineseDate bDate1     = new BalineseDate(2018,0,1);
 
 // get balinese date at 1 January 1969 using GregorianCalendar
+
 GregorianCalendar date  = new GregorianCalendar(1969,0,1);
 BalineseDate bDate2     = new BalineseDate(date);
-
 ```
 
 ### Using BalineseDate Method
 
 ```java
 // get penanggal (1 - 15)
+
 int penanggal                                   = bDate2.getPenanggal();
 
 // get penanggal info (penanggal, pangelong, tilem, or purnama)
+
 BalineseDateConst.PenanggalInfo penanggalInfo   = bDate2.getPenanggalInfo();
 
 // get BalineseDate(s) Between 2017-01-01 and 2017-12-31 with Wuku Watugunung and Pancawara Kliwon
-GregorianCalendar start = new GregorianCalendar(2017,00,01);
-GregorianCalendar finish = new GregorianCalendar(2017,11,31);
-BalineseDateUtil.Filter q = new BalineseDateUtil.Filter();
 
-q.wuku = Wuku.WATUGUNUNG;
-q.pancawara = Pancawara.KLIWON;
+GregorianCalendar start     = new GregorianCalendar(2017,00,01);
+GregorianCalendar finish    = new GregorianCalendar(2017,11,31);
+BalineseDateUtil.Filter q   = new BalineseDateUtil.Filter();
 
-BalineseDate[] result = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+q.wuku                      = Wuku.WATUGUNUNG;
+q.pancawara                 = Pancawara.KLIWON;
 
-// etc... Lelah :)
+BalineseDate[] result       = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
 ```
 
 ## Related Project
