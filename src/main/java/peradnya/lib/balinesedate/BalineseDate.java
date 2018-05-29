@@ -69,14 +69,14 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     private final BalineseDatePawukon pawukon;
 
     /**
-     * Construct balinese date with current date.
+     * Construct BalineseDate with current date.
      */
     public BalineseDate() {
         this(new GregorianCalendar(), false);
     }
 
     /**
-     * Construct balinese date with specific date.
+     * Construct BalineseDate with specific date.
      * 
      * @param year the gregorian year.
      * @param month the gregorian month of year. Start from 0 (January) to 11 (December).
@@ -89,7 +89,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     }
 
     /**
-     * Construct balinese date with specific date.
+     * Construct BalineseDate with specific date.
      * 
      * @param calendar the gregorian calendar.
      */
@@ -132,8 +132,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     }
 
     /**
-     * Convert balinese date into gregorian calendar.
-     * @return the gregorian representation of balinese date
+     * Convert BalineseDate into gregorian calendar.
+     * @return the gregorian representation of BalineseDate
      */
     public GregorianCalendar toCalendar() {
         return (GregorianCalendar) calendar.clone();
