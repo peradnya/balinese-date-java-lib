@@ -32,6 +32,62 @@ BalineseDate support several features:
     7. Pancasuda
     8. Pararasan
     9. Rakam
+4. Get the BalineseDate(s) from selected Date and Filter __(NEW v0.2.0!)__
+
+## Import BalineseDate into Your Project
+
+BalineseDate Java Library use [Jitpack](https://jitpack.io/#com.gitlab.peradnya/balinese-date-java-lib) to publish the binary.
+
+### Gradle
+
+Please add the repository of __Jitpack__ in the ```build.gradle``` of your project
+
+```groovy
+repositories {
+    ...
+    jcenter()
+    maven { url 'https://jitpack.io' }  // add this line
+}
+```
+
+and then, add dependency to __BalineseDate Library__ in the ```build.gradle```
+
+```groovy
+dependencies {
+    implementation 'com.gitlab.peradnya:balinese-date-java-lib:[VERSION]'   // add this line
+}
+```
+
+### Maven
+
+Please add the repository of __Jitpack__ in the ```pom.xml``` of your project
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+and then, add dependency to __BalineseDate Library__ in the ```pom.xml```
+
+```xml
+<dependency>
+    <groupId>com.gitlab.peradnya</groupId>
+    <artifactId>balinese-date-java-lib</artifactId>
+    <version>[VERSION]</version>
+</dependency>
+```
+
+## Documentation
+
+Documentation of BalineseDate Java Library available at :
+
+```txt
+https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/[VERSION]/javadoc/
+```
 
 ## How to Build
 
@@ -97,10 +153,6 @@ You could find the test results at:
 
 ## Using in Code
 
-### Add Repository (Gradle, Maven)
-
-If you have project using Gradle or Maven, you can add the repository of BalineseDate Library by following this [procedure to add repository in maven or gradle](https://jitpack.io/#com.gitlab.peradnya/balinese-date-java-lib).
-
 ### Creating BalineseDate Object
 
 ```java
@@ -127,6 +179,16 @@ int penanggal                                   = bDate2.getPenanggal();
 
 // get penanggal info (penanggal, pangelong, tilem, or purnama)
 BalineseDateConst.PenanggalInfo penanggalInfo   = bDate2.getPenanggalInfo();
+
+// get BalineseDate(s) Between 2017-01-01 and 2017-12-31 with Wuku Watugunung and Pancawara Kliwon
+GregorianCalendar start = new GregorianCalendar(2017,00,01);
+GregorianCalendar finish = new GregorianCalendar(2017,11,31);
+BalineseDateUtil.Filter q = new BalineseDateUtil.Filter();
+
+q.wuku = Wuku.WATUGUNUNG;
+q.pancawara = Pancawara.KLIWON;
+
+BalineseDate[] result = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
 
 // etc... Lelah :)
 ```
