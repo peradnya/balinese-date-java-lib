@@ -28,8 +28,6 @@ import static org.junit.Assert.*;
 
 import java.util.GregorianCalendar;
 
-import javax.management.Query;
-
 public class BalineseDateTest {
 
     @Test public void test_date_1969_01_01() {

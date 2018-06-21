@@ -59,6 +59,11 @@ artifacts {
     archives javadocJar
 }
 
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
 // To specify a license in the pom:
 install {
   repositories.mavenInstaller {
