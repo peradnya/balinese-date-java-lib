@@ -28,7 +28,11 @@ import java.util.GregorianCalendar;
  *  <li>Pawukon info: Wewaran, Wuku, Paringkelan, etc.</li>
  *  <li>Sasih info: Sasih Day (1-15), Sasih Day Info (Penanggal, Pangelong, Purnama, Tilem), Sasih Name, etc.</li>
  *  <li>Saka info: Saka Year</li>
+ *  <li>Pratithi Samud Pada</li>
  * </ul>
+ * <p>
+ * Calculation of Pratithi Samud Pada that used by this class, is based on : 
+ * Ardhana, I.B.S.(2005). "Pokok-Pokok Wariga". Surabaya : Paramita.
  * 
  * @author Ida Bagus Putu Peradnya Dinata
  * @see BalineseDatePawukon
@@ -38,19 +42,22 @@ public final class BalineseDate implements Serializable {
     private static final long serialVersionUID = 1001L;
 
     // Start of Pengalantaka Eka Sungsang to Pon (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_PON          = new GregorianCalendar(1971, 0, 27);
+    // private static final GregorianCalendar DATE_TRANSITION_PON              = new GregorianCalendar(1971, 0, 27);
 
     // Start of Pengalantaka Eka Sungsang to Paing (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_PAING        = new GregorianCalendar(2000, 0, 6);
+    private static final GregorianCalendar DATE_TRANSITION_PAING            = new GregorianCalendar(2000, 0, 6);
 
     // Start of Sasih Berkesinambungan (Kawolu, Caka 1914) (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_SK_START     = new GregorianCalendar(1993, 0, 24);
+    private static final GregorianCalendar DATE_TRANSITION_SK_START         = new GregorianCalendar(1993, 0, 24);
 
     // Finish of Sasih Berkesinambungan (Kawolu, Caka 1924) (need to be confirmed)
-    private static final GregorianCalendar DATE_TRANSITION_SK_FINISH    = new GregorianCalendar(2003, 0, 3);
+    private static final GregorianCalendar DATE_TRANSITION_SK_FINISH        = new GregorianCalendar(2003, 0, 3);
 
     // Lookup table for sasih
-    private static final BalineseDateConst.Sasih[] lookupSasih          = BalineseDateConst.Sasih.values();
+    private static final BalineseDateConst.Sasih[] lookupSasih              = BalineseDateConst.Sasih.values();
+
+    // Lookup table for pratithi samut pada
+    private static final BalineseDateConst.PratithiSamutPada[] lookupPSP    = BalineseDateConst.PratithiSamutPada.values();
 
     private static final String NULL_CALENDAR = "Calendar value must not null.";
 
@@ -61,6 +68,7 @@ public final class BalineseDate implements Serializable {
 
     private final int saka;
     private final BalineseDateConst.Sasih sasih;
+    private final BalineseDateConst.PratithiSamutPada pratithiSamutPada;
 
     private final GregorianCalendar calendar;
     private final BalineseDatePawukon pawukon;
@@ -121,6 +129,7 @@ public final class BalineseDate implements Serializable {
         this.sasih              = calcSasihInfo(resultSasih);
 
         this.sasihDayInfo       = calcSasihDayInfo(resultSasihDay, this.sasih, this.saka);
+        this.pratithiSamutPada  = calcPratithiSamutPada(this.sasihDay, this.sasihDayInfo, this.sasih, (GregorianCalendar) date.clone());
     }
 
     /**
@@ -169,6 +178,14 @@ public final class BalineseDate implements Serializable {
      */
     public BalineseDateConst.Sasih getSasih() {
         return sasih;
+    }
+
+    /**
+     * Get Pratithi Samut Pada.
+     * @return the pratithi samut pada
+     */
+    public BalineseDateConst.PratithiSamutPada getPratithiSamutPada() {
+        return pratithiSamutPada;
     }
 
     @Override
@@ -444,6 +461,91 @@ public final class BalineseDate implements Serializable {
         }
 
         return lookupSasih[sasih];
+    }
+
+    private static BalineseDateConst.PratithiSamutPada calcPratithiSamutPada(
+        int[] sasihDay,
+        BalineseDateConst.SasihDayInfo sasihDayInfo,
+        BalineseDateConst.Sasih sasih,
+        GregorianCalendar date) {
+
+        BalineseDateConst.PratithiSamutPada start = lookupPSP[0];
+
+        if (sasih.getRef() == BalineseDateConst.Sasih.KASA.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.TRESNA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.KARO.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.UPADANA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.KATIGA.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.BHAWA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.KAPAT.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.JATI;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.KALIMA.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.JARAMARANA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.KANEM.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.AWIDYA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.KAPITU.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.SAMSKARA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.KAWOLU.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.WIJNANA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.KASANGA.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.NAMARUPA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.KADASA.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.SADAYATANA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.DESTHA.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.SEPARSA;
+        } else if (sasih.getRef() == BalineseDateConst.Sasih.SADHA.getId()) {
+            start = BalineseDateConst.PratithiSamutPada.WEDANA;
+        }
+
+        int inc = 0;
+
+        if (sasihDayInfo.getGroup() == BalineseDateConst.SasihDayInfo.PENANGGAL.getGroup()) {
+            if (sasihDay.length > 1) {
+                if (sasihDay[1] == 1) {
+                    inc = 0;
+                } else {
+                    if (sasihDay[1] == 15) {
+                        inc = 0;
+                    } else if (sasihDay[1] == 9) {
+                        inc = 7;
+                    } else if (sasihDay[1] == 14) {
+                        inc = 12;
+                    } else {
+                        inc = sasihDay[1] - 1;
+                    }
+                }
+            } else {
+                if (sasihDay[0] == 15) {
+                    inc = 0;
+                } else if (sasihDay[0] == 9) {
+                    inc = 7;
+                } else if (sasihDay[0] == 14) {
+                    inc = 12;
+                } else {
+                    inc = sasihDay[0] - 1;
+                }
+            }
+        } else {
+            if (sasihDay.length > 1) {
+                if (sasihDay[1] == 1) {
+                    date.add(GregorianCalendar.DATE, 1);
+                    BalineseDate nextDay = new BalineseDate(date);
+
+                    if(nextDay.sasih.getRef() != sasih.getRef()) {
+                        inc = -1;
+                    }
+                } else {
+                    inc = (sasihDay[1] >= 13 ? sasihDay[1] - 10 : sasihDay[1]) - 1;
+                }
+            } else {
+                inc = (sasihDay[0] >= 13 ? sasihDay[0] - 10 : sasihDay[0]) - 1;
+            }
+        }
+
+        int id = mod(start.getId() - inc, 12);
+        start  = lookupPSP[id];
+        
+        return start;
     }
 
     private static int getDeltaDay(GregorianCalendar a, GregorianCalendar b) {

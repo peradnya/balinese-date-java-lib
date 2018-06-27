@@ -21,6 +21,7 @@ BalineseDate support several features:
     2. Purnama / Tilem
     3. Mala Masa / Nampih Sasih
     4. NgunaRatri
+    5. Pratithi Samut Pada __(v0.3.0)__
 2. Saka Year
 3. Pawukon
     1. Wuku

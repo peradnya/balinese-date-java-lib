@@ -33,32 +33,34 @@ public final class BalineseDateUtil {
      * @author Ida Bagus Putu Peradnya Dinata
      */
     public static final class Filter {
-        public BalineseDateConst.Ekawara        ekawara         = null;
-        public BalineseDateConst.Dwiwara        dwiwara         = null;
-        public BalineseDateConst.Triwara        triwara         = null;
-        public BalineseDateConst.Caturwara      caturwara       = null;
-        public BalineseDateConst.Pancawara      pancawara       = null;
-        public BalineseDateConst.Sadwara        sadwara         = null;
-        public BalineseDateConst.Saptawara      saptawara       = null;
-        public BalineseDateConst.Astawara       astawara        = null;
-        public BalineseDateConst.Sangawara      sangawara       = null;
-        public BalineseDateConst.Dasawara       dasawara        = null;
+        public BalineseDateConst.Ekawara            ekawara             = null;
+        public BalineseDateConst.Dwiwara            dwiwara             = null;
+        public BalineseDateConst.Triwara            triwara             = null;
+        public BalineseDateConst.Caturwara          caturwara           = null;
+        public BalineseDateConst.Pancawara          pancawara           = null;
+        public BalineseDateConst.Sadwara            sadwara             = null;
+        public BalineseDateConst.Saptawara          saptawara           = null;
+        public BalineseDateConst.Astawara           astawara            = null;
+        public BalineseDateConst.Sangawara          sangawara           = null;
+        public BalineseDateConst.Dasawara           dasawara            = null;
 
-        public BalineseDateConst.Ingkel         ingkel          = null;
-        public BalineseDateConst.Jejapan        jejapan         = null;
-        public BalineseDateConst.PawatekanAlit  watekAlit       = null;
-        public BalineseDateConst.PawatekanMadya watekMadya      = null;
-        public BalineseDateConst.Lintang        lintang         = null;
-        public BalineseDateConst.Pancasuda      pancasuda       = null;
-        public BalineseDateConst.Pararasan      pararasan       = null;
-        public BalineseDateConst.Rakam          rakam           = null;
+        public BalineseDateConst.Ingkel             ingkel              = null;
+        public BalineseDateConst.Jejapan            jejapan             = null;
+        public BalineseDateConst.PawatekanAlit      watekAlit           = null;
+        public BalineseDateConst.PawatekanMadya     watekMadya          = null;
+        public BalineseDateConst.Lintang            lintang             = null;
+        public BalineseDateConst.Pancasuda          pancasuda           = null;
+        public BalineseDateConst.Pararasan          pararasan           = null;
+        public BalineseDateConst.Rakam              rakam               = null;
+        public BalineseDateConst.EkaJalaRsi         ekaJalaRsi          = null;
 
-        public BalineseDateConst.Wuku           wuku            = null;
+        public BalineseDateConst.Wuku               wuku                = null;
 
-        public BalineseDateConst.Sasih          sasih           = null;
-        public BalineseDateConst.SasihDayInfo   sasihDayInfo    = null;
-        public int[]                            sasihDay        = null;
-        public Integer                          saka            = null;
+        public BalineseDateConst.Sasih              sasih               = null;
+        public BalineseDateConst.SasihDayInfo       sasihDayInfo        = null;
+        public int[]                                sasihDay            = null;
+        public Integer                              saka                = null;
+        public BalineseDateConst.PratithiSamutPada  pratithiSamutPada   = null;
     }
 
     private static final String NULL_CALENDAR = "Calendar value must not null.";    
@@ -144,6 +146,7 @@ public final class BalineseDateUtil {
                 if (check(filter.pancasuda, pawukon.getPancasuda()))                { continue; }
                 if (check(filter.pararasan, pawukon.getPararasan()))                { continue; }
                 if (check(filter.rakam, pawukon.getRakam()))                        { continue; }
+                if (check(filter.ekaJalaRsi, pawukon.getEkaJalaRsi()))              { continue; }
 
                 if (check(filter.wuku, pawukon.getWuku()))                          { continue; }
 
@@ -151,7 +154,7 @@ public final class BalineseDateUtil {
                 if (checkSasihDayInfo(filter.sasihDayInfo, date.getSasihDayInfo())) { continue; }
                 if (checkIntArr(filter.sasihDay, date.getSasihDay()))               { continue; }
                 if (check(filter.saka, date.getSaka()))                             { continue; }
-
+                if (check(filter.pratithiSamutPada, date.getPratithiSamutPada()))   { continue; }
             }
 
             list.add(date);

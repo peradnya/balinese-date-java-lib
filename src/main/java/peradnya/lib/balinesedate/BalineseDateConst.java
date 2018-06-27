@@ -38,6 +38,35 @@ public final class BalineseDateConst {
         return new String(arr);
     }
 
+    public enum PratithiSamutPada {
+        TRESNA(0),
+        UPADANA(1),
+        BHAWA(2),
+        JATI(3),
+        JARAMARANA(4),
+        AWIDYA(5),
+        SAMSKARA(6),
+        WIJNANA(7),
+        NAMARUPA(8),
+        SADAYATANA(9),
+        SEPARSA(10),
+        WEDANA(11);
+
+        private final int id;
+
+        private PratithiSamutPada(int id) {
+            this.id = id;
+        }
+
+        public int getId() { 
+            return this.id; 
+        }
+
+        public String getName() {
+            return toTitleCase(this.name());
+        }
+    }
+
     public enum EkaJalaRsi {
         BAGNA_MAPASAH(0),
         BAHU_PUTRA(1),
@@ -685,7 +714,6 @@ public final class BalineseDateConst {
         NAMPIH_KADASA(17, 9),
         NAMPIH_KARO(18, 1),
         NAMPIH_SADHA(19, 11);
-
 
         private final int id;
         private final int ref;
