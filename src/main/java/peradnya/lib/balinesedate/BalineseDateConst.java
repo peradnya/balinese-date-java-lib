@@ -699,6 +699,10 @@ public final class BalineseDateConst {
             return this.id; 
         }
 
+        /**
+         * Return the reference sasih id of sasih.
+         * @return the reference id
+         */
         public int getRef() {
             return this.ref;
         }
@@ -708,7 +712,7 @@ public final class BalineseDateConst {
         }
     }
 
-    public enum DateStatus {
+    public enum SasihDayInfo {
         TILEM(1),
         PENANGGAL(0),
         PURNAMA(0),
@@ -716,10 +720,16 @@ public final class BalineseDateConst {
 
         private final int group;
 
-        private DateStatus(int group) {
+        private SasihDayInfo(int group) {
             this.group = group;
         }
 
+        /**
+         * Get the group id of sasih day info.
+         * <br>- Group 0: Penanggal, Purnama.
+         * <br>- Group 1: Pangelong, Tilem.
+         * @return the group id
+         */
         public int getGroup() { 
             return this.group; 
         }
@@ -735,9 +745,9 @@ public final class BalineseDateConst {
 
         private final GregorianCalendar calendar;
 
-        private final int pawukonDayInYear;
-        private final int date;
-        private final int ngunaratriDay;
+        private final int pawukonDay;
+        private final int sasihDay;
+        private final int ngunaRatriDay;
 
         private final int saka;
         private final BalineseDateConst.Sasih sasih;
@@ -748,17 +758,17 @@ public final class BalineseDateConst {
             int year, 
             int month, 
             int dayOfMonth, 
-            int pawukonDayInYear, 
-            int date,
-            int ngunaratriDay,
+            int pawukonDay, 
+            int sasihDay,
+            int ngunaRatriDay,
             int saka,
             BalineseDateConst.Sasih sasih,
             boolean isNampihSasih) {
 
             this.calendar           = new GregorianCalendar(year, month, dayOfMonth);
-            this.pawukonDayInYear   = pawukonDayInYear;
-            this.date               = date;
-            this.ngunaratriDay      = ngunaratriDay;
+            this.pawukonDay         = pawukonDay;
+            this.sasihDay           = sasihDay;
+            this.ngunaRatriDay      = ngunaRatriDay;
             this.saka               = saka;
             this.sasih              = sasih;
             this.isNampihSasih      = isNampihSasih;
@@ -768,16 +778,16 @@ public final class BalineseDateConst {
             return calendar;
         }
 
-        public int getPawukonDayInYear() {
-            return pawukonDayInYear;
+        public int getPawukonDay() {
+            return pawukonDay;
         }
 
-        public int getDate() {
-            return date;
+        public int getSasihDay() {
+            return sasihDay;
         }
 
-        public int getNgunaratriDay() {
-            return ngunaratriDay;
+        public int getNgunaRatriDay() {
+            return ngunaRatriDay;
         }
 
         /**

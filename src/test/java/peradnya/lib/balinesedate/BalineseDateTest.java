@@ -19,7 +19,7 @@ package peradnya.lib.balinesedate;
 import org.junit.Test;
 
 import peradnya.lib.balinesedate.BalineseDateConst.Pancawara;
-import peradnya.lib.balinesedate.BalineseDateConst.DateStatus;
+import peradnya.lib.balinesedate.BalineseDateConst.SasihDayInfo;
 import peradnya.lib.balinesedate.BalineseDateConst.Saptawara;
 import peradnya.lib.balinesedate.BalineseDateConst.Sasih;
 import peradnya.lib.balinesedate.BalineseDateConst.Wuku;
@@ -58,9 +58,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.ARAS_TUDING, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.SATRIA_WIBAWA, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.BUAT_SUKA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {12,13}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {12,13}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         // assertEquals(true, bDate.isNgunaRatri());
 
         // Sasih
@@ -96,9 +98,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.ARAS_KEMBANG, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.TUNGGAK_SEMI, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.BUAT_SUKA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {8}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PANGELONG, bDate.getDateStatus());
+        assertArrayEquals(new int[] {8}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PANGELONG, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -134,9 +138,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_SURYA, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.LEBU_KATIUB_ANGIN, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.BUAT_SUKA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {15,1}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.TILEM, bDate.getDateStatus());
+        assertArrayEquals(new int[] {15,1}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.TILEM, bDate.getSasihDayInfo());
         //assertEquals(true, bDate.isNgunaRatri());
 
         // Sasih
@@ -172,9 +178,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_BINTANG, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.SATRIA_WIBAWA, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.SUKA_PINANGGIH, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {2}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {2}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -210,9 +218,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.ARAS_TUDING, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.SUMUR_SINABA, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.LANGGENG_KAYOHANAAN, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {1}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {1}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -248,9 +258,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_AIR, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.WISESA_SEGARA, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.BUAT_SUKA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {1}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {1}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -286,9 +298,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_BULAN, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.BUMI_KAPETAK, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.BAGNA_MAPASAH, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {14,15}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PURNAMA, bDate.getDateStatus());
+        assertArrayEquals(new int[] {14,15}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PURNAMA, bDate.getSasihDayInfo());
         //assertEquals(true, bDate.isNgunaRatri());
 
         // Sasih
@@ -324,9 +338,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.ARAS_TUDING, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.SATRIA_WIRANG, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.MANGGIH_SUKA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {13}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {13}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -362,9 +378,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.ARAS_KEMBANG, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.SUMUR_SINABA, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.TININGGALING_SUKA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {15}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.TILEM, bDate.getDateStatus());
+        assertArrayEquals(new int[] {15}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.TILEM, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -400,9 +418,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_BUMI, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.LEBU_KATIUB_ANGIN, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.PATINING_AMRTA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {1}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {1}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -438,9 +458,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_BULAN, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.BUMI_KAPETAK, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.BAGNA_MAPASAH, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {9}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PANGELONG, bDate.getDateStatus());
+        assertArrayEquals(new int[] {9}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PANGELONG, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -476,9 +498,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_BINTANG, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.BUMI_KAPETAK, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.BUAT_SEBET, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {11}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {11}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -514,9 +538,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_BULAN, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.BUMI_KAPETAK, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.SUKA_PINANGGIH, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {15}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.TILEM, bDate.getDateStatus());
+        assertArrayEquals(new int[] {15}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.TILEM, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -553,9 +579,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_ANGIN, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.TUNGGAK_SEMI, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.TININGGALING_SUKA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {15}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.TILEM, bDate.getDateStatus());
+        assertArrayEquals(new int[] {15}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.TILEM, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -591,9 +619,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.ARAS_TUDING, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.SUMUR_SINABA, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.SUKA_PINANGGIH, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {7}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {7}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -629,9 +659,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_PANDITA_SAKTI, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.SUMUR_SINABA, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.PATINING_AMRTA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {1}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {1}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -667,9 +699,11 @@ public class BalineseDateTest {
         assertEquals(BalineseDateConst.Pararasan.LAKU_PANDITA_SAKTI, bDate.getPawukon().getPararasan());
         assertEquals(BalineseDateConst.Pancasuda.SUMUR_SINABA, bDate.getPawukon().getPancasuda());
 
+        assertEquals(BalineseDateConst.EkaJalaRsi.PATINING_AMRTA, bDate.getPawukon().getEkaJalaRsi());
+
         // Penanggal
-        assertArrayEquals(new int[] {4}, bDate.getDate());
-        assertEquals(BalineseDateConst.DateStatus.PENANGGAL, bDate.getDateStatus());
+        assertArrayEquals(new int[] {4}, bDate.getSasihDay());
+        assertEquals(BalineseDateConst.SasihDayInfo.PENANGGAL, bDate.getSasihDayInfo());
         //assertEquals(false, bDate.isNgunaRatri());
 
         // Sasih
@@ -705,8 +739,10 @@ public class BalineseDateTest {
         assertEquals("Laku Pandita Sakti", bDate.getPawukon().getPararasan().getName());
         assertEquals("Sumur Sinaba", bDate.getPawukon().getPancasuda().getName());
 
+        assertEquals("Patining Amrta", bDate.getPawukon().getEkaJalaRsi().getName());
+
         // Penanggal
-        assertEquals("Penanggal", bDate.getDateStatus().getName());
+        assertEquals("Penanggal", bDate.getSasihDayInfo().getName());
 
         // Sasih
         assertEquals("Kapitu", bDate.getSasih().getName());
@@ -719,7 +755,7 @@ public class BalineseDateTest {
 
         q.wuku = Wuku.WATUGUNUNG;
 
-        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDateRange(q, start, finish);
 
         assertEquals(arr.length, 14);
     }
@@ -732,7 +768,7 @@ public class BalineseDateTest {
         q.wuku      = Wuku.WATUGUNUNG;
         q.pancawara = Pancawara.KLIWON;
 
-        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDateRange(q, start, finish);
 
         assertEquals(arr.length, 4);
     }
@@ -745,7 +781,7 @@ public class BalineseDateTest {
         q.wuku      = Wuku.WATUGUNUNG;
         q.saptawara = Saptawara.SANISCARA;
 
-        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDateRange(q, start, finish);
 
         assertEquals(arr.length, 2);
     }
@@ -759,7 +795,7 @@ public class BalineseDateTest {
         q.saptawara = Saptawara.SANISCARA;
         q.pancawara = Pancawara.KLIWON;
 
-        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+        BalineseDate[] arr          = BalineseDateUtil.getBalineseDateByDateRange(q, start, finish);
 
         assertEquals(arr.length, 0);
     }
@@ -771,7 +807,7 @@ public class BalineseDateTest {
 
         q.sasih      = Sasih.KATIGA;
 
-        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDateRange(q, start, finish);
 
         assertEquals(arr.length, 9);
     }
@@ -781,9 +817,9 @@ public class BalineseDateTest {
         GregorianCalendar finish    = new GregorianCalendar(2017,07,31);
         BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
 
-        q.date = new int[] {1};
+        q.sasihDay = new int[] {1};
 
-        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDateRange(q, start, finish);
 
         assertEquals(arr.length, 2);
     }
@@ -793,10 +829,10 @@ public class BalineseDateTest {
         GregorianCalendar finish    = new GregorianCalendar(2017,07,31);
         BalineseDateUtil.Filter q    = new BalineseDateUtil.Filter();
 
-        q.date = new int[] {9};
-        q.dateStatus = DateStatus.PENANGGAL;
+        q.sasihDay = new int[] {9};
+        q.sasihDayInfo = SasihDayInfo.PENANGGAL;
 
-        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+        BalineseDate[] arr  = BalineseDateUtil.getBalineseDateByDateRange(q, start, finish);
 
         assertEquals(arr.length, 2);
     }
@@ -808,7 +844,7 @@ public class BalineseDateTest {
 
     @Test (expected = IllegalArgumentException.class)
     public void test_exception_null_2() {
-        BalineseDateUtil.getBalineseDateByDate(null, null, null);
+        BalineseDateUtil.getBalineseDateByDateRange(null, null, null);
     }
 
 

@@ -56,8 +56,8 @@ public final class BalineseDateUtil {
         public BalineseDateConst.Wuku           wuku            = null;
 
         public BalineseDateConst.Sasih          sasih           = null;
-        public BalineseDateConst.DateStatus     dateStatus      = null;
-        public int[]                            date            = null;
+        public BalineseDateConst.SasihDayInfo   sasihDayInfo    = null;
+        public int[]                            sasihDay        = null;
         public Integer                          saka            = null;
     }
 
@@ -80,13 +80,13 @@ public final class BalineseDateUtil {
         }
     }
 
-    private static boolean checkDateStatus(
-        BalineseDateConst.DateStatus filter,
-        BalineseDateConst.DateStatus date) {
+    private static boolean checkSasihDayInfo(
+        BalineseDateConst.SasihDayInfo filter,
+        BalineseDateConst.SasihDayInfo date) {
 
         if (filter != null) {
-            if (filter == BalineseDateConst.DateStatus.PURNAMA || 
-                filter == BalineseDateConst.DateStatus.TILEM) {
+            if (filter == BalineseDateConst.SasihDayInfo.PURNAMA || 
+                filter == BalineseDateConst.SasihDayInfo.TILEM) {
 
                 return filter != date;
             } else {
@@ -98,18 +98,18 @@ public final class BalineseDateUtil {
     }
 
     /**
-     * Get BalineseDates that match with given filters and dates.
+     * Get BalineseDates that match with given filters and gregorian dates.
      * 
      * @param filter the filters for balinese date search (null similar to no filter).
      * @param start the start date of search (not null).
      * @param finish the end date of search (not null).
      * 
-     * @return array of BalineseDate that matched with given filters and dates.
+     * @return array of BalineseDate that matched with given filters and gregorian dates.
      * 
      * @see Filter
      * @see java.util.GregorianCalendar
      */
-    public static BalineseDate[] getBalineseDateByDate(
+    public static BalineseDate[] getBalineseDateByDateRange(
         Filter filter, 
         GregorianCalendar start, 
         GregorianCalendar finish) {
@@ -148,8 +148,8 @@ public final class BalineseDateUtil {
                 if (check(filter.wuku, pawukon.getWuku()))                          { continue; }
 
                 if (check(filter.sasih, date.getSasih()))                           { continue; }
-                if (checkDateStatus(filter.dateStatus, date.getDateStatus()))       { continue; }
-                if (checkIntArr(filter.date, date.getDate()))                       { continue; }
+                if (checkSasihDayInfo(filter.sasihDayInfo, date.getSasihDayInfo())) { continue; }
+                if (checkIntArr(filter.sasihDay, date.getSasihDay()))               { continue; }
                 if (check(filter.saka, date.getSaka()))                             { continue; }
 
             }

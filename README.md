@@ -32,7 +32,9 @@ BalineseDate support several features:
     7. Pancasuda
     8. Pararasan
     9. Rakam
-4. Get the BalineseDate(s) from selected Date and Filter __(v0.2.0)__
+    10. Eka Jala Rsi __(v0.3.0)__
+4. Utilities
+    1. Get the BalineseDate(s) from selected Date and Filter __(v0.2.0)__
 
 ## Import BalineseDate into Project
 
@@ -163,24 +165,26 @@ BalineseDate now        = new BalineseDate();
 
 // get balinese date at 1 January 2018
 
-BalineseDate bDate1     = new BalineseDate(2018,0,1);
+BalineseDate bDate1 = new BalineseDate(2018,0,1);
 
 // get balinese date at 1 January 1969 using GregorianCalendar
 
 GregorianCalendar date  = new GregorianCalendar(1969,0,1);
-BalineseDate bDate2     = new BalineseDate(date);
+BalineseDate bDate2 = new BalineseDate(date);
 ```
 
 ### Using BalineseDate Method
 
 ```java
-// get penanggal (1 - 15)
+// get sasih day (1 - 15)
+// if sasih day element = 1, then it is normal day
+// if sasih day element = 2, then it is ngunaratri day
 
-int penanggal                                   = bDate2.getPenanggal();
+int[] date = bDate2.getSasihDay();
 
-// get penanggal info (penanggal, pangelong, tilem, or purnama)
+// get sasih day info (penanggal, pangelong, tilem, or purnama)
 
-BalineseDateConst.PenanggalInfo penanggalInfo   = bDate2.getPenanggalInfo();
+BalineseDateConst.SasihDayInfo sasihDayInfo   = bDate2.getSasihDayInfo();
 
 // get BalineseDate(s) Between 2017-01-01 and 2017-12-31 with Wuku Watugunung and Pancawara Kliwon
 
@@ -191,7 +195,7 @@ BalineseDateUtil.Filter q   = new BalineseDateUtil.Filter();
 q.wuku                      = Wuku.WATUGUNUNG;
 q.pancawara                 = Pancawara.KLIWON;
 
-BalineseDate[] result       = BalineseDateUtil.getBalineseDateByDate(q, start, finish);
+BalineseDate[] result       = BalineseDateUtil.getBalineseDateByDateRange(q, start, finish);
 ```
 
 ## Related Project

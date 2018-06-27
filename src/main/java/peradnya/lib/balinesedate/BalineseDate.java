@@ -25,9 +25,9 @@ import java.util.GregorianCalendar;
  * <p>
  * Class BalineseDate provides information about:
  * <ul>
- *  <li>Pawukon info (Wewaran, Wuku, Paringkelan, etc.)</li>
- *  <li>Sasih info (Date (1-15), Date Status (Penanggal, Pangelong, Purnama, Tilem), Sasih name, etc.)</li>
- *  <li>Saka info (Saka year)</li>
+ *  <li>Pawukon info: Wewaran, Wuku, Paringkelan, etc.</li>
+ *  <li>Sasih info: Sasih Day (1-15), Sasih Day Info (Penanggal, Pangelong, Purnama, Tilem), Sasih Name, etc.</li>
+ *  <li>Saka info: Saka Year</li>
  * </ul>
  * 
  * @author Ida Bagus Putu Peradnya Dinata
@@ -56,8 +56,8 @@ public final class BalineseDate implements Serializable {
 
     private final BalineseDateConst.BalineseDatePivot pivot;
     
-    private final int[] date;
-    private final BalineseDateConst.DateStatus dateStatus;
+    private final int[] sasihDay;
+    private final BalineseDateConst.SasihDayInfo sasihDayInfo;
 
     private final int saka;
     private final BalineseDateConst.Sasih sasih;
@@ -97,30 +97,30 @@ public final class BalineseDate implements Serializable {
     private BalineseDate(GregorianCalendar calendar, boolean copy) {
         if (calendar == null) { throw new IllegalArgumentException(NULL_CALENDAR); }
 
-        GregorianCalendar day = copy ? (GregorianCalendar) calendar.clone() : calendar;
-        day.set(Calendar.HOUR_OF_DAY, 0);
-        day.set(Calendar.MINUTE, 0);
-        day.set(Calendar.SECOND, 0);
-        day.set(Calendar.MILLISECOND, 0);
+        GregorianCalendar date = copy ? (GregorianCalendar) calendar.clone() : calendar;
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
 
-        this.calendar           = day;
+        this.calendar           = date;
         this.pivot              = chooseBestPivot(this.calendar);
 
-        int pDIY                = calcPawukonDayInYear(this.pivot, this.calendar);
-        this.pawukon            = new BalineseDatePawukon(pDIY);
+        int pawukonDay          = calcPawukonDay(this.pivot, this.calendar);
+        this.pawukon            = new BalineseDatePawukon(pawukonDay);
 
-        int[] resultDate        = calcDate(this.pivot, this.calendar);
+        int[] resultSasihDay    = calcSasihDay(this.pivot, this.calendar);
 
-        this.date               = (resultDate[2] == 1) ? 
-                                    new int[] {resultDate[0], resultDate[0] == 15 ? 1 : resultDate[0] + 1} : 
-                                    new int[] {resultDate[0]};
+        this.sasihDay           = (resultSasihDay[2] == 1) ? 
+                                    new int[] {resultSasihDay[0], resultSasihDay[0] == 15 ? 1 : resultSasihDay[0] + 1} : 
+                                    new int[] {resultSasihDay[0]};
 
         int[] resultSasih       = calcSasih(this.pivot, this.calendar);
 
         this.saka               = resultSasih[0];
         this.sasih              = calcSasihInfo(resultSasih);
 
-        this.dateStatus         = calcDateStatus(resultDate, this.sasih, this.saka);
+        this.sasihDayInfo       = calcSasihDayInfo(resultSasihDay, this.sasih, this.saka);
     }
 
     /**
@@ -140,20 +140,19 @@ public final class BalineseDate implements Serializable {
     }
 
     /**
-     * Get Date(s) (1 - 15) of Sasih.
-     * Return 1 date in normal day, but return 2 dates in NgunaRatri day.
-     * @return array of date(s).
+     * Get Day(s) of Sasih (1 - 15), Return 1 element in normal day, but return 2 elements in NgunaRatri day.
+     * @return the sasih day(s).
      */
-    public int[] getDate() {
-        return date.clone();
+    public int[] getSasihDay() {
+        return sasihDay.clone();
     }
 
     /**
-     * Get Date Status (Penanggal, Pangelong, Purnama, or Tilem).
-     * @return the date status.
+     * Get Sasih Day Info (Penanggal, Pangelong, Purnama, or Tilem).
+     * @return the sasih day info.
      */
-    public BalineseDateConst.DateStatus getDateStatus() {
-        return dateStatus;
+    public BalineseDateConst.SasihDayInfo getSasihDayInfo() {
+        return sasihDayInfo;
     }
 
     /**
@@ -174,11 +173,11 @@ public final class BalineseDate implements Serializable {
 
     @Override
     public String toString() {
-        String dateStr = String.valueOf(date[0]);
-        if (date.length > 1) {
-            dateStr = dateStr + "/" + date[1];
+        String dateStr = String.valueOf(sasihDay[0]);
+        if (sasihDay.length > 1) {
+            dateStr = dateStr + "/" + sasihDay[1];
         }
-        return pawukon.toString() + ", " + dateStatus.getName() + " "  + dateStr + ", Sasih " + sasih.getName() + ", Saka " + saka;
+        return pawukon.toString() + ", " + sasihDayInfo.getName() + " "  + dateStr + ", Sasih " + sasih.getName() + ", Saka " + saka;
     }
 
     private static BalineseDateConst.BalineseDatePivot chooseBestPivot(GregorianCalendar calendar) {
@@ -187,20 +186,20 @@ public final class BalineseDate implements Serializable {
             BalineseDateConst.BalineseDatePivot.PIVOT_NG_PAING;
     }
 
-    private static int calcPawukonDayInYear(
+    private static int calcPawukonDay(
         BalineseDateConst.BalineseDatePivot pivot, 
         GregorianCalendar calendar) {
 
         int diff = getDeltaDay(pivot.getCalendar(), calendar);
-        return mod(pivot.getPawukonDayInYear() + diff, BalineseDateConst.DAYS_IN_YEAR_PAWUKON);
+        return mod(pivot.getPawukonDay() + diff, BalineseDateConst.DAYS_IN_YEAR_PAWUKON);
     }
 
-    private static int[] calcDate(BalineseDateConst.BalineseDatePivot pivot, GregorianCalendar calendar) {
+    private static int[] calcSasihDay(BalineseDateConst.BalineseDatePivot pivot, GregorianCalendar calendar) {
         int[]   res     = new int[3];
 
         int dayDiff     = getDeltaDay(pivot.getCalendar(), calendar);
         int daySkip     = (int) Math.ceil((double) dayDiff / BalineseDateConst.NGUNARATRI);
-        int dayTotal    = pivot.getDate() + dayDiff + daySkip;
+        int dayTotal    = pivot.getSasihDay() + dayDiff + daySkip;
 
         // calc date
         res[0]  = mod(dayTotal, 30);
@@ -218,15 +217,15 @@ public final class BalineseDate implements Serializable {
         return res;
     }
 
-    private static BalineseDateConst.DateStatus calcDateStatus(int[] resultDate, BalineseDateConst.Sasih sasih, int saka) {
+    private static BalineseDateConst.SasihDayInfo calcSasihDayInfo(int[] resultSasihDay, BalineseDateConst.Sasih sasih, int saka) {
 
-        int date                        = resultDate[0];
-        boolean isPangelong             = resultDate[1] == 1;
-        boolean isNgunaRatri            = resultDate[2] == 1;
+        int date                        = resultSasihDay[0];
+        boolean isPangelong             = resultSasihDay[1] == 1;
+        boolean isNgunaRatri            = resultSasihDay[2] == 1;
 
         if (isPangelong) {
             if (date == 15 || (date == 14 && isNgunaRatri)) {
-                return BalineseDateConst.DateStatus.TILEM;
+                return BalineseDateConst.SasihDayInfo.TILEM;
             } else if (date        == 14 && 
                        isNgunaRatri     == false &&
                        sasih            == BalineseDateConst.Sasih.KAPITU &&
@@ -234,15 +233,15 @@ public final class BalineseDate implements Serializable {
                 // Disclaimer: the accuration is not confirmed for date between March 1999 - January 2000,
                 // Because of transition from Eka Sungsang to Pon to Paing.
                 // Author don't have enough references for this issue.
-                return BalineseDateConst.DateStatus.TILEM;
+                return BalineseDateConst.SasihDayInfo.TILEM;
             } else {
-                return BalineseDateConst.DateStatus.PANGELONG;
+                return BalineseDateConst.SasihDayInfo.PANGELONG;
             }
         } else {
             if (date == 15 || (date == 14 && isNgunaRatri)) {
-                return BalineseDateConst.DateStatus.PURNAMA;
+                return BalineseDateConst.SasihDayInfo.PURNAMA;
             } else {
-                return BalineseDateConst.DateStatus.PENANGGAL;
+                return BalineseDateConst.SasihDayInfo.PENANGGAL;
             }
         }
 
@@ -254,10 +253,10 @@ public final class BalineseDate implements Serializable {
 
         int dayDiff     = getDeltaDay(pivot.getCalendar(), calendar);
         int daySkip     = (int) Math.ceil((double) dayDiff / BalineseDateConst.NGUNARATRI);
-        int dayTotal    = pivot.getDate() + dayDiff + daySkip;
+        int dayTotal    = pivot.getSasihDay() + dayDiff + daySkip;
 
         // sometime pivot is tilem and also ngunaratri, so need to normalize.
-        int pivotOffset = pivot.getDate() == 0 && pivot.getNgunaratriDay() == 0 ? 0 : 1;
+        int pivotOffset = pivot.getSasihDay() == 0 && pivot.getNgunaRatriDay() == 0 ? 0 : 1;
 
         // calc number of sasih
         int totalSasih  = (int) Math.ceil((double) dayTotal / 30) - pivotOffset;

@@ -100,7 +100,7 @@ public final class BalineseDatePawukon implements Serializable {
         14,3,2,25,7,25,17
     };
 
-    private final int dayInYear;
+    private final int pawukonDay;
     private final int urip;
 
     private final BalineseDateConst.Wuku            wuku;
@@ -130,34 +130,34 @@ public final class BalineseDatePawukon implements Serializable {
     /**
      * Construct balinese pawukon.
      * 
-     * @param pawukonDayInYear number of day in 1 year (cycle) of pawukon. 
-     *                         Number is from 0 (Redite Sinta) to 209 (Saniscara Watugunung).
+     * @param pawukonDay number of day in 1 year (cycle) of pawukon. 
+     *                   Number is from 0 (Redite Sinta) to 209 (Saniscara Watugunung).
      */
-    public BalineseDatePawukon(int pawukonDayInYear) {
-        if (pawukonDayInYear >= BalineseDateConst.DAYS_IN_YEAR_PAWUKON || pawukonDayInYear < 0) { 
+    public BalineseDatePawukon(int pawukonDay) {
+        if (pawukonDay >= BalineseDateConst.DAYS_IN_YEAR_PAWUKON || pawukonDay < 0) { 
             throw new IllegalArgumentException(INVALID_DAY_IN_YEAR);
         }
 
-        dayInYear  = pawukonDayInYear;
-        wuku       = lookupWuku         [dayInYear / 7];
+        this.pawukonDay  = pawukonDay;
+        wuku       = lookupWuku         [this.pawukonDay / 7];
 
-        triwara    = lookupTriwara      [dayInYear % 3];
-        pancawara  = lookupPancawara    [dayInYear % 5];
-        sadwara    = lookupSadwara      [dayInYear % 6];
-        saptawara  = lookupSaptawara    [dayInYear % 7];
+        triwara    = lookupTriwara      [this.pawukonDay % 3];
+        pancawara  = lookupPancawara    [this.pawukonDay % 5];
+        sadwara    = lookupSadwara      [this.pawukonDay % 6];
+        saptawara  = lookupSaptawara    [this.pawukonDay % 7];
 
         urip       = pancawara.getUrip() + saptawara.getUrip();
         ekawara    = lookupEkawara      [urip % 2];
         dwiwara    = lookupDwiwara      [urip % 2];
         dasawara   = lookupDasawara     [urip % 10];
 
-        caturwara  = lookupCaturwara    [calcCaturwaraIdx(dayInYear)];
-        astawara   = lookupAstawara     [calcAstawaraIdx(dayInYear)];
-        sangawara  = lookupSangawara    [calcSangawaraIdx(dayInYear)];
+        caturwara  = lookupCaturwara    [calcCaturwaraIdx(this.pawukonDay)];
+        astawara   = lookupAstawara     [calcAstawaraIdx(this.pawukonDay)];
+        sangawara  = lookupSangawara    [calcSangawaraIdx(this.pawukonDay)];
 
         ingkel     = lookupIngkel       [wuku.getId() % 6];
-        jejapan    = lookupJejapan      [dayInYear % 6];
-        lintang    = lookupLintang      [dayInYear % 35];
+        jejapan    = lookupJejapan      [this.pawukonDay % 6];
+        lintang    = lookupLintang      [this.pawukonDay % 35];
 
         watekAlit  = lookupWatekAlit    [urip % 4];
         watekMadya = lookupWatekMadya   [urip % 5];
@@ -166,7 +166,7 @@ public final class BalineseDatePawukon implements Serializable {
         pancasuda  = lookupPancasuda    [(saptawara.getKertaAji() + pancawara.getUrip()) % 7];
         rakam      = lookupRakam        [(saptawara.getKupih() + pancawara.getKupih()) % 6];
 
-        ekaJalaRsi = lookupEJL          [ejlMap[dayInYear]];
+        ekaJalaRsi = lookupEJL          [ejlMap[this.pawukonDay]];
     }
 
     /**
@@ -175,8 +175,8 @@ public final class BalineseDatePawukon implements Serializable {
      * @return number of day in 1 year (cycle) of pawukon. 
      *         Number is from 0 (Redite Sinta) to 209 (Saniscara Watugunung).
      */
-    public int getPawukonDayInYear() {
-        return dayInYear;
+    public int getPawukonDay() {
+        return pawukonDay;
     }
 
     /**
@@ -373,38 +373,38 @@ public final class BalineseDatePawukon implements Serializable {
         return saptawara.getName() + " " + pancawara.getName() + ", Wuku " + wuku.getName();
     }
 
-    private static int calcCaturwaraIdx(int pawukonDayInYear) {
+    private static int calcCaturwaraIdx(int pawukonDay) {
         int idx = 0;
-        if (pawukonDayInYear <= 70) {
-            idx = pawukonDayInYear % 4;
-        } else if (pawukonDayInYear == 71 || pawukonDayInYear == 72) {
+        if (pawukonDay <= 70) {
+            idx = pawukonDay % 4;
+        } else if (pawukonDay == 71 || pawukonDay == 72) {
             idx = BalineseDateConst.Caturwara.JAYA.getId();
         } else {
-            idx = (pawukonDayInYear - 2) % 4;
+            idx = (pawukonDay - 2) % 4;
         }
 
         return idx;
     }
 
-    private static int calcAstawaraIdx(int pawukonDayInYear) {
+    private static int calcAstawaraIdx(int pawukonDay) {
         int idx = 0;
-        if (pawukonDayInYear <= 70) {
-            idx = pawukonDayInYear % 8;
-        } else if (pawukonDayInYear == 71 || pawukonDayInYear == 72) {
+        if (pawukonDay <= 70) {
+            idx = pawukonDay % 8;
+        } else if (pawukonDay == 71 || pawukonDay == 72) {
             idx = BalineseDateConst.Astawara.KALA.getId();
         } else {
-            idx = (pawukonDayInYear - 2) % 8;
+            idx = (pawukonDay - 2) % 8;
         }
 
         return idx;
     }
 
-    private static int calcSangawaraIdx(int pawukonDayInYear) {
+    private static int calcSangawaraIdx(int pawukonDay) {
         int idx = 0;
-        if (pawukonDayInYear <= 3) {
+        if (pawukonDay <= 3) {
             idx = BalineseDateConst.Sangawara.DANGU.getId();
         } else {
-            idx = (pawukonDayInYear - 3) % 9;
+            idx = (pawukonDay - 3) % 9;
         }
 
         return idx;
