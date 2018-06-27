@@ -618,38 +618,44 @@ public final class BalineseDateConst {
 
     public enum Sasih {
         // Standard
-        KASA(0),
-        KARO(1),
-        KATIGA(2),
-        KAPAT(3),
-        KALIMA(4),
-        KANEM(5),
-        KAPITU(6),
-        KAWOLU(7),
-        KASANGA(8),
-        KADASA(9),
-        DESTHA(10),
-        SADHA(11),
+        KASA(0, 0),
+        KARO(1, 1),
+        KATIGA(2, 2),
+        KAPAT(3, 3),
+        KALIMA(4, 4),
+        KANEM(5, 5),
+        KAPITU(6, 6),
+        KAWOLU(7, 7),
+        KASANGA(8, 8),
+        KADASA(9, 9),
+        DESTHA(10, 10),
+        SADHA(11, 11),
 
         // Nampih/Mala Sasih
-        MALA_DESTHA(12),
-        MALA_SADHA(13),
-        NAMPIH_DESTHA(14),
-        NAMPIH_KATIGA(15),
-        NAMPIH_KASA(16),
-        NAMPIH_KADASA(17),
-        NAMPIH_KARO(18),
-        NAMPIH_SADHA(19);
+        MALA_DESTHA(12, 10),
+        MALA_SADHA(13, 11),
+        NAMPIH_DESTHA(14, 10),
+        NAMPIH_KATIGA(15, 2),
+        NAMPIH_KASA(16, 0),
+        NAMPIH_KADASA(17, 9),
+        NAMPIH_KARO(18, 1),
+        NAMPIH_SADHA(19, 11);
 
 
         private final int id;
+        private final int ref;
 
-        private Sasih(int id) {
+        private Sasih(int id, int ref) {
             this.id     = id;
+            this.ref    = ref;
         }
 
         public int getId() { 
             return this.id; 
+        }
+
+        public int getRef() {
+            return this.ref;
         }
 
         public String getName() {

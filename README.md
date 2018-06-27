@@ -8,7 +8,7 @@
 
 BalineseDate is an open source library to build Balinese Saka Calendar in Java based application.
 
-**Disclaimer**: This library is in **Beta Phase**. Feedbacks, corrections, or bug reports are welcomed ... :)
+**Note**: This library is in **Beta Phase**. Feedbacks, corrections, or bug reports are welcomed ... :)
 
 ## Features
 
@@ -19,7 +19,7 @@ BalineseDate support several features:
 1. Sasih
     1. Penanggal / Pangelong
     2. Purnama / Tilem
-    3. Mala Sasih / Nampih Sasih
+    3. Mala Masa / Nampih Sasih
     4. NgunaRatri
 2. Saka Year
 3. Pawukon
@@ -32,7 +32,7 @@ BalineseDate support several features:
     7. Pancasuda
     8. Pararasan
     9. Rakam
-4. Get the BalineseDate(s) from selected Date and Filter __(NEW v0.2.0!)__
+4. Get the BalineseDate(s) from selected Date and Filter __(v0.2.0)__
 
 ## Import BalineseDate into Project
 
@@ -94,7 +94,7 @@ and then, add dependency to __BalineseDate Library__ in the ```pom.xml```
 
 The recomended requirement to build this project is:
 
-1. Latest Oracle Java JDK (Recomended >= 8.x)
+1. Latest Oracle Java JDK (Recomended >= 7.x)
 2. Latest Gradle (Recomended >= 4.4.0)
 3. Latest Git Client
 
@@ -202,6 +202,7 @@ There is another related project about Balinese Saka Calendar:
 
 ## References
 
+* Ardhana, I.B.S.(2005). *"Pokok-Pokok Wariga"*. Surabaya : Paramita.
 * babadbali.com (Yayasan Bali Galang) for [wewaran](http://www.babadbali.com/pewarigaan/perhitungan.htm) and [paringkelan](http://www.babadbali.com/pewarigaan/paringkelan.htm) algorithm.
 * kalenderbali.org and kalenderbali.info for cross-checking and building sample test-cases.
 * Pendit, Nyoman.(2001). *"Nyepi: kebangkitan, toleransi, dan kerukunan"*. Jakarta : Gramedia. Retrieved at [google book](https://books.google.co.id/books?id=4ND9KPn2o8AC).

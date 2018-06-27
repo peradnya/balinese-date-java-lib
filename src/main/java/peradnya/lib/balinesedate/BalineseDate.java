@@ -267,7 +267,9 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                        isNgunaRatri     == false &&
                        sasih            == BalineseDateConst.Sasih.KAPITU &&
                        saka             == 1921) {
-                //TODO: find out penanggal between Desember 1999 - January 2000.
+                // Disclaimer: not confirmed accuration of penanggal between March 1999 - January 2000,
+                // Because of transition from Eka Sungsang to Pon to Paing.
+                // Author don't have enough references for this issue.
                 return BalineseDateConst.PenanggalInfo.TILEM;
             } else {
                 return BalineseDateConst.PenanggalInfo.PANGELONG;
@@ -322,8 +324,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih - 1;
                 }
 
-                // special case in 1995, 1997 which nyepi at tilem kedasa.
-                // Tilem kasanga that year happened in the same day as another religion holy day.
+                // Disclaimer: Special case in 1995, 1997 which nyepi held after tilem kedasa.
+                // Nyepi that year happened in the same day as another religion holy day.
                 // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
                 if (currentSasih == BalineseDateConst.Sasih.KADASA.getId() && nampihCount == 0) { 
                     currentSaka = currentSaka + 1;
@@ -353,8 +355,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih + 1;
                 }
 
-                // special case in 1995, 1997 which nyepi at tilem kedasa.
-                // Tilem kasanga that year happened in the same day as another religion holy day.
+                // Disclaimer: Special case in 1995, 1997 which nyepi held after tilem kedasa.
+                // Nyepi that year happened in the same day as another religion holy day.
                 // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
                 if (currentSasih == BalineseDateConst.Sasih.KADASA.getId() && nampihCount == 0) {
                     if (currentSaka == 1917 || currentSaka == 1919) {
@@ -381,7 +383,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 case 6:
                 case 11:
                     if (currentSasih == BalineseDateConst.Sasih.DESTHA.getId() && !inSK) {
-                        //TODO: find out is mala desta happened in 2003.
+                        // Disclaimer: mala desta is not happened in 2003 (transition year).
+                        // Source: Pokok-Pokok Wariga.
                         if (currentSaka != 1925) {
                             nampihCount++;
                         }
@@ -448,9 +451,15 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         int sasih, 
         boolean isNampihSasih,
         int saka) {
-
+                
         if (isNampihSasih) {
-            if (saka >= 1914 && saka <= 1924) {
+            if (saka < 1914) {
+                if (sasih == BalineseDateConst.Sasih.DESTHA.getId()) {
+                    return BalineseDateConst.Sasih.MALA_DESTHA;
+                } else if (sasih == BalineseDateConst.Sasih.SADHA.getId()) {
+                    return BalineseDateConst.Sasih.MALA_SADHA;
+                }
+            } else {
                 if (sasih == BalineseDateConst.Sasih.DESTHA.getId()) {
                     return BalineseDateConst.Sasih.NAMPIH_DESTHA;
                 } else if (sasih == BalineseDateConst.Sasih.KATIGA.getId()) {
@@ -463,12 +472,6 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     return BalineseDateConst.Sasih.NAMPIH_KARO;
                 } else if (sasih == BalineseDateConst.Sasih.SADHA.getId()) {
                     return BalineseDateConst.Sasih.NAMPIH_SADHA;
-                }
-            } else {
-                if (sasih == BalineseDateConst.Sasih.DESTHA.getId()) {
-                    return BalineseDateConst.Sasih.MALA_DESTHA;
-                } else if (sasih == BalineseDateConst.Sasih.SADHA.getId()) {
-                    return BalineseDateConst.Sasih.MALA_SADHA;
                 }
             }
         }
