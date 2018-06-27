@@ -21,19 +21,19 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- * BalineseDate provides representation of Saka Calendar used by Indonesia Hindu's.
+ * BalineseDate provides implementation of Saka Calendar used by Indonesia Hindu's.
  * <p>
- * BalineseDate provides information about:
+ * Class BalineseDate provides information about:
  * <ul>
  *  <li>Pawukon info (Wewaran, Wuku, Paringkelan, etc.)</li>
- *  <li>Sasih info (Penanggal, Sasih name, etc.)</li>
+ *  <li>Sasih info (Date (1-15), Date Status (Penanggal, Pangelong, Purnama, Tilem), Sasih name, etc.)</li>
  *  <li>Saka info (Saka year)</li>
  * </ul>
  * 
  * @author Ida Bagus Putu Peradnya Dinata
  * @see BalineseDatePawukon
  */
-public final class BalineseDate implements Serializable, Cloneable, Comparable<BalineseDate> {
+public final class BalineseDate implements Serializable {
 
     private static final long serialVersionUID = 1001L;
 
@@ -56,14 +56,11 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
     private final BalineseDateConst.BalineseDatePivot pivot;
     
-    private final int penanggal;
-    private final boolean isPangelong;
-    private final boolean isNgunaRatri;
-    private final BalineseDateConst.PenanggalInfo penanggalInfo;
+    private final int[] date;
+    private final BalineseDateConst.DateStatus dateStatus;
 
     private final int saka;
     private final BalineseDateConst.Sasih sasih;
-    private final boolean isNampihSasih;
 
     private final GregorianCalendar calendar;
     private final BalineseDatePawukon pawukon;
@@ -100,39 +97,34 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     private BalineseDate(GregorianCalendar calendar, boolean copy) {
         if (calendar == null) { throw new IllegalArgumentException(NULL_CALENDAR); }
 
-        GregorianCalendar date = copy ? (GregorianCalendar) calendar.clone() : calendar;
-        date.set(Calendar.HOUR_OF_DAY, 0);
-        date.set(Calendar.MINUTE, 0);
-        date.set(Calendar.SECOND, 0);
-        date.set(Calendar.MILLISECOND, 0);
+        GregorianCalendar day = copy ? (GregorianCalendar) calendar.clone() : calendar;
+        day.set(Calendar.HOUR_OF_DAY, 0);
+        day.set(Calendar.MINUTE, 0);
+        day.set(Calendar.SECOND, 0);
+        day.set(Calendar.MILLISECOND, 0);
 
-        this.calendar           = date;
+        this.calendar           = day;
         this.pivot              = chooseBestPivot(this.calendar);
 
         int pDIY                = calcPawukonDayInYear(this.pivot, this.calendar);
         this.pawukon            = new BalineseDatePawukon(pDIY);
 
-        int[] resPenanggal      = calcPenanggal(this.pivot, this.calendar);
+        int[] resultDate        = calcDate(this.pivot, this.calendar);
 
-        this.penanggal          = resPenanggal[0];
-        this.isPangelong        = resPenanggal[1] == 1;
-        this.isNgunaRatri       = resPenanggal[2] == 1;
+        this.date               = (resultDate[2] == 1) ? 
+                                    new int[] {resultDate[0], resultDate[0] == 15 ? 1 : resultDate[0] + 1} : 
+                                    new int[] {resultDate[0]};
 
-        int[] resSasih          = calcSasih(this.pivot, this.calendar);
+        int[] resultSasih       = calcSasih(this.pivot, this.calendar);
 
-        this.saka               = resSasih[0];
-        this.isNampihSasih      = resSasih[2] == 1;
-        this.sasih              = calcSasihInfo(resSasih[1], this.isNampihSasih, this.saka);
+        this.saka               = resultSasih[0];
+        this.sasih              = calcSasihInfo(resultSasih);
 
-        this.penanggalInfo      = calcPenanggalInfo(this.penanggal, 
-                                                    this.isPangelong, 
-                                                    this.isNgunaRatri,
-                                                    this.sasih,
-                                                    this.saka);
+        this.dateStatus         = calcDateStatus(resultDate, this.sasih, this.saka);
     }
 
     /**
-     * Convert BalineseDate into gregorian calendar.
+     * Get the copy of gregorian calendar used internally by BalineseDate.
      * @return the gregorian representation of BalineseDate
      */
     public GregorianCalendar toCalendar() {
@@ -140,7 +132,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     }
 
     /**
-     * Get pawukon information.
+     * Get Pawukon Information.
      * @return the pawukon information.
      */
     public BalineseDatePawukon getPawukon() {
@@ -148,31 +140,24 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     }
 
     /**
-     * Get penanggal (1 - 15).
-     * @return the penanggal.
+     * Get Date(s) (1 - 15) of Sasih.
+     * Return 1 date in normal day, but return 2 dates in NgunaRatri day.
+     * @return array of date(s).
      */
-    public int getPenanggal() {
-        return penanggal;
+    public int[] getDate() {
+        return date.clone();
     }
 
     /**
-     * Get penanggal information (Penanggal, Pangelong, Purnama, or Tilem).
-     * @return the penanggal information.
+     * Get Date Status (Penanggal, Pangelong, Purnama, or Tilem).
+     * @return the date status.
      */
-    public BalineseDateConst.PenanggalInfo getPenanggalInfo() {
-        return penanggalInfo;
+    public BalineseDateConst.DateStatus getDateStatus() {
+        return dateStatus;
     }
 
     /**
-     * Check if penanggal is NgunaRatri (2 penanggals in 1 date).
-     * @return the NgunaRatri status
-     */
-    public boolean isNgunaRatri() {
-        return isNgunaRatri;
-    }
-
-    /**
-     * Get saka year.
+     * Get Saka Year.
      * @return the saka
      */
     public int getSaka() {
@@ -180,7 +165,7 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     }
 
     /**
-     * Get sasih.
+     * Get Sasih.
      * @return the sasih
      */
     public BalineseDateConst.Sasih getSasih() {
@@ -188,32 +173,12 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
     }
 
     @Override
-    public Object clone() {
-        return new BalineseDate(this.toCalendar());
-    }
-
-    @Override
-	public int compareTo(BalineseDate that) {
-        if (that == null) {
-            return -1;
-        } else {
-            return this.calendar.compareTo(that.toCalendar());
-        }
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        return this == that;
-    }
-
-    @Override
-    public int hashCode() {
-        return this.calendar.hashCode();
-    }
-    
-    @Override
     public String toString() {
-        return pawukon.toString() + (isPangelong ? ", Pengelong " : ", Penanggal ") + penanggal + ", Sasih " + sasih.getName() + ", Saka " + saka;
+        String dateStr = String.valueOf(date[0]);
+        if (date.length > 1) {
+            dateStr = dateStr + "/" + date[1];
+        }
+        return pawukon.toString() + ", " + dateStatus.getName() + " "  + dateStr + ", Sasih " + sasih.getName() + ", Saka " + saka;
     }
 
     private static BalineseDateConst.BalineseDatePivot chooseBestPivot(GregorianCalendar calendar) {
@@ -230,14 +195,14 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         return mod(pivot.getPawukonDayInYear() + diff, BalineseDateConst.DAYS_IN_YEAR_PAWUKON);
     }
 
-    private static int[] calcPenanggal(BalineseDateConst.BalineseDatePivot pivot, GregorianCalendar calendar) {
+    private static int[] calcDate(BalineseDateConst.BalineseDatePivot pivot, GregorianCalendar calendar) {
         int[]   res     = new int[3];
 
         int dayDiff     = getDeltaDay(pivot.getCalendar(), calendar);
         int daySkip     = (int) Math.ceil((double) dayDiff / BalineseDateConst.NGUNARATRI);
-        int dayTotal    = pivot.getPenanggal() + dayDiff + daySkip;
+        int dayTotal    = pivot.getDate() + dayDiff + daySkip;
 
-        // calc penanggal
+        // calc date
         res[0]  = mod(dayTotal, 30);
 
         // calc if this pangelong
@@ -246,39 +211,38 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
         // calc if this ngunaratri
         res[2]  = mod(dayDiff, BalineseDateConst.NGUNARATRI) == 0 ? 1 : 0;
 
-        // if penanggal 0, change to penanggal 15
+        // if date 0, change to date 15
         res[0] = mod(res[0], 15);
         res[0] = (res[0] == 0) ? 15 : res[0];
 
         return res;
     }
 
-    private static BalineseDateConst.PenanggalInfo calcPenanggalInfo(
-        int penanggal, 
-        boolean isPangelong,
-        boolean isNgunaRatri,
-        BalineseDateConst.Sasih sasih,
-        int saka) {
+    private static BalineseDateConst.DateStatus calcDateStatus(int[] resultDate, BalineseDateConst.Sasih sasih, int saka) {
+
+        int date                        = resultDate[0];
+        boolean isPangelong             = resultDate[1] == 1;
+        boolean isNgunaRatri            = resultDate[2] == 1;
 
         if (isPangelong) {
-            if (penanggal == 15 || (penanggal == 14 && isNgunaRatri)) {
-                return BalineseDateConst.PenanggalInfo.TILEM;
-            } else if (penanggal        == 14 && 
+            if (date == 15 || (date == 14 && isNgunaRatri)) {
+                return BalineseDateConst.DateStatus.TILEM;
+            } else if (date        == 14 && 
                        isNgunaRatri     == false &&
                        sasih            == BalineseDateConst.Sasih.KAPITU &&
                        saka             == 1921) {
-                // Disclaimer: not confirmed accuration of penanggal between March 1999 - January 2000,
+                // Disclaimer: the accuration is not confirmed for date between March 1999 - January 2000,
                 // Because of transition from Eka Sungsang to Pon to Paing.
                 // Author don't have enough references for this issue.
-                return BalineseDateConst.PenanggalInfo.TILEM;
+                return BalineseDateConst.DateStatus.TILEM;
             } else {
-                return BalineseDateConst.PenanggalInfo.PANGELONG;
+                return BalineseDateConst.DateStatus.PANGELONG;
             }
         } else {
-            if (penanggal == 15 || (penanggal == 14 && isNgunaRatri)) {
-                return BalineseDateConst.PenanggalInfo.PURNAMA;
+            if (date == 15 || (date == 14 && isNgunaRatri)) {
+                return BalineseDateConst.DateStatus.PURNAMA;
             } else {
-                return BalineseDateConst.PenanggalInfo.PENANGGAL;
+                return BalineseDateConst.DateStatus.PENANGGAL;
             }
         }
 
@@ -290,10 +254,10 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
         int dayDiff     = getDeltaDay(pivot.getCalendar(), calendar);
         int daySkip     = (int) Math.ceil((double) dayDiff / BalineseDateConst.NGUNARATRI);
-        int dayTotal    = pivot.getPenanggal() + dayDiff + daySkip;
+        int dayTotal    = pivot.getDate() + dayDiff + daySkip;
 
         // sometime pivot is tilem and also ngunaratri, so need to normalize.
-        int pivotOffset = pivot.getPenanggal() == 0 && pivot.getNgunaratriDay() == 0 ? 0 : 1;
+        int pivotOffset = pivot.getDate() == 0 && pivot.getNgunaratriDay() == 0 ? 0 : 1;
 
         // calc number of sasih
         int totalSasih  = (int) Math.ceil((double) dayTotal / 30) - pivotOffset;
@@ -324,12 +288,14 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih - 1;
                 }
 
-                // Disclaimer: Special case in 1995, 1997 which nyepi held after tilem kedasa.
-                // Nyepi that year happened in the same day as another religion holy day.
-                // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
+                // Disclaimer: Special case in 1995 which nyepi held 1 day after tilem kedasa 
+                // (normally 1 day after tilem kesanga). This happened because of another religion holy day.
+                // Source: 
+                // - Pendit, Nyoman.(2001). "Nyepi: kebangkitan, toleransi, dan kerukunan". Jakarta : Gramedia
+                // - https://id.wikipedia.org/wiki/1995
                 if (currentSasih == BalineseDateConst.Sasih.KADASA.getId() && nampihCount == 0) { 
                     currentSaka = currentSaka + 1;
-                    if (currentSaka == 1917 || currentSaka == 1919) {
+                    if (currentSaka == 1917) {
                         currentSaka = currentSaka - 1;
                         nyepiFix    = true;
                     }
@@ -355,11 +321,13 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                     totalSasih      = totalSasih + 1;
                 }
 
-                // Disclaimer: Special case in 1995, 1997 which nyepi held after tilem kedasa.
-                // Nyepi that year happened in the same day as another religion holy day.
-                // Source: https://books.google.co.id/books?id=4ND9KPn2o8AC&pg=PA29
+                // Disclaimer: Special case in 1995 which nyepi held 1 day after tilem kedasa 
+                // (normally 1 day after tilem kesanga). This happened because of another religion holy day.
+                // Source: 
+                // - Pendit, Nyoman.(2001). "Nyepi: kebangkitan, toleransi, dan kerukunan". Jakarta : Gramedia
+                // - https://id.wikipedia.org/wiki/1995
                 if (currentSasih == BalineseDateConst.Sasih.KADASA.getId() && nampihCount == 0) {
-                    if (currentSaka == 1917 || currentSaka == 1919) {
+                    if (currentSaka == 1917) {
                         currentSaka = currentSaka - 1;
                         nyepiFix    = true;
                     }
@@ -383,8 +351,8 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
                 case 6:
                 case 11:
                     if (currentSasih == BalineseDateConst.Sasih.DESTHA.getId() && !inSK) {
-                        // Disclaimer: mala desta is not happened in 2003 (transition year).
-                        // Source: Pokok-Pokok Wariga.
+                        // Disclaimer: nampih desta is not happened in 2003 (transition year).
+                        // Source: Ardhana, I.B.S.(2005). "Pokok-Pokok Wariga". Surabaya : Paramita.
                         if (currentSaka != 1925) {
                             nampihCount++;
                         }
@@ -447,10 +415,10 @@ public final class BalineseDate implements Serializable, Cloneable, Comparable<B
 
     }
 
-    private static BalineseDateConst.Sasih calcSasihInfo(
-        int sasih, 
-        boolean isNampihSasih,
-        int saka) {
+    private static BalineseDateConst.Sasih calcSasihInfo(int[] resultSasih) {
+        int saka                = resultSasih[0];
+        int sasih               = resultSasih[1];
+        boolean isNampihSasih   = resultSasih[2] == 1;
                 
         if (isNampihSasih) {
             if (saka < 1914) {

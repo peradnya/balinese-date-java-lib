@@ -56,9 +56,8 @@ public final class BalineseDateUtil {
         public BalineseDateConst.Wuku           wuku            = null;
 
         public BalineseDateConst.Sasih          sasih           = null;
-        public BalineseDateConst.PenanggalInfo  penanggalInfo   = null;
-        public Boolean                          isNgunaRatri    = null;
-        public Integer                          penanggal       = null;
+        public BalineseDateConst.DateStatus     dateStatus      = null;
+        public int[]                            date            = null;
         public Integer                          saka            = null;
     }
 
@@ -66,6 +65,36 @@ public final class BalineseDateUtil {
 
     private static <I> boolean check(I filter, I date) {
         return (filter != null) ? (filter != date) : false;
+    }
+
+    private static boolean checkIntArr(int[] filter, int[] date) {
+        if (filter != null) {
+            for (int x : filter) {
+                for (int y : date) {
+                    if (x == y) { return false; }
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static boolean checkDateStatus(
+        BalineseDateConst.DateStatus filter,
+        BalineseDateConst.DateStatus date) {
+
+        if (filter != null) {
+            if (filter == BalineseDateConst.DateStatus.PURNAMA || 
+                filter == BalineseDateConst.DateStatus.TILEM) {
+
+                return filter != date;
+            } else {
+                return filter.getGroup() != date.getGroup();
+            }
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -96,33 +125,32 @@ public final class BalineseDateUtil {
 
             if (filter != null) {
 
-                if (check(filter.ekawara, pawukon.getEkawara()))         { continue; }
-                if (check(filter.dwiwara, pawukon.getDwiwara()))         { continue; }
-                if (check(filter.triwara, pawukon.getTriwara()))         { continue; }
-                if (check(filter.caturwara, pawukon.getCaturwara()))     { continue; }
-                if (check(filter.pancawara, pawukon.getPancawara()))     { continue; }
-                if (check(filter.sadwara, pawukon.getSadwara()))         { continue; }
-                if (check(filter.saptawara, pawukon.getSaptawara()))     { continue; }
-                if (check(filter.astawara, pawukon.getAstawara()))       { continue; }
-                if (check(filter.sangawara, pawukon.getSangawara()))     { continue; }
-                if (check(filter.dasawara, pawukon.getDasawara()))       { continue; }
+                if (check(filter.ekawara, pawukon.getEkawara()))                    { continue; }
+                if (check(filter.dwiwara, pawukon.getDwiwara()))                    { continue; }
+                if (check(filter.triwara, pawukon.getTriwara()))                    { continue; }
+                if (check(filter.caturwara, pawukon.getCaturwara()))                { continue; }
+                if (check(filter.pancawara, pawukon.getPancawara()))                { continue; }
+                if (check(filter.sadwara, pawukon.getSadwara()))                    { continue; }
+                if (check(filter.saptawara, pawukon.getSaptawara()))                { continue; }
+                if (check(filter.astawara, pawukon.getAstawara()))                  { continue; }
+                if (check(filter.sangawara, pawukon.getSangawara()))                { continue; }
+                if (check(filter.dasawara, pawukon.getDasawara()))                  { continue; }
 
-                if (check(filter.ingkel, pawukon.getIngkel()))           { continue; }
-                if (check(filter.jejapan, pawukon.getJejapan()))         { continue; }
-                if (check(filter.watekAlit, pawukon.getWatekAlit()))     { continue; }
-                if (check(filter.watekMadya, pawukon.getWatekMadya()))   { continue; }
-                if (check(filter.lintang, pawukon.getLintang()))         { continue; }
-                if (check(filter.pancasuda, pawukon.getPancasuda()))     { continue; }
-                if (check(filter.pararasan, pawukon.getPararasan()))     { continue; }
-                if (check(filter.rakam, pawukon.getRakam()))             { continue; }
+                if (check(filter.ingkel, pawukon.getIngkel()))                      { continue; }
+                if (check(filter.jejapan, pawukon.getJejapan()))                    { continue; }
+                if (check(filter.watekAlit, pawukon.getWatekAlit()))                { continue; }
+                if (check(filter.watekMadya, pawukon.getWatekMadya()))              { continue; }
+                if (check(filter.lintang, pawukon.getLintang()))                    { continue; }
+                if (check(filter.pancasuda, pawukon.getPancasuda()))                { continue; }
+                if (check(filter.pararasan, pawukon.getPararasan()))                { continue; }
+                if (check(filter.rakam, pawukon.getRakam()))                        { continue; }
 
-                if (check(filter.wuku, pawukon.getWuku()))               { continue; }
+                if (check(filter.wuku, pawukon.getWuku()))                          { continue; }
 
-                if (check(filter.sasih, date.getSasih()))                { continue; }
-                if (check(filter.penanggalInfo, date.getPenanggalInfo())){ continue; }
-                if (check(filter.isNgunaRatri, date.isNgunaRatri()))     { continue; }
-                if (check(filter.penanggal, date.getPenanggal()))        { continue; }
-                if (check(filter.saka, date.getSaka()))                  { continue; }
+                if (check(filter.sasih, date.getSasih()))                           { continue; }
+                if (checkDateStatus(filter.dateStatus, date.getDateStatus()))       { continue; }
+                if (checkIntArr(filter.date, date.getDate()))                       { continue; }
+                if (check(filter.saka, date.getSaka()))                             { continue; }
 
             }
 

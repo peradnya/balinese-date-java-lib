@@ -25,15 +25,18 @@ import java.io.Serializable;
  * <ul>
  *  <li>Wuku (Sinta - Watugunung)</li>
  *  <li>Wewaran (Ekawara - Dasawara)</li>
- *  <li>Paringkelan (Ingkel, Jejapan, Watek, Lintang, Pancasuda, Pararasan, Rakam)</li>
+ *  <li>Paringkelan (Ingkel, Jejapan, Watek Alit, Watek Madya, Lintang, Pancasuda, Pararasan, Rakam)</li>
+ *  <li>Eka Jala Rsi</li>
  * </ul>
  * <p>
- * Calculation of pawukon that used by this class, is based on documentation from 
+ * Calculation of pawukon that used by this class, is based on documentation from : 
  * <a href='http://www.babadbali.com/pewarigaan/paringkelan.htm'>babadbali.com</a>.
- * 
+ * <p>
+ * Calculation of Eka Jala Rsi that used by this class, is based on : 
+ * Ardhana, I.B.S.(2005). "Pokok-Pokok Wariga". Surabaya : Paramita.
  * @author Ida Bagus Putu Peradnya Dinata
  */
-public final class BalineseDatePawukon implements Serializable, Cloneable {
+public final class BalineseDatePawukon implements Serializable {
 
     private static final long serialVersionUID = 1002L;
     private static final String INVALID_DAY_IN_YEAR = "Invalid day in year value. Value need in between 0 - 209.";
@@ -59,6 +62,43 @@ public final class BalineseDatePawukon implements Serializable, Cloneable {
     private static final BalineseDateConst.Pararasan[]      lookupPararasan  = BalineseDateConst.Pararasan.values();
     private static final BalineseDateConst.Rakam[]          lookupRakam      = BalineseDateConst.Rakam.values();
 
+    // Lookup table for ekajalarsi
+    private static final BalineseDateConst.EkaJalaRsi[]     lookupEJL        = BalineseDateConst.EkaJalaRsi.values();
+
+    // mapping of ekajalarsi
+    // source: Ardhana, I.B.S.(2005). "Pokok-Pokok Wariga". Surabaya : Paramita.
+    private static final int ejlMap[] = new int[] {
+        23,7,17,7,23,23,17,
+        9,7,13,26,24,23,20,
+        13,7,13,25,19,5,2,
+        14,26,17,20,25,22,0,
+        10,5,15,23,7,17,23,
+        17,25,4,23,2,2,2,
+        12,12,4,14,12,26,26,
+        1,23,23,15,25,15,5,
+        9,25,18,25,11,15,21,
+        25,25,12,0,17,13,0,
+        15,23,12,7,16,25,18,
+        24,12,12,5,7,5,26,
+        7,5,12,7,25,2,12,
+        25,25,14,15,26,7,12,
+        20,7,5,25,25,5,13,
+        25,17,13,23,5,26,20,
+        25,25,23,7,18,18,17,
+        7,17,7,4,26,17,5,
+        9,12,12,13,25,18,18,
+        5,2,25,25,2,25,17,
+        20,14,27,23,17,8,25,
+        17,5,17,7,6,15,18,
+        25,2,7,13,25,20,7,
+        15,15,23,7,8,24,2,
+        12,9,24,24,17,24,20,
+        7,12,12,14,18,25,20,
+        4,18,4,20,26,12,23,
+        18,17,17,25,15,2,24,
+        3,2,23,25,18,25,20,
+        14,3,2,25,7,25,17
+    };
 
     private final int dayInYear;
     private final int urip;
@@ -84,6 +124,8 @@ public final class BalineseDatePawukon implements Serializable, Cloneable {
     private final BalineseDateConst.Pancasuda       pancasuda;
     private final BalineseDateConst.Pararasan       pararasan;
     private final BalineseDateConst.Rakam           rakam;
+
+    private final BalineseDateConst.EkaJalaRsi      ekaJalaRsi;
 
     /**
      * Construct balinese pawukon.
@@ -123,6 +165,8 @@ public final class BalineseDatePawukon implements Serializable, Cloneable {
         
         pancasuda  = lookupPancasuda    [(saptawara.getKertaAji() + pancawara.getUrip()) % 7];
         rakam      = lookupRakam        [(saptawara.getKupih() + pancawara.getKupih()) % 6];
+
+        ekaJalaRsi = lookupEJL          [ejlMap[dayInYear]];
     }
 
     /**
@@ -307,27 +351,21 @@ public final class BalineseDatePawukon implements Serializable, Cloneable {
     }
 
     /**
-     * Get sum of urip pancawara and urip saptawara.
+     * Get Eka Jala Rsi.
+     * 
+     * @return the eka jala rsi
+     */
+    public BalineseDateConst.EkaJalaRsi getEkaJalaRsi() {
+        return ekaJalaRsi;
+    }
+
+    /**
+     * Get the sum of Urip Pancawara and Urip Saptawara.
      * 
      * @return the sum of urip pancawara and urip saptawara
      */
     public int getUrip() {
         return urip;
-    }
-
-    @Override
-    public Object clone() {
-        return new BalineseDatePawukon(getPawukonDayInYear());
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        return this == that;
-    }
-
-    @Override
-    public int hashCode() {
-        return dayInYear;
     }
 
     @Override

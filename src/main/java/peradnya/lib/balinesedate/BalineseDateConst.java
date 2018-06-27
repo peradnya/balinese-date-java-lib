@@ -38,6 +38,51 @@ public final class BalineseDateConst {
         return new String(arr);
     }
 
+    public enum EkaJalaRsi {
+        BAGNA_MAPASAH(0),
+        BAHU_PUTRA(1),
+        BUAT_ASTAWA(2),
+        BUAT_LARA(3),
+        BUAT_MERANG(4),
+        BUAT_SEBET(5),
+        BUAT_KINGKING(6),
+        BUAT_SUKA(7),
+        DAHAT_KINGKING(8),
+        KAMERANAN(9),
+        KAMRTAAN(10),
+        KASOBAGIAN(11),
+        KINASIHAN_AMRTA(12),
+        KINASIHAN_JANA(13),
+        LANGGENG_KAYOHANAAN(14),
+        LUWIH_BAGIA(15),
+        MANGGIH_BAGIA(16),
+        MANGGIH_SUKA(17),
+        PATINING_AMRTA(18),
+        RAHAYU(19),
+        SIDHA_KASOBAGIAN(20),
+        SUBAGIA(21),
+        SUKA_KAPANGGIH(22),
+        SUKA_PINANGGIH(23),
+        SUKA_RAHAYU(24),
+        TININGGALING_SUKA(25),
+        WREDHI_PUTRA(26),
+        WREDHI_SARWA_MULE(27);
+ 
+        private final int id;
+
+        private EkaJalaRsi(int id) {
+            this.id = id;
+        }
+
+        public int getId() { 
+            return this.id; 
+        }
+
+        public String getName() {
+            return toTitleCase(this.name());
+        }
+    }
+
     public enum Jejapan {
         MINA(0),
         TARU(1),
@@ -663,11 +708,21 @@ public final class BalineseDateConst {
         }
     }
 
-    public enum PenanggalInfo {
-        TILEM,
-        PENANGGAL,
-        PURNAMA,
-        PANGELONG;
+    public enum DateStatus {
+        TILEM(1),
+        PENANGGAL(0),
+        PURNAMA(0),
+        PANGELONG(1);
+
+        private final int group;
+
+        private DateStatus(int group) {
+            this.group = group;
+        }
+
+        public int getGroup() { 
+            return this.group; 
+        }
 
         public String getName() {
             return toTitleCase(this.name());
@@ -681,7 +736,7 @@ public final class BalineseDateConst {
         private final GregorianCalendar calendar;
 
         private final int pawukonDayInYear;
-        private final int penanggal;
+        private final int date;
         private final int ngunaratriDay;
 
         private final int saka;
@@ -694,7 +749,7 @@ public final class BalineseDateConst {
             int month, 
             int dayOfMonth, 
             int pawukonDayInYear, 
-            int penanggal,
+            int date,
             int ngunaratriDay,
             int saka,
             BalineseDateConst.Sasih sasih,
@@ -702,7 +757,7 @@ public final class BalineseDateConst {
 
             this.calendar           = new GregorianCalendar(year, month, dayOfMonth);
             this.pawukonDayInYear   = pawukonDayInYear;
-            this.penanggal          = penanggal;
+            this.date               = date;
             this.ngunaratriDay      = ngunaratriDay;
             this.saka               = saka;
             this.sasih              = sasih;
@@ -717,8 +772,8 @@ public final class BalineseDateConst {
             return pawukonDayInYear;
         }
 
-        public int getPenanggal() {
-            return penanggal;
+        public int getDate() {
+            return date;
         }
 
         public int getNgunaratriDay() {
