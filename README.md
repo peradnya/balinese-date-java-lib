@@ -16,14 +16,15 @@ BalineseDate provide a easy way to convert gregorian date into balinese date.
 
 BalineseDate support several features:
 
-1. Sasih
+1. Immutable (Thread Safe)
+2. Sasih
     1. Penanggal / Pangelong
     2. Purnama / Tilem
     3. Mala Masa / Nampih Sasih
     4. NgunaRatri
     5. Pratithi Samut Pada __(v0.3.0)__
-2. Saka Year
-3. Pawukon
+3. Saka Year
+4. Pawukon
     1. Wuku
     2. Wewaran (Ekawara - Dasawara)
     3. Ingkel
@@ -34,7 +35,7 @@ BalineseDate support several features:
     8. Pararasan
     9. Rakam
     10. Eka Jala Rsi __(v0.3.0)__
-4. Utilities
+5. Utilities
     1. Get the BalineseDate(s) from selected Date and Filter __(v0.2.0)__
 
 ## Import BalineseDate into Project

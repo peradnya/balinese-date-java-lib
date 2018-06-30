@@ -46,7 +46,7 @@ public final class BalineseDateConst {
         JARAMARANA(4),
         AWIDYA(5),
         SAMSKARA(6),
-        WIJNANA(7),
+        WIDNYANA(7),
         NAMARUPA(8),
         SADAYATANA(9),
         SEPARSA(10),

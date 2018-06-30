@@ -486,7 +486,7 @@ public final class BalineseDate implements Serializable {
         } else if (sasih.getRef() == BalineseDateConst.Sasih.KAPITU.getId()) {
             start = BalineseDateConst.PratithiSamutPada.SAMSKARA;
         } else if (sasih.getRef() == BalineseDateConst.Sasih.KAWOLU.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.WIJNANA;
+            start = BalineseDateConst.PratithiSamutPada.WIDNYANA;
         } else if (sasih.getRef() == BalineseDateConst.Sasih.KASANGA.getId()) {
             start = BalineseDateConst.PratithiSamutPada.NAMARUPA;
         } else if (sasih.getRef() == BalineseDateConst.Sasih.KADASA.getId()) {
@@ -508,8 +508,16 @@ public final class BalineseDate implements Serializable {
                         inc = 0;
                     } else if (sasihDay[1] == 9) {
                         inc = 7;
+                    } else if (sasihDay[1] == 10) {
+                        inc = 8;
+                    } else if (sasihDay[1] == 11) {
+                        inc = 9;
+                    } else if (sasihDay[1] == 12) {
+                        inc = 10;
+                    } else if (sasihDay[1] == 13) {
+                        inc = 11;
                     } else if (sasihDay[1] == 14) {
-                        inc = 12;
+                        inc = 11;
                     } else {
                         inc = sasihDay[1] - 1;
                     }
@@ -519,8 +527,16 @@ public final class BalineseDate implements Serializable {
                     inc = 0;
                 } else if (sasihDay[0] == 9) {
                     inc = 7;
+                } else if (sasihDay[0] == 10) {
+                    inc = 8;
+                } else if (sasihDay[0] == 11) {
+                    inc = 9;
+                } else if (sasihDay[0] == 12) {
+                    inc = 10;
+                } else if (sasihDay[0] == 13) {
+                    inc = 11;
                 } else if (sasihDay[0] == 14) {
-                    inc = 12;
+                    inc = 11;
                 } else {
                     inc = sasihDay[0] - 1;
                 }
