@@ -58,7 +58,7 @@ and then, add dependency to __BalineseDate Library__ in the ```build.gradle```
 
 ```groovy
 dependencies {
-    implementation 'com.gitlab.peradnya:balinese-date-java-lib:0.2.0'
+    implementation 'com.gitlab.peradnya:balinese-date-java-lib:0.3.0'
 }
 ```
 
@@ -81,7 +81,7 @@ and then, add dependency to __BalineseDate Library__ in the ```pom.xml```
 <dependency>
     <groupId>com.gitlab.peradnya</groupId>
     <artifactId>balinese-date-java-lib</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 
@@ -89,7 +89,8 @@ and then, add dependency to __BalineseDate Library__ in the ```pom.xml```
 
 ### Version 0.x
 
-* [__0.2.0 (Latest)__](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.2.0/javadoc/)
+* [__0.3.0 (Latest)__](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.3.0/javadoc/)
+* [0.2.0](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.2.0/javadoc/)
 * [0.1.0](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.1.0/javadoc/)
 
 ## How to Build

@@ -129,7 +129,7 @@ public final class BalineseDate implements Serializable {
         this.sasih              = calcSasihInfo(resultSasih);
 
         this.sasihDayInfo       = calcSasihDayInfo(resultSasihDay, this.sasih, this.saka);
-        this.pratithiSamutPada  = calcPratithiSamutPada(this.sasihDay, this.sasihDayInfo, this.sasih, (GregorianCalendar) date.clone());
+        this.pratithiSamutPada  = calcPratithiSamutPada(this.sasihDay, this.sasihDayInfo, this.sasih, date);
     }
 
     /**
@@ -469,99 +469,43 @@ public final class BalineseDate implements Serializable {
         BalineseDateConst.Sasih sasih,
         GregorianCalendar date) {
 
-        BalineseDateConst.PratithiSamutPada start = lookupPSP[0];
+        BalineseDateConst.PratithiSamutPada start = lookupPSP[sasih.getRef()];
 
-        if (sasih.getRef() == BalineseDateConst.Sasih.KASA.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.TRESNA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.KARO.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.UPADANA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.KATIGA.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.BHAWA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.KAPAT.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.JATI;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.KALIMA.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.JARAMARANA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.KANEM.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.AWIDYA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.KAPITU.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.SAMSKARA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.KAWOLU.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.WIDNYANA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.KASANGA.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.NAMARUPA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.KADASA.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.SADAYATANA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.DESTHA.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.SEPARSA;
-        } else if (sasih.getRef() == BalineseDateConst.Sasih.SADHA.getId()) {
-            start = BalineseDateConst.PratithiSamutPada.WEDANA;
-        }
-
-        int inc = 0;
+        int move        = 0;
+        boolean isNG    = sasihDay.length > 1;
+        int day         = isNG ? sasihDay[1] : sasihDay[0];
 
         if (sasihDayInfo.getGroup() == BalineseDateConst.SasihDayInfo.PENANGGAL.getGroup()) {
-            if (sasihDay.length > 1) {
-                if (sasihDay[1] == 1) {
-                    inc = 0;
-                } else {
-                    if (sasihDay[1] == 15) {
-                        inc = 0;
-                    } else if (sasihDay[1] == 9) {
-                        inc = 7;
-                    } else if (sasihDay[1] == 10) {
-                        inc = 8;
-                    } else if (sasihDay[1] == 11) {
-                        inc = 9;
-                    } else if (sasihDay[1] == 12) {
-                        inc = 10;
-                    } else if (sasihDay[1] == 13) {
-                        inc = 11;
-                    } else if (sasihDay[1] == 14) {
-                        inc = 11;
-                    } else {
-                        inc = sasihDay[1] - 1;
-                    }
-                }
+            if (day == 1 && isNG) {
+                move = 0;    // Penanggal to Pangelong.
             } else {
-                if (sasihDay[0] == 15) {
-                    inc = 0;
-                } else if (sasihDay[0] == 9) {
-                    inc = 7;
-                } else if (sasihDay[0] == 10) {
-                    inc = 8;
-                } else if (sasihDay[0] == 11) {
-                    inc = 9;
-                } else if (sasihDay[0] == 12) {
-                    inc = 10;
-                } else if (sasihDay[0] == 13) {
-                    inc = 11;
-                } else if (sasihDay[0] == 14) {
-                    inc = 11;
-                } else {
-                    inc = sasihDay[0] - 1;
+                if (day >= 1 && day <= 8) {
+                    move = day - 1;
+                } else if (day >= 9 && day <= 13) {
+                    move = day - 2;
+                } else if (day == 14) {
+                    move = 11;
+                } else if (day == 15) {
+                    move = 0;
                 }
             }
         } else {
-            if (sasihDay.length > 1) {
-                if (sasihDay[1] == 1) {
-                    date.add(GregorianCalendar.DATE, 1);
-                    BalineseDate nextDay = new BalineseDate(date);
+            if (day == 1 && isNG) {
+                GregorianCalendar temp = (GregorianCalendar) date.clone();
+                temp.add(GregorianCalendar.DATE, 1);
 
-                    if(nextDay.sasih.getRef() != sasih.getRef()) {
-                        inc = -1;
-                    }
-                } else {
-                    inc = (sasihDay[1] >= 13 ? sasihDay[1] - 10 : sasihDay[1]) - 1;
+                BalineseDate nextDay = new BalineseDate(temp);
+                if(nextDay.sasih.getRef() != sasih.getRef()) {
+                    move = -1;   // to the next penanggal
                 }
             } else {
-                inc = (sasihDay[0] >= 13 ? sasihDay[0] - 10 : sasihDay[0]) - 1;
+                move = (day >= 13) ? day - 11 : day - 1;
             }
         }
 
-        int id = mod(start.getId() - inc, 12);
-        start  = lookupPSP[id];
+        int newId = mod(start.getId() - move, 12);
         
-        return start;
+        return lookupPSP[newId];
     }
 
     private static int getDeltaDay(GregorianCalendar a, GregorianCalendar b) {

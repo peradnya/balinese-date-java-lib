@@ -71,10 +71,12 @@ public final class BalineseDateUtil {
 
     private static boolean checkIntArr(int[] filter, int[] date) {
         if (filter != null) {
-            for (int x : filter) {
+            if (filter.length == 1) {
                 for (int y : date) {
-                    if (x == y) { return false; }
+                    if (filter[0] == y) { return false; }
                 }
+            } else if (filter.length == 2 && date.length == 2) {
+                return !(filter[0] == date[0] && filter[1] == date[1]);
             }
             return true;
         } else {
