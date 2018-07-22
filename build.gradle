@@ -58,10 +58,6 @@ compileJava {
     targetCompatibility = 1.7
 }
 
-javadoc {
-    options.addBooleanOption('html5', true)
-}
-
 // To specify a license in the pom:
 install {
   repositories.mavenInstaller {
