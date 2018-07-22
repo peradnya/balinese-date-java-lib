@@ -63,11 +63,11 @@ public final class BalineseDatePawukon implements Serializable {
     private static final BalineseDateConst.Rakam[]          lookupRakam      = BalineseDateConst.Rakam.values();
 
     // Lookup table for ekajalarsi
-    private static final BalineseDateConst.EkaJalaRsi[]     lookupEJL        = BalineseDateConst.EkaJalaRsi.values();
+    private static final BalineseDateConst.EkaJalaRsi[]     lookupEJR        = BalineseDateConst.EkaJalaRsi.values();
 
     // mapping of ekajalarsi
     // source: Ardhana, I.B.S.(2005). "Pokok-Pokok Wariga". Surabaya : Paramita.
-    private static final int ejlMap[] = new int[] {
+    private static final int ekaJalaRsiMap[] = new int[] {
         23,7,17,7,23,23,17,
         9,7,13,26,24,23,20,
         13,7,13,25,19,5,2,
@@ -166,7 +166,7 @@ public final class BalineseDatePawukon implements Serializable {
         pancasuda  = lookupPancasuda    [(saptawara.getKertaAji() + pancawara.getUrip()) % 7];
         rakam      = lookupRakam        [(saptawara.getKupih() + pancawara.getKupih()) % 6];
 
-        ekaJalaRsi = lookupEJL          [ejlMap[this.pawukonDay]];
+        ekaJalaRsi = lookupEJR          [ekaJalaRsiMap[this.pawukonDay]];
     }
 
     /**
