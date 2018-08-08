@@ -100,7 +100,7 @@ and then, add dependency to __BalineseDate Library__ in the ```pom.xml```
 The recomended requirement to build this project is:
 
 1. Latest Oracle Java JDK (Recomended >= 7.x)
-2. Latest Gradle (Recomended >= 4.4.0)
+2. Latest Gradle (Recomended >= 4.9.0)
 3. Latest Git Client
 
 for Gradle installation, you could follow this [Gradle installation instuction](https://gradle.org/install/).
