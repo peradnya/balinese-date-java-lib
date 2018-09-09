@@ -8,35 +8,42 @@
 
 BalineseDate is an open source library to build Balinese Saka Calendar in Java based application.
 
-**Note**: This library is in **Beta Phase**. Feedbacks, corrections, or bug reports are welcomed ... :)
+**Note**: This library is in **Beta Phase**, the API may change frequently. Feedbacks, corrections, or bug reports are welcomed ... :)
 
 ## Features
 
-BalineseDate provide a easy way to convert gregorian date into balinese date.
+BalineseDate is designed to be __immutable__ and __thread-safe__. BalineseDate have several balinese calendar features like:
 
-BalineseDate support several features:
-
-1. Immutable (Thread Safe)
-2. Sasih
-    1. Penanggal / Pangelong
-    2. Purnama / Tilem
-    3. Mala Masa / Nampih Sasih
-    4. NgunaRatri
-    5. Pratithi Samut Pada __(v0.3.0)__
-3. Saka Year
-4. Pawukon
-    1. Wuku
-    2. Wewaran (Ekawara - Dasawara)
-    3. Ingkel
-    4. Jejapan
-    5. Pawatekan (Alit + Madya)
-    6. Lintang
-    7. Pancasuda
-    8. Pararasan
-    9. Rakam
-    10. Eka Jala Rsi __(v0.3.0)__
-5. Utilities
-    1. Get the BalineseDate(s) from selected Date and Filter __(v0.2.0)__
+* [Pawukon](http://www.babadbali.com/pewarigaan/kalender-pawukon.htm)
+* [Pawewaran](http://www.babadbali.com/pewarigaan/pawewaran.htm)
+    * [EkaWara](http://www.babadbali.com/pewarigaan/ekawara.htm)
+    * [DwiWara](http://www.babadbali.com/pewarigaan/dwiwara.htm)
+    * [TriWara](http://www.babadbali.com/pewarigaan/triwara.htm)
+    * [CaturWara](http://www.babadbali.com/pewarigaan/caturwara.htm)
+    * [PancaWara](http://www.babadbali.com/pewarigaan/pancawara.htm)
+    * [SadWara](http://www.babadbali.com/pewarigaan/sadwara.htm)
+    * [SaptaWara](http://www.babadbali.com/pewarigaan/saptawara.htm)
+    * [AstaWara](http://www.babadbali.com/pewarigaan/astawara.htm)
+    * [SangaWara](http://www.babadbali.com/pewarigaan/sangawara.htm)
+    * [DasaWara](http://www.babadbali.com/pewarigaan/dasawara.htm)
+* [Paringkelan](http://www.babadbali.com/pewarigaan/paringkelan.htm)
+    * [Jejepan](http://www.babadbali.com/pewarigaan/jejepan.htm)
+    * [Ingkel](http://www.babadbali.com/pewarigaan/ingkel.htm)
+    * [Pawatekan Madya & Alit](http://www.babadbali.com/pewarigaan/watek.htm)
+    * [Lintang](http://www.babadbali.com/pewarigaan/lintang.htm)
+    * [PancaSuda](http://www.babadbali.com/pewarigaan/pancasuda.htm)
+    * [Pararasan](http://www.babadbali.com/pewarigaan/paarasan.htm)
+    * [Rakam](http://www.babadbali.com/pewarigaan/rakam.htm)
+* Eka Jala Rsi __(v0.3.0)__
+* Pratithi Samut Pada __(v0.3.0)__
+* Sasih
+    * Pawukon/Penanggal
+    * NgunaRatri
+    * Nampih Sasih
+* [Saka Year](http://www.babadbali.com/pewarigaan/kalender-saka.htm)
+* Utilities
+    * Filter BalineseDate(s) from selected Date __(v0.2.0)__
+    * Filter BalineseDate(s) from selected List __(v0.4.0)__
 
 ## Import BalineseDate into Project
 
@@ -58,7 +65,7 @@ and then, add dependency to __BalineseDate Library__ in the ```build.gradle```
 
 ```groovy
 dependencies {
-    implementation 'com.gitlab.peradnya:balinese-date-java-lib:0.3.0'
+    implementation 'com.gitlab.peradnya:balinese-date-java-lib:0.4.0'
 }
 ```
 
@@ -81,7 +88,7 @@ and then, add dependency to __BalineseDate Library__ in the ```pom.xml```
 <dependency>
     <groupId>com.gitlab.peradnya</groupId>
     <artifactId>balinese-date-java-lib</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
@@ -89,7 +96,8 @@ and then, add dependency to __BalineseDate Library__ in the ```pom.xml```
 
 ### Version 0.x
 
-* [__0.3.0 (Latest)__](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.3.0/javadoc/)
+* [__0.4.0 (Latest)__](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.4.0/javadoc/)
+* [0.3.0](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.3.0/javadoc/)
 * [0.2.0](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.2.0/javadoc/)
 * [0.1.0](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.1.0/javadoc/)
 
@@ -166,28 +174,24 @@ import java.util.GregorianCalendar;
 
 BalineseDate now        = new BalineseDate();
 
-// get balinese date at 1 January 2018
-
-BalineseDate bDate1 = new BalineseDate(2018,0,1);
-
 // get balinese date at 1 January 1969 using GregorianCalendar
 
 GregorianCalendar date  = new GregorianCalendar(1969,0,1);
-BalineseDate bDate2 = new BalineseDate(date);
+BalineseDate bDate1 = new BalineseDate(date);
 ```
 
 ### Using BalineseDate Method
 
 ```java
-// get sasih day (1 - 15)
-// if sasih day element = 1, then it is normal day
-// if sasih day element = 2, then it is ngunaratri day
+// get the sasih day (1 - 15)
+// if number of element inside date = 1, then bDate1 is normal day
+// if number of element inside date = 2, then bDate1 is ngunaratri day
 
-int[] date = bDate2.getSasihDay();
+List<Integer> date = bDate1.sasihDay();
 
 // get sasih day info (penanggal, pangelong, tilem, or purnama)
 
-BalineseDateConst.SasihDayInfo sasihDayInfo   = bDate2.getSasihDayInfo();
+SasihDayInfo sasihDayInfo   = bDate1.sasihDayInfo();
 
 // get BalineseDate(s) Between 2017-01-01 and 2017-12-31 with Wuku Watugunung and Pancawara Kliwon
 
@@ -196,9 +200,9 @@ GregorianCalendar finish    = new GregorianCalendar(2017,11,31);
 BalineseDateUtil.Filter q   = new BalineseDateUtil.Filter();
 
 q.wuku                      = Wuku.WATUGUNUNG;
-q.pancawara                 = Pancawara.KLIWON;
+q.pancaWara                 = PancaWara.KLIWON;
 
-BalineseDate[] result       = BalineseDateUtil.getBalineseDateByDateRange(q, start, finish);
+List<BalineseDate> result   = BalineseDateUtil.filterByDateRange(q, start, finish);
 ```
 
 ## Related Project
@@ -209,8 +213,7 @@ There is another related project about Balinese Saka Calendar:
 
 ## References
 
-* Ardhana, I.B.S.(2005). *"Pokok-Pokok Wariga"*. Surabaya : Paramita.
+* Ardhana, I.B.S. (2005). *"Pokok-Pokok Wariga"*. Surabaya : Paramita.
 * babadbali.com (Yayasan Bali Galang) for [wewaran](http://www.babadbali.com/pewarigaan/perhitungan.htm) and [paringkelan](http://www.babadbali.com/pewarigaan/paringkelan.htm) algorithm.
+* Pendit, Nyoman. (2001). *"Nyepi: kebangkitan, toleransi, dan kerukunan"*. Jakarta : Gramedia. Retrieved at [google book](https://books.google.co.id/books?id=4ND9KPn2o8AC).
 * kalenderbali.org and kalenderbali.info for cross-checking and building sample test-cases.
-* Pendit, Nyoman.(2001). *"Nyepi: kebangkitan, toleransi, dan kerukunan"*. Jakarta : Gramedia. Retrieved at [google book](https://books.google.co.id/books?id=4ND9KPn2o8AC).
-* Prawira, I Putu Candra et.al.(2015).*"Pengembangan Aplikasi Kalender Saka Bali pada Sistem Operasi Machintos"*. E-Jurnal Merpati, Vol.3. Retrieved at [ojs.unud.ac.id](https://ojs.unud.ac.id/index.php/merpati/article/view/17799/11547).

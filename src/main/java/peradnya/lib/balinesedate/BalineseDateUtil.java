@@ -16,156 +16,285 @@
 
 package peradnya.lib.balinesedate;
 
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
+import java.util.List;
+
+import peradnya.lib.balinesedate.BalineseDate;
+import peradnya.lib.balinesedate.AstaWara;
+import peradnya.lib.balinesedate.CaturWara;
+import peradnya.lib.balinesedate.DasaWara;
+import peradnya.lib.balinesedate.DwiWara;
+import peradnya.lib.balinesedate.EkaJalaRsi;
+import peradnya.lib.balinesedate.EkaWara;
+import peradnya.lib.balinesedate.Ingkel;
+import peradnya.lib.balinesedate.Jejepan;
+import peradnya.lib.balinesedate.Lintang;
+import peradnya.lib.balinesedate.PancaSuda;
+import peradnya.lib.balinesedate.PancaWara;
+import peradnya.lib.balinesedate.Pararasan;
+import peradnya.lib.balinesedate.PratithiSamutPada;
+import peradnya.lib.balinesedate.Rakam;
+import peradnya.lib.balinesedate.SadWara;
+import peradnya.lib.balinesedate.SangaWara;
+import peradnya.lib.balinesedate.SaptaWara;
+import peradnya.lib.balinesedate.Sasih;
+import peradnya.lib.balinesedate.SasihDayInfo;
+import peradnya.lib.balinesedate.TriWara;
+import peradnya.lib.balinesedate.WatekAlit;
+import peradnya.lib.balinesedate.WatekMadya;
+import peradnya.lib.balinesedate.Wuku;
 
 /**
- * Utility class to support BalineseDate library
+ * Utility class to support {@link BalineseDate}.
  * 
+ * @see BalineseDate
  * @author Ida Bagus Putu Peradnya Dinata
  */
 public final class BalineseDateUtil {
 
+    private static final String NULL_DATE = "Date must not null.";
+    private static final String NULL_LIST = "List of BalineseDate must not null.";
+    private static final String NULL_ITEM = "BalineseDate item must not null.";
+
     /**
-     * Filter class for BalineseDateUtil class.
+     * Filter class for use by static method inside {@link BalineseDateUtil}.
      * 
+     * @see BalineseDateUtil
      * @author Ida Bagus Putu Peradnya Dinata
      */
     public static final class Filter {
-        public BalineseDateConst.Ekawara            ekawara             = null;
-        public BalineseDateConst.Dwiwara            dwiwara             = null;
-        public BalineseDateConst.Triwara            triwara             = null;
-        public BalineseDateConst.Caturwara          caturwara           = null;
-        public BalineseDateConst.Pancawara          pancawara           = null;
-        public BalineseDateConst.Sadwara            sadwara             = null;
-        public BalineseDateConst.Saptawara          saptawara           = null;
-        public BalineseDateConst.Astawara           astawara            = null;
-        public BalineseDateConst.Sangawara          sangawara           = null;
-        public BalineseDateConst.Dasawara           dasawara            = null;
-
-        public BalineseDateConst.Ingkel             ingkel              = null;
-        public BalineseDateConst.Jejapan            jejapan             = null;
-        public BalineseDateConst.PawatekanAlit      watekAlit           = null;
-        public BalineseDateConst.PawatekanMadya     watekMadya          = null;
-        public BalineseDateConst.Lintang            lintang             = null;
-        public BalineseDateConst.Pancasuda          pancasuda           = null;
-        public BalineseDateConst.Pararasan          pararasan           = null;
-        public BalineseDateConst.Rakam              rakam               = null;
-        public BalineseDateConst.EkaJalaRsi         ekaJalaRsi          = null;
-
-        public BalineseDateConst.Wuku               wuku                = null;
-
-        public BalineseDateConst.Sasih              sasih               = null;
-        public BalineseDateConst.SasihDayInfo       sasihDayInfo        = null;
-        public int[]                                sasihDay            = null;
-        public Integer                              saka                = null;
-        public BalineseDateConst.PratithiSamutPada  pratithiSamutPada   = null;
+        public Wuku wuku = null;
+        public EkaWara ekaWara = null;
+        public DwiWara dwiWara = null;
+        public TriWara triWara = null;
+        public CaturWara caturWara = null;
+        public PancaWara pancaWara = null;
+        public SadWara sadWara = null;
+        public SaptaWara saptaWara = null;
+        public AstaWara astaWara = null;
+        public SangaWara sangaWara = null;
+        public DasaWara dasaWara = null;
+        public Ingkel ingkel = null;
+        public Jejepan jejepan = null;
+        public WatekAlit watekAlit = null;
+        public WatekMadya watekMadya = null;
+        public Lintang lintang = null;
+        public PancaSuda pancaSuda = null;
+        public Pararasan pararasan = null;
+        public Rakam rakam = null;
+        public EkaJalaRsi ekaJalaRsi = null;
+        public Integer saka = null;
+        public Sasih sasih = null;
+        public List<Integer> sasihDay = null;
+        public SasihDayInfo sasihDayInfo = null;
+        public PratithiSamutPada pratithiSamutPada = null;
     }
 
-    private static final String NULL_CALENDAR = "Calendar value must not null.";    
+    private BalineseDateUtil() {}
 
-    private static <I> boolean check(I filter, I date) {
-        return (filter != null) ? (filter != date) : false;
-    }
-
-    private static boolean checkIntArr(int[] filter, int[] date) {
-        if (filter != null) {
-            if (filter.length == 1) {
-                for (int y : date) {
-                    if (filter[0] == y) { return false; }
-                }
-            } else if (filter.length == 2 && date.length == 2) {
-                return !(filter[0] == date[0] && filter[1] == date[1]);
-            }
-            return true;
-        } else {
-            return false;
+    /**
+     * Returns the list of BalineseDate that match with selected filter, Start Date (inclusive), and End Date (inclusive). 
+     * <p>
+     * <b>Note:</b> This static method is <u>not thread-safe</u>.
+     * 
+     * @param filter the {@link Filter} to be match. Null for unfiltered result.
+     * @param start  the Start Date of the search. Null is not allowed.
+     * @param end    the End Date of the search. Null is not allowed.
+     * 
+     * @return the list of BalineseDate that match with selected filter, Start Date, and End Date
+     * @throws IllegalArgumentException Date must not null.
+     */
+    public static List<BalineseDate> filterByDateRange(Filter filter, GregorianCalendar start, GregorianCalendar end)
+            throws IllegalArgumentException {
+        if (start == null || end == null) {
+            throw new IllegalArgumentException(NULL_DATE);
         }
-    }
 
-    private static boolean checkSasihDayInfo(
-        BalineseDateConst.SasihDayInfo filter,
-        BalineseDateConst.SasihDayInfo date) {
-
-        if (filter != null) {
-            if (filter == BalineseDateConst.SasihDayInfo.PURNAMA || 
-                filter == BalineseDateConst.SasihDayInfo.TILEM) {
-
-                return filter != date;
-            } else {
-                return filter.getGroup() != date.getGroup();
+        List<BalineseDate> result = new LinkedList<BalineseDate>();
+        GregorianCalendar now = (GregorianCalendar) start.clone();
+        for (; now.compareTo(end) <= 0; now.add(GregorianCalendar.DATE, 1)) {
+            BalineseDate x = filterByItem(filter, new BalineseDate(now));
+            if (x != null) {
+                result.add(x);
             }
-        } else {
-            return false;
         }
+
+        return result;
     }
 
     /**
-     * Get BalineseDates that match with given filters and gregorian dates.
+     * Returns the list of BalineseDate that match with selected filter. 
+     * <p>
+     * <b>Note:</b> This static method is <u>not thread-safe</u>.
      * 
-     * @param filter the filters for balinese date search (null similar to no filter).
-     * @param start the start date of search (not null).
-     * @param finish the end date of search (not null).
+     * @param filter the {@link Filter} to be match. Null for unfiltered result.
+     * @param list  the list of BalineseDate to be search. Null is not allowed.
      * 
-     * @return array of BalineseDate that matched with given filters and gregorian dates.
-     * 
-     * @see Filter
-     * @see java.util.GregorianCalendar
+     * @return the list of BalineseDate that match with selected filter
+     * @throws IllegalArgumentException List of BalineseDate must not null.
      */
-    public static BalineseDate[] getBalineseDateByDateRange(
-        Filter filter, 
-        GregorianCalendar start, 
-        GregorianCalendar finish) {
-
-        if (start == null || finish == null) { throw new IllegalArgumentException(NULL_CALENDAR); }
-
-        LinkedList<BalineseDate> list = new LinkedList<BalineseDate>();
-
-        GregorianCalendar now = null;
-        for (now = (GregorianCalendar) start.clone(); now.compareTo(finish) <= 0; now.add(Calendar.DATE, 1)) {
-            BalineseDate date           = new BalineseDate(now);
-            BalineseDatePawukon pawukon = date.getPawukon();
-
-            if (filter != null) {
-
-                if (check(filter.ekawara, pawukon.getEkawara()))                    { continue; }
-                if (check(filter.dwiwara, pawukon.getDwiwara()))                    { continue; }
-                if (check(filter.triwara, pawukon.getTriwara()))                    { continue; }
-                if (check(filter.caturwara, pawukon.getCaturwara()))                { continue; }
-                if (check(filter.pancawara, pawukon.getPancawara()))                { continue; }
-                if (check(filter.sadwara, pawukon.getSadwara()))                    { continue; }
-                if (check(filter.saptawara, pawukon.getSaptawara()))                { continue; }
-                if (check(filter.astawara, pawukon.getAstawara()))                  { continue; }
-                if (check(filter.sangawara, pawukon.getSangawara()))                { continue; }
-                if (check(filter.dasawara, pawukon.getDasawara()))                  { continue; }
-
-                if (check(filter.ingkel, pawukon.getIngkel()))                      { continue; }
-                if (check(filter.jejapan, pawukon.getJejapan()))                    { continue; }
-                if (check(filter.watekAlit, pawukon.getWatekAlit()))                { continue; }
-                if (check(filter.watekMadya, pawukon.getWatekMadya()))              { continue; }
-                if (check(filter.lintang, pawukon.getLintang()))                    { continue; }
-                if (check(filter.pancasuda, pawukon.getPancasuda()))                { continue; }
-                if (check(filter.pararasan, pawukon.getPararasan()))                { continue; }
-                if (check(filter.rakam, pawukon.getRakam()))                        { continue; }
-                if (check(filter.ekaJalaRsi, pawukon.getEkaJalaRsi()))              { continue; }
-
-                if (check(filter.wuku, pawukon.getWuku()))                          { continue; }
-
-                if (check(filter.sasih, date.getSasih()))                           { continue; }
-                if (checkSasihDayInfo(filter.sasihDayInfo, date.getSasihDayInfo())) { continue; }
-                if (checkIntArr(filter.sasihDay, date.getSasihDay()))               { continue; }
-                if (check(filter.saka, date.getSaka()))                             { continue; }
-                if (check(filter.pratithiSamutPada, date.getPratithiSamutPada()))   { continue; }
-            }
-
-            list.add(date);
+    public static List<BalineseDate> filterByList(Filter filter, List<BalineseDate> list)
+            throws IllegalArgumentException {
+        if (list == null) {
+            throw new IllegalArgumentException(NULL_LIST);
         }
 
-        BalineseDate[] result = new BalineseDate[list.size()];
-        list.toArray(result);
+        List<BalineseDate> result = new LinkedList<BalineseDate>();
+        for (BalineseDate bd : list) {
+            BalineseDate x = filterByItem(filter, bd);
+            if (x != null) {
+                result.add(x);
+            }
+        }
 
         return result;
+    }
+
+    /**
+     * Returns the BalineseDate item that match with selected filter. 
+     * <p>
+     * <b>Note:</b> This static method is <u>not thread-safe</u>.
+     * 
+     * @param filter the {@link Filter} to be match. Null for unfiltered result.
+     * @param item  the BalineseDate to be search. Null is not allowed.
+     * 
+     * @return the BalineseDate item that match with selected filter. If there is no match, then return null.
+     * @throws IllegalArgumentException BalineseDate item must not null.
+     */
+    public static BalineseDate filterByItem(Filter filter, BalineseDate item) throws IllegalArgumentException {
+        if (item == null) {
+            throw new IllegalArgumentException(NULL_ITEM);
+        }
+
+        if (filter != null) {
+            if (!check(filter.wuku, item.wuku())) {
+                return null;
+            }
+            if (!check(filter.ekaWara, item.ekaWara())) {
+                return null;
+            }
+            if (!check(filter.dwiWara, item.dwiWara())) {
+                return null;
+            }
+            if (!check(filter.triWara, item.triWara())) {
+                return null;
+            }
+            if (!check(filter.caturWara, item.caturWara())) {
+                return null;
+            }
+            if (!check(filter.pancaWara, item.pancaWara())) {
+                return null;
+            }
+            if (!check(filter.sadWara, item.sadWara())) {
+                return null;
+            }
+            if (!check(filter.saptaWara, item.saptaWara())) {
+                return null;
+            }
+            if (!check(filter.astaWara, item.astaWara())) {
+                return null;
+            }
+            if (!check(filter.sangaWara, item.sangaWara())) {
+                return null;
+            }
+            if (!check(filter.dasaWara, item.dasaWara())) {
+                return null;
+            }
+            if (!check(filter.ingkel, item.ingkel())) {
+                return null;
+            }
+            if (!check(filter.jejepan, item.jejepan())) {
+                return null;
+            }
+            if (!check(filter.watekAlit, item.watekAlit())) {
+                return null;
+            }
+            if (!check(filter.watekMadya, item.watekMadya())) {
+                return null;
+            }
+            if (!check(filter.lintang, item.lintang())) {
+                return null;
+            }
+            if (!check(filter.pancaSuda, item.pancaSuda())) {
+                return null;
+            }
+            if (!check(filter.pararasan, item.pararasan())) {
+                return null;
+            }
+            if (!check(filter.rakam, item.rakam())) {
+                return null;
+            }
+            if (!check(filter.ekaJalaRsi, item.ekaJalaRsi())) {
+                return null;
+            }
+            if (!check(filter.saka, item.saka())) {
+                return null;
+            }
+            if (!check(filter.sasih, item.sasih())) {
+                return null;
+            }
+            if (!check(filter.pratithiSamutPada, item.pratithiSamutPada())) {
+                return null;
+            }
+            if (!checkSasihDay(filter.sasihDay, item.sasihDay())) {
+                return null;
+            }
+            if (!checkSasihDayInfo(filter.sasihDayInfo, item.sasihDayInfo())) {
+                return null;
+            }
+        }
+
+        return item;
+    }
+
+    private static <I> boolean check(I expectation, I reality) {
+        return (expectation != null) ? (expectation == reality) : true;
+    }
+
+    private static boolean checkSasihDay(List<Integer> expectation, List<Integer> reality) {
+        if (expectation != null) {
+            switch (expectation.size()) {
+            case 1:
+                if (reality.size() == 1) {
+                    return (expectation.get(0) == reality.get(0));
+                } else if (reality.size() == 2) {
+                    return (expectation.get(0) == reality.get(0)) || (expectation.get(0) == reality.get(1));
+                } else {
+                    return false;
+                }
+            case 2:
+                return (reality.size() == 2) ? expectation == reality : false;
+            default:
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static boolean checkSasihDayInfo(SasihDayInfo expectation, SasihDayInfo reality) {
+        if (expectation != null) {
+            if (expectation == SasihDayInfo.PURNAMA || expectation == SasihDayInfo.TILEM) {
+                return expectation == reality;
+            } else {
+                return expectation == reality.reference();
+            }
+        }
+
+        return true;
+    }
+
+    static String titleCase(final String text) {
+        char[] arr = text.toCharArray();
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == '_') {
+                arr[i] = ' ';
+            } else if (arr[i] >= 'A' && arr[i] <= 'Z' && arr[i - 1] != ' ') {
+                arr[i] = Character.toLowerCase(arr[i]);
+            }
+        }
+        return new String(arr);
     }
 
 }
