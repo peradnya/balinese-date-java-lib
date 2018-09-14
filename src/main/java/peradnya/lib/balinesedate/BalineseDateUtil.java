@@ -58,7 +58,7 @@ public final class BalineseDateUtil {
     private static final String NULL_ITEM = "BalineseDate item must not null.";
 
     /**
-     * Filter class for use by static method inside {@link BalineseDateUtil}.
+     * Filter class to use by static method inside {@link BalineseDateUtil}.
      * 
      * @see BalineseDateUtil
      * @author Ida Bagus Putu Peradnya Dinata
@@ -91,10 +91,12 @@ public final class BalineseDateUtil {
         public PratithiSamutPada pratithiSamutPada = null;
     }
 
-    private BalineseDateUtil() {}
+    private BalineseDateUtil() {
+    }
 
     /**
-     * Returns the list of BalineseDate that match with selected filter, Start Date (inclusive), and End Date (inclusive). 
+     * Returns the list of BalineseDate that match with selected filter, Start Date
+     * (inclusive), and End Date (inclusive).
      * <p>
      * <b>Note:</b> This static method is <u>not thread-safe</u>.
      * 
@@ -102,7 +104,8 @@ public final class BalineseDateUtil {
      * @param start  the Start Date of the search. Null is not allowed.
      * @param end    the End Date of the search. Null is not allowed.
      * 
-     * @return the list of BalineseDate that match with selected filter, Start Date, and End Date
+     * @return the list of BalineseDate that match with selected filter, Start Date,
+     *         and End Date
      * @throws IllegalArgumentException Date must not null.
      */
     public static List<BalineseDate> filterByDateRange(Filter filter, GregorianCalendar start, GregorianCalendar end)
@@ -124,12 +127,12 @@ public final class BalineseDateUtil {
     }
 
     /**
-     * Returns the list of BalineseDate that match with selected filter. 
+     * Returns the list of BalineseDate that match with selected filter.
      * <p>
      * <b>Note:</b> This static method is <u>not thread-safe</u>.
      * 
      * @param filter the {@link Filter} to be match. Null for unfiltered result.
-     * @param list  the list of BalineseDate to be search. Null is not allowed.
+     * @param list   the list of BalineseDate to be search. Null is not allowed.
      * 
      * @return the list of BalineseDate that match with selected filter
      * @throws IllegalArgumentException List of BalineseDate must not null.
@@ -152,14 +155,15 @@ public final class BalineseDateUtil {
     }
 
     /**
-     * Returns the BalineseDate item that match with selected filter. 
+     * Returns the BalineseDate item that match with selected filter.
      * <p>
      * <b>Note:</b> This static method is <u>not thread-safe</u>.
      * 
      * @param filter the {@link Filter} to be match. Null for unfiltered result.
-     * @param item  the BalineseDate to be search. Null is not allowed.
+     * @param item   the BalineseDate to be search. Null is not allowed.
      * 
-     * @return the BalineseDate item that match with selected filter. If there is no match, then return null.
+     * @return the BalineseDate item that match with selected filter. If there is no
+     *         match, then return null.
      * @throws IllegalArgumentException BalineseDate item must not null.
      */
     public static BalineseDate filterByItem(Filter filter, BalineseDate item) throws IllegalArgumentException {

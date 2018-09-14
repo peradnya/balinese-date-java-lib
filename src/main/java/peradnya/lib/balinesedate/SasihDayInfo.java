@@ -24,13 +24,13 @@ package peradnya.lib.balinesedate;
  * @author Ida Bagus Putu Peradnya Dinata
  */
 public enum SasihDayInfo {
-    /** Penanggal: 1-14, Reference: {@link PENANGGAL} */
+    /** Penanggal: 1-14, Reference: PENANGGAL */
     PENANGGAL(0),
-    /** Pangelong: 1-14, Reference: {@link PANGELONG} */
+    /** Pangelong: 1-14, Reference: PANGELONG */
     PANGELONG(1),
-    /** Penanggal: 15, Reference: {@link PENANGGAL} */
+    /** Penanggal: 15, Reference: PENANGGAL */
     PURNAMA(0),
-    /** Pangelong: 15, Reference: {@link PANGELONG} */
+    /** Pangelong: 15, Reference: PANGELONG */
     TILEM(1);
 
     private final int reference;
@@ -40,8 +40,8 @@ public enum SasihDayInfo {
     }
 
     /**
-     * Returns the reference of SasihDayInfo. this method is useful to get
-     * reference of {@link PURNAMA} and {@link TILEM}.
+     * Returns the reference of SasihDayInfo. this method is useful to get reference
+     * of PURNAMA and TILEM.
      * 
      * @return the reference of SasihDayInfo
      */

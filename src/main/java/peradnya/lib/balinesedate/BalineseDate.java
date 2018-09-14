@@ -115,8 +115,9 @@ public final class BalineseDate extends BalineseDateBase implements Serializable
     }
 
     /**
-     * Construct BalineseDate with specific date. BalineseDate will deep-copy the
-     * date to prevent modification from outside.
+     * Construct BalineseDate with specific date. The date will be cloned to prevent
+     * modification from outside. Providing null value in constructor parameter will
+     * construct BalineseDate with current date.
      * 
      * @param date the date in GregorianCalendar.
      */
@@ -170,8 +171,6 @@ public final class BalineseDate extends BalineseDateBase implements Serializable
             tempSasihDay.add(extra);
         }
         sasihDay = Collections.unmodifiableList(tempSasihDay);
-
-        
 
         pratithiSamutPada = getPratithiSamutPada(sasihDay, sasihDayInfo, sasih, calendar);
     }
@@ -377,8 +376,8 @@ public final class BalineseDate extends BalineseDateBase implements Serializable
     }
 
     /**
-     * Returns the list of integer (value from 1 to 15) that represent sasihDay
-     * of BalineseDate. There are 2 possible return value of sasihDay:
+     * Returns the list of integer (value from 1 to 15) that represent sasihDay of
+     * BalineseDate. There are 2 possible return value of sasihDay:
      * <ul>
      * <li>In Normal day, sasihDay is consist of 1 integer value</li>
      * <li>In NgunaRatri day, sasihDay are consist of 2 integer values</li>

@@ -24,45 +24,45 @@ package peradnya.lib.balinesedate;
  * @author Ida Bagus Putu Peradnya Dinata
  */
 public enum Sasih {
-    /** Id: 0, Normal Sasih, Reference: {@link KASA} */
+    /** Id: 0, Normal Sasih, Reference: KASA */
     KASA(0),
-    /** Id: 1, Normal Sasih, Reference: {@link KARO} */
+    /** Id: 1, Normal Sasih, Reference: KARO */
     KARO(1),
-    /** Id: 2, Normal Sasih, Reference: {@link KATIGA} */
+    /** Id: 2, Normal Sasih, Reference: KATIGA */
     KATIGA(2),
-    /** Id: 3, Normal Sasih, Reference: {@link KAPAT} */
+    /** Id: 3, Normal Sasih, Reference: KAPAT */
     KAPAT(3),
-    /** Id: 4, Normal Sasih, Reference: {@link KALIMA} */
+    /** Id: 4, Normal Sasih, Reference: KALIMA */
     KALIMA(4),
-    /** Id: 5, Normal Sasih, Reference: {@link KANEM} */
+    /** Id: 5, Normal Sasih, Reference: KANEM */
     KANEM(5),
-    /** Id: 6, Normal Sasih, Reference: {@link KAPITU} */
+    /** Id: 6, Normal Sasih, Reference: KAPITU */
     KAPITU(6),
-    /** Id: 7, Normal Sasih, Reference: {@link KAWOLU} */
+    /** Id: 7, Normal Sasih, Reference: KAWOLU */
     KAWOLU(7),
-    /** Id: 8, Normal Sasih, Reference: {@link KASANGA} */
+    /** Id: 8, Normal Sasih, Reference: KASANGA */
     KASANGA(8),
-    /** Id: 9, Normal Sasih, Reference: {@link KADASA} */
+    /** Id: 9, Normal Sasih, Reference: KADASA */
     KADASA(9),
-    /** Id: 10, Normal Sasih, Reference: {@link DESTHA} */
+    /** Id: 10, Normal Sasih, Reference: DESTHA */
     DESTHA(10),
-    /** Id: 11, Normal Sasih, Reference: {@link SADHA} */
+    /** Id: 11, Normal Sasih, Reference: SADHA */
     SADHA(11),
-    /** Id: 12, Mala Sasih, Reference: {@link DESTHA} */
+    /** Id: 12, Mala Sasih, Reference: DESTHA */
     MALA_DESTHA(10),
-    /** Id: 13, Mala Sasih, Reference: {@link SADHA} */
+    /** Id: 13, Mala Sasih, Reference: SADHA */
     MALA_SADHA(11),
-    /** Id: 14, Mala Sasih, Reference: {@link DESTHA} */
+    /** Id: 14, Mala Sasih, Reference: DESTHA */
     NAMPIH_DESTHA(10),
-    /** Id: 15, Nampih Sasih, Reference: {@link KATIGA} */
+    /** Id: 15, Nampih Sasih, Reference: KATIGA */
     NAMPIH_KATIGA(2),
-    /** Id: 16, Nampih Sasih, Reference: {@link KASA} */
+    /** Id: 16, Nampih Sasih, Reference: KASA */
     NAMPIH_KASA(0),
-    /** Id: 17, Nampih Sasih, Reference: {@link KADASA} */
+    /** Id: 17, Nampih Sasih, Reference: KADASA */
     NAMPIH_KADASA(9),
-    /** Id: 18, Nampih Sasih, Reference: {@link KARO} */
+    /** Id: 18, Nampih Sasih, Reference: KARO */
     NAMPIH_KARO(1),
-    /** Id: 19, Nampih Sasih, Reference: {@link SADHA} */
+    /** Id: 19, Nampih Sasih, Reference: SADHA */
     NAMPIH_SADHA(11);
 
     private final int reference;
@@ -81,8 +81,8 @@ public enum Sasih {
     }
 
     /**
-     * Returns the reference of Sasih. This method is useful to get the normal
-     * Sasih from mala/nampih Sasih.
+     * Returns the reference of Sasih. This method is useful to get the normal Sasih
+     * from Mala/Nampih Sasih.
      * 
      * @return the reference of Sasih
      */
