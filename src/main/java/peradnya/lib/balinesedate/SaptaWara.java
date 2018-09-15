@@ -32,9 +32,9 @@ public enum SaptaWara {
     /** Id: 2, Urip: 3, KertaAji: 3, Kupih: 5 */
     ANGGARA(3, 3, 5),
     /** Id: 3, Urip: 7, KertaAji: 6, Kupih: 6 */
-    BUDA(7, 6, 6),
+    BUDHA(7, 6, 6),
     /** Id: 4, Urip: 8, KertaAji: 5, Kupih: 7 */
-    WRESPATI(8, 5, 7),
+    WRASPATI(8, 5, 7),
     /** Id: 5, Urip: 6, KertaAji: 7, Kupih: 1 */
     SUKRA(6, 7, 1),
     /** Id: 6, Urip: 9, KertaAji: 8, Kupih: 2 */

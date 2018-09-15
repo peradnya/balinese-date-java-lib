@@ -66,7 +66,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.LABA, bDate.caturWara());
         assertEquals(PancaWara.WAGE, bDate.pancaWara());
         assertEquals(SadWara.PANIRON, bDate.sadWara());
-        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
         assertEquals(AstaWara.BRAHMA, bDate.astaWara());
         assertEquals(SangaWara.NOHAN, bDate.sangaWara());
         assertEquals(DasaWara.PATI, bDate.dasaWara());
@@ -107,7 +107,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.SRI, bDate.caturWara());
         assertEquals(PancaWara.WAGE, bDate.pancaWara());
         assertEquals(SadWara.URUKUNG, bDate.sadWara());
-        assertEquals(SaptaWara.WRESPATI, bDate.saptaWara());
+        assertEquals(SaptaWara.WRASPATI, bDate.saptaWara());
         assertEquals(AstaWara.SRI, bDate.astaWara());
         assertEquals(SangaWara.GIGIS, bDate.sangaWara());
         assertEquals(DasaWara.SUKA, bDate.dasaWara());
@@ -148,7 +148,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.MENALA, bDate.caturWara());
         assertEquals(PancaWara.KLIWON, bDate.pancaWara());
         assertEquals(SadWara.PANIRON, bDate.sadWara());
-        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
         assertEquals(AstaWara.YAMA, bDate.astaWara());
         assertEquals(SangaWara.DANGU, bDate.sangaWara());
         assertEquals(DasaWara.MANUH, bDate.dasaWara());
@@ -189,7 +189,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.SRI, bDate.caturWara());
         assertEquals(PancaWara.UMANIS, bDate.pancaWara());
         assertEquals(SadWara.WAS, bDate.sadWara());
-        assertEquals(SaptaWara.WRESPATI, bDate.saptaWara());
+        assertEquals(SaptaWara.WRASPATI, bDate.saptaWara());
         assertEquals(AstaWara.LUDRA, bDate.astaWara());
         assertEquals(SangaWara.JANGUR, bDate.sangaWara());
         assertEquals(DasaWara.DUKA, bDate.dasaWara());
@@ -271,7 +271,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.LABA, bDate.caturWara());
         assertEquals(PancaWara.PAING, bDate.pancaWara());
         assertEquals(SadWara.ARYANG, bDate.sadWara());
-        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
         assertEquals(AstaWara.INDRA, bDate.astaWara());
         assertEquals(SangaWara.OGAN, bDate.sangaWara());
         assertEquals(DasaWara.MANUSA, bDate.dasaWara());
@@ -312,7 +312,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.JAYA, bDate.caturWara());
         assertEquals(PancaWara.PON, bDate.pancaWara());
         assertEquals(SadWara.TUNGLEH, bDate.sadWara());
-        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
         assertEquals(AstaWara.GURU, bDate.astaWara());
         assertEquals(SangaWara.DANGU, bDate.sangaWara());
         assertEquals(DasaWara.SRI, bDate.dasaWara());
@@ -394,7 +394,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.LABA, bDate.caturWara());
         assertEquals(PancaWara.UMANIS, bDate.pancaWara());
         assertEquals(SadWara.ARYANG, bDate.sadWara());
-        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
         assertEquals(AstaWara.BRAHMA, bDate.astaWara());
         assertEquals(SangaWara.TULUS, bDate.sangaWara());
         assertEquals(DasaWara.SUKA, bDate.dasaWara());
@@ -435,7 +435,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.JAYA, bDate.caturWara());
         assertEquals(PancaWara.PAING, bDate.pancaWara());
         assertEquals(SadWara.URUKUNG, bDate.sadWara());
-        assertEquals(SaptaWara.WRESPATI, bDate.saptaWara());
+        assertEquals(SaptaWara.WRASPATI, bDate.saptaWara());
         assertEquals(AstaWara.KALA, bDate.astaWara());
         assertEquals(SangaWara.DADI, bDate.sangaWara());
         assertEquals(DasaWara.RAJA, bDate.dasaWara());

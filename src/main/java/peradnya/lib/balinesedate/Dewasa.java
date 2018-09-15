@@ -54,11 +54,11 @@ public enum Dewasa {
     AMERTA_WIJA,
     /** Id: 14 (Not Supported) */
     AMERTA_YOGA,
-    /** Id: 15 (Not Supported) */
+    /** Id: 15 */
     ASUAJAG_MUNGGAH,
-    /** Id: 16 (Not Supported) */
+    /** Id: 16 */
     ASUAJAG_TURUN,
-    /** Id: 17 (Not Supported) */
+    /** Id: 17 */
     ASUASA,
     /** Id: 18 (Not Supported) */
     AYU_BHADRA,
@@ -66,25 +66,25 @@ public enum Dewasa {
     AYU_DANA,
     /** Id: 20 (Not Supported) */
     AYU_NULUS,
-    /** Id: 21 (Not Supported) */
+    /** Id: 21 */
     BABI_MUNGGAH,
-    /** Id: 22 (Not Supported) */
+    /** Id: 22 */
     BABI_TURUN,
-    /** Id: 23 (Not Supported) */
+    /** Id: 23 */
     BANU_MILIR,
-    /** Id: 24 (Not Supported) */
+    /** Id: 24 */
     BANU_URUNG,
-    /** Id: 25 (Not Supported) */
+    /** Id: 25 */
     BASAH_CENIK,
-    /** Id: 26 (Not Supported) */
+    /** Id: 26 */
     BASAH_GEDE,
-    /** Id: 27 (Not Supported) */
+    /** Id: 27 */
     BOJOG_MUNGGAH,
-    /** Id: 28 (Not Supported) */
+    /** Id: 28 */
     BOJOG_TURUN,
-    /** Id: 29 (Not Supported) */
+    /** Id: 29 */
     CARIK_WALANGATI,
-    /** Id: 30 (Not Supported) */
+    /** Id: 30 */
     COROK_KODONG,
     /** Id: 31 (Not Supported) */
     DAGDIG_KARANA,
@@ -130,279 +130,281 @@ public enum Dewasa {
     GENI_RAWANA_JEJEPAN,
     /** Id: 52 (Not Supported) */
     GENI_RAWANA_RANGKEP,
-    /** Id: 53 (Not Supported) */
+    /** Id: 53 */
     GUNTUR_GRAHA,
     /** Id: 54 (Not Supported) */
     INGKEL_MACAN,
     /** Id: 55 (Not Supported) */
     ISTRI_PAYASAN,
-    /** Id: 56 (Not Supported) */
+    /** Id: 56 */
     JIWA_MANGANTI,
     /** Id: 57 (Not Supported) */
     KAJENG_KLIWON_ENITAN,
     /** Id: 58 (Not Supported) */
     KAJENG_KLIWON_UWUDAN,
-    /** Id: 59 (Not Supported) */
+    /** Id: 59 */
     KAJENG_LULUNAN,
-    /** Id: 60 (Not Supported) */
+    /** Id: 60 */
     KAJENG_RENDETAN,
-    /** Id: 61 (Not Supported) */
+    /** Id: 61 */
+    KAJENG_SUSUNAN,
+    /** Id: 62 */
     KALA_ANGIN,
-    /** Id: 62 (Not Supported) */
-    KALA_ATAT,
     /** Id: 63 (Not Supported) */
-    KALA_AWUS,
+    KALA_ATAT,
     /** Id: 64 (Not Supported) */
+    KALA_AWUS,
+    /** Id: 65 */
     KALA_BANCARAN,
-    /** Id: 65 (Not Supported) */
+    /** Id: 66 */
     KALA_BANGKUNG,
-    /** Id: 66 (Not Supported) */
+    /** Id: 67 */
     KALA_BESER,
-    /** Id: 67 (Not Supported) */
+    /** Id: 68 */
     KALA_BRAHMA,
-    /** Id: 68 (Not Supported) */
+    /** Id: 69 */
     KALA_BUINGRAU,
-    /** Id: 69 (Not Supported) */
+    /** Id: 70 */
     KALA_CAKRA,
-    /** Id: 70 (Not Supported) */
+    /** Id: 71 */
     KALA_CAPLOKAN,
-    /** Id: 71 (Not Supported) */
-    KALA_CEPITAN,
     /** Id: 72 (Not Supported) */
-    KALA_DANGASTRA,
+    KALA_CEPITAN,
     /** Id: 73 (Not Supported) */
+    KALA_DANGASTRA,
+    /** Id: 74 */
     KALA_DANGU,
-    /** Id: 74 (Not Supported) */
+    /** Id: 75 */
     KALA_DEMIT,
-    /** Id: 75 (Not Supported) */
+    /** Id: 76 */
     KALA_EMPAS,
-    /** Id: 76 (Not Supported) */
+    /** Id: 77 */
     KALA_GACOKAN,
-    /** Id: 77 (Not Supported) */
+    /** Id: 78 */
     KALA_GARUDA,
-    /** Id: 78 (Not Supported) */
-    KALA_GEGER,
     /** Id: 79 (Not Supported) */
-    KALA_GOTONGAN,
+    KALA_GEGER,
     /** Id: 80 (Not Supported) */
+    KALA_GOTONGAN,
+    /** Id: 81 */
     KALA_GRAHA,
-    /** Id: 81 (Not Supported) */
+    /** Id: 82 */
     KALA_GUMARANG,
-    /** Id: 82 (Not Supported) */
+    /** Id: 83 */
     KALA_GURU,
-    /** Id: 83 (Not Supported) */
+    /** Id: 84 */
     KALA_INGSOR,
-    /** Id: 84 (Not Supported) */
+    /** Id: 85 */
     KALA_ISINAN,
-    /** Id: 85 (Not Supported) */
-    KALA_JANGKUT,
     /** Id: 86 (Not Supported) */
-    KALA_JENGKANG,
+    KALA_JANGKUT,
     /** Id: 87 (Not Supported) */
+    KALA_JENGKANG,
+    /** Id: 88 */
     KALA_JENGKING,
-    /** Id: 88 (Not Supported) */
-    KALA_KATEMU,
     /** Id: 89 (Not Supported) */
-    KALA_KECIRAN,
+    KALA_KATEMU,
     /** Id: 90 (Not Supported) */
+    KALA_KECIRAN,
+    /** Id: 91 */
     KALA_KILANGKILUNG,
-    /** Id: 91 (Not Supported) */
+    /** Id: 92 */
     KALA_KUTILA,
-    /** Id: 92 (Not Supported) */
+    /** Id: 93 */
     KALA_KUTILA_MANIK,
-    /** Id: 93 (Not Supported) */
+    /** Id: 94 */
     KALA_LUANG,
-    /** Id: 94 (Not Supported) */
+    /** Id: 95 */
     KALA_MACAN,
-    /** Id: 95 (Not Supported) */
-    KALA_MANGAP,
     /** Id: 96 (Not Supported) */
+    KALA_MANGAP,
+    /** Id: 97 */
     KALA_MATAMPAK,
-    /** Id: 97 (Not Supported) */
-    KALA_MERENG,
     /** Id: 98 (Not Supported) */
-    KALA_MINA,
+    KALA_MERENG,
     /** Id: 99 (Not Supported) */
-    KALA_MRETYU,
+    KALA_MINA,
     /** Id: 100 (Not Supported) */
-    KALA_MUAS,
+    KALA_MRETYU,
     /** Id: 101 (Not Supported) */
-    KALA_MUNCRAT,
+    KALA_MUAS,
     /** Id: 102 (Not Supported) */
-    KALA_NANGGUNG,
+    KALA_MUNCRAT,
     /** Id: 103 (Not Supported) */
-    KALA_NGADEG,
+    KALA_NANGGUNG,
     /** Id: 104 (Not Supported) */
-    KALA_NGARABIN,
+    KALA_NGADEG,
     /** Id: 105 (Not Supported) */
-    KALA_NGERUDA,
+    KALA_NGARABIN,
     /** Id: 106 (Not Supported) */
-    KALA_NGUNA,
+    KALA_NGERUDA,
     /** Id: 107 (Not Supported) */
-    KALA_OLIH,
+    KALA_NGUNA,
     /** Id: 108 (Not Supported) */
-    KALA_PACEKAN,
+    KALA_OLIH,
     /** Id: 109 (Not Supported) */
-    KALA_PAGER,
+    KALA_PACEKAN,
     /** Id: 110 (Not Supported) */
-    KALA_PANENENG,
+    KALA_PAGER,
     /** Id: 111 (Not Supported) */
-    KALA_PATI,
+    KALA_PANENENG,
     /** Id: 112 (Not Supported) */
-    KALA_PATI_JENGKANG,
+    KALA_PATI,
     /** Id: 113 (Not Supported) */
-    KALA_PEGAT,
+    KALA_PATI_JENGKANG,
     /** Id: 114 (Not Supported) */
-    KALA_PRAWANI,
+    KALA_PEGAT,
     /** Id: 115 (Not Supported) */
-    KALA_RAJA,
+    KALA_PRAWANI,
     /** Id: 116 (Not Supported) */
-    KALA_RAU,
+    KALA_RAJA,
     /** Id: 117 (Not Supported) */
-    KALA_REBUTAN,
+    KALA_RAU,
     /** Id: 118 (Not Supported) */
-    KALA_RUMPUH,
+    KALA_REBUTAN,
     /** Id: 119 (Not Supported) */
-    KALA_SAPUHAU,
+    KALA_RUMPUH,
     /** Id: 120 (Not Supported) */
-    KALA_SARANG,
+    KALA_SAPUHAU,
     /** Id: 121 (Not Supported) */
-    KALA_SIYUNG,
+    KALA_SARANG,
     /** Id: 122 (Not Supported) */
-    KALA_SOR,
+    KALA_SIYUNG,
     /** Id: 123 (Not Supported) */
-    KALA_SUDANGASTRA,
+    KALA_SOR,
     /** Id: 124 (Not Supported) */
-    KALA_SUDUKAN,
+    KALA_SUDANGASTRA,
     /** Id: 125 (Not Supported) */
-    KALA_SUNGSANG,
+    KALA_SUDUKAN,
     /** Id: 126 (Not Supported) */
-    KALA_SUWUNG,
+    KALA_SUNGSANG,
     /** Id: 127 (Not Supported) */
-    KALA_TEMAH,
+    KALA_SUWUNG,
     /** Id: 128 (Not Supported) */
-    KALA_TUMAPEL,
+    KALA_TEMAH,
     /** Id: 129 (Not Supported) */
-    KALA_UPA,
+    KALA_TUMAPEL,
     /** Id: 130 (Not Supported) */
-    KALA_WAS,
+    KALA_UPA,
     /** Id: 131 (Not Supported) */
-    KALA_WISESA,
+    KALA_WAS,
     /** Id: 132 (Not Supported) */
-    KALEBURAU,
+    KALA_WISESA,
     /** Id: 133 (Not Supported) */
-    KAMAJAYA,
+    KALEBURAU,
     /** Id: 134 (Not Supported) */
-    KARNA_SULA,
+    KAMAJAYA,
     /** Id: 135 (Not Supported) */
-    LANUS,
+    KARNA_SULA,
     /** Id: 136 (Not Supported) */
-    LEBUR_AWU,
+    LANUS,
     /** Id: 137 (Not Supported) */
-    LUTUNG_MAGANDONG,
+    LEBUR_AWU,
     /** Id: 138 (Not Supported) */
-    MACEKAN_AGUNG,
+    LUTUNG_MAGANDONG,
     /** Id: 139 (Not Supported) */
-    MACEKAN_LANANG,
+    MACEKAN_AGUNG,
     /** Id: 140 (Not Supported) */
-    MACEKAN_WADON,
+    MACEKAN_LANANG,
     /** Id: 141 (Not Supported) */
-    MERTA_SULA,
+    MACEKAN_WADON,
     /** Id: 142 (Not Supported) */
-    PAMACEKAN,
+    MERTA_SULA,
     /** Id: 143 (Not Supported) */
-    PANCA_WREDHI,
+    PAMACEKAN,
     /** Id: 144 (Not Supported) */
-    PANCAMERTA,
+    PANCA_WREDHI,
     /** Id: 145 (Not Supported) */
-    PATIPATA,
+    PANCAMERTA,
     /** Id: 146 (Not Supported) */
-    PATRA_LIMUTAN,
+    PATIPATA,
     /** Id: 147 (Not Supported) */
-    PRABHU_PENDAH,
+    PATRA_LIMUTAN,
     /** Id: 148 (Not Supported) */
-    PRANGEWA,
+    PRABHU_PENDAH,
     /** Id: 149 (Not Supported) */
-    PURNA_SUKA,
+    PRANGEWA,
     /** Id: 150 (Not Supported) */
-    PURWANIN_DINA,
+    PURNA_SUKA,
     /** Id: 151 (Not Supported) */
-    PURWANIN_TANGGAL_PANGELONG,
+    PURWANIN_DINA,
     /** Id: 152 (Not Supported) */
-    RANGDA_TIGA,
+    PURWANIN_TANGGAL_PANGELONG,
     /** Id: 153 (Not Supported) */
-    RARUNG_PAGELANGAN,
+    RANGDA_TIGA,
     /** Id: 154 (Not Supported) */
-    RATU_MAGAMBAHAN,
+    RARUNG_PAGELANGAN,
     /** Id: 155 (Not Supported) */
-    RATU_MAGELUNG,
+    RATU_MAGAMBAHAN,
     /** Id: 156 (Not Supported) */
-    RATU_MANGEMBAN,
+    RATU_MAGELUNG,
     /** Id: 157 (Not Supported) */
-    RATU_MANGIGEL,
+    RATU_MANGEMBAN,
     /** Id: 158 (Not Supported) */
-    RATU_MANGURE,
+    RATU_MANGIGEL,
     /** Id: 159 (Not Supported) */
-    RATU_NGEMBAN_PUTRA,
+    RATU_MANGURE,
     /** Id: 160 (Not Supported) */
-    REKATADALA_AYUDANA,
+    RATU_NGEMBAN_PUTRA,
     /** Id: 161 (Not Supported) */
-    SADHANA_TIBA,
+    REKATADALA_AYUDANA,
     /** Id: 162 (Not Supported) */
-    SADHANA_YOGA,
+    SADHANA_TIBA,
     /** Id: 163 (Not Supported) */
-    SALAH_WADI,
+    SADHANA_YOGA,
     /** Id: 164 (Not Supported) */
-    SAMPAR_WANGKE,
+    SALAH_WADI,
     /** Id: 165 (Not Supported) */
-    SAMPI_GUMARANG_MUNGGAH,
+    SAMPAR_WANGKE,
     /** Id: 166 (Not Supported) */
-    SAMPI_GUMARANG_TURUN,
+    SAMPI_GUMARANG_MUNGGAH,
     /** Id: 167 (Not Supported) */
-    SARIK_AGUNG,
+    SAMPI_GUMARANG_TURUN,
     /** Id: 168 (Not Supported) */
-    SARIK_ANGLAWEAN,
+    SARIK_AGUNG,
     /** Id: 169 (Not Supported) */
-    SARIK_KETAH,
+    SARIK_ANGLAWEAN,
     /** Id: 170 (Not Supported) */
-    SEMUT_SADULUR,
+    SARIK_KETAH,
     /** Id: 171 (Not Supported) */
-    SIWA_SAMPURNA,
+    SEMUT_SADULUR,
     /** Id: 172 (Not Supported) */
-    SRIGATI,
+    SIWA_SAMPURNA,
     /** Id: 173 (Not Supported) */
-    SRIGATI_JENEK,
+    SRIGATI,
     /** Id: 174 (Not Supported) */
-    SRIGATI_MUNGGAH,
+    SRIGATI_JENEK,
     /** Id: 175 (Not Supported) */
-    SRIGATI_TURUN,
+    SRIGATI_MUNGGAH,
     /** Id: 176 (Not Supported) */
-    SRIMURTI,
+    SRIGATI_TURUN,
     /** Id: 177 (Not Supported) */
-    SUBHA_CARA,
+    SRIMURTI,
     /** Id: 178 (Not Supported) */
-    SWARGA_MENGA,
+    SUBHA_CARA,
     /** Id: 179 (Not Supported) */
-    TALI_WANGKE,
+    SWARGA_MENGA,
     /** Id: 180 (Not Supported) */
-    TANPA_GURU,
+    TALI_WANGKE,
     /** Id: 181 (Not Supported) */
-    TITI_BUWUK,
+    TANPA_GURU,
     /** Id: 182 (Not Supported) */
-    TUTUR_MANDI,
+    TITI_BUWUK,
     /** Id: 183 (Not Supported) */
-    TUTUT_MASIH,
+    TUTUR_MANDI,
     /** Id: 184 (Not Supported) */
-    UNCAL_BALUNG,
+    TUTUT_MASIH,
     /** Id: 185 (Not Supported) */
-    UPADANAMERTA,
+    UNCAL_BALUNG,
     /** Id: 186 (Not Supported) */
-    WAS_PENGANTEN,
+    UPADANAMERTA,
     /** Id: 187 (Not Supported) */
-    WISESA,
+    WAS_PENGANTEN,
     /** Id: 188 (Not Supported) */
-    WREDHI_GUNA,
+    WISESA,
     /** Id: 189 (Not Supported) */
+    WREDHI_GUNA,
+    /** Id: 190 (Not Supported) */
     WULAN_TANPA_SIRAH;
 
     /**

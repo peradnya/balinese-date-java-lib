@@ -22,30 +22,6 @@ import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import peradnya.lib.balinesedate.AstaWara;
-import peradnya.lib.balinesedate.CaturWara;
-import peradnya.lib.balinesedate.DasaWara;
-import peradnya.lib.balinesedate.DwiWara;
-import peradnya.lib.balinesedate.EkaJalaRsi;
-import peradnya.lib.balinesedate.EkaWara;
-import peradnya.lib.balinesedate.Ingkel;
-import peradnya.lib.balinesedate.Jejepan;
-import peradnya.lib.balinesedate.Lintang;
-import peradnya.lib.balinesedate.PancaSuda;
-import peradnya.lib.balinesedate.PancaWara;
-import peradnya.lib.balinesedate.Pararasan;
-import peradnya.lib.balinesedate.PratithiSamutPada;
-import peradnya.lib.balinesedate.Rakam;
-import peradnya.lib.balinesedate.SadWara;
-import peradnya.lib.balinesedate.SangaWara;
-import peradnya.lib.balinesedate.SaptaWara;
-import peradnya.lib.balinesedate.Sasih;
-import peradnya.lib.balinesedate.SasihDayInfo;
-import peradnya.lib.balinesedate.TriWara;
-import peradnya.lib.balinesedate.WatekAlit;
-import peradnya.lib.balinesedate.WatekMadya;
-import peradnya.lib.balinesedate.Wuku;
-
 /**
  * BalineseDate provide the implementation of Balinese Saka Calendar.
  * <p>
@@ -60,6 +36,7 @@ import peradnya.lib.balinesedate.Wuku;
  * 'http://www.babadbali.com/pewarigaan/paringkelan.htm'>Paringkelan</a></li>
  * <li>Eka Jala Rsi</li>
  * <li>Pratithi Samut Pada</li>
+ * <li>Dewasa</li>
  * <li>Sasih</li>
  * <li><a target='_blank' href=
  * 'http://www.babadbali.com/pewarigaan/kalender-saka.htm'>Saka</a></li>
@@ -106,6 +83,7 @@ public final class BalineseDate extends BalineseDateBase implements Serializable
     private final SasihDayInfo sasihDayInfo;
     private final Sasih sasih;
     private final PratithiSamutPada pratithiSamutPada;
+    private final List<Dewasa> dewasa;
 
     /**
      * Construct BalineseDate with current date.
@@ -171,8 +149,12 @@ public final class BalineseDate extends BalineseDateBase implements Serializable
             tempSasihDay.add(extra);
         }
         sasihDay = Collections.unmodifiableList(tempSasihDay);
-
         pratithiSamutPada = getPratithiSamutPada(sasihDay, sasihDayInfo, sasih, calendar);
+
+        List<Dewasa> tempDewasa = new ArrayList<Dewasa>();
+        getDewasaBySaptaWaraWuku(saptaWara, wuku, tempDewasa);
+
+        dewasa = Collections.unmodifiableList(tempDewasa);
     }
 
     /**
@@ -432,6 +414,20 @@ public final class BalineseDate extends BalineseDateBase implements Serializable
     @Override
     public PratithiSamutPada pratithiSamutPada() {
         return pratithiSamutPada;
+    }
+
+    /**
+     * Returns the list of Dewasa of BalineseDate.
+     * <p>
+     * <b>Note:</b> The return value of this method is protected by
+     * {@code Collections.unmodifiableList()} to prevent list modification from
+     * outside.
+     * 
+     * @return the list of Dewasa of BalineseDate
+     */
+    @Override
+    public List<Dewasa> dewasa() {
+        return dewasa;
     }
 
     /**
