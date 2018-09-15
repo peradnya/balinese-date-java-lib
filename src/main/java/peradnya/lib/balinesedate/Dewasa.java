@@ -220,75 +220,75 @@ public enum Dewasa {
     KALA_MANGAP,
     /** Id: 97 */
     KALA_MATAMPAK,
-    /** Id: 98 (Not Supported) */
+    /** Id: 98 */
     KALA_MERENG,
-    /** Id: 99 (Not Supported) */
+    /** Id: 99 */
     KALA_MINA,
-    /** Id: 100 (Not Supported) */
+    /** Id: 100 */
     KALA_MRETYU,
-    /** Id: 101 (Not Supported) */
+    /** Id: 101 */
     KALA_MUAS,
     /** Id: 102 (Not Supported) */
     KALA_MUNCRAT,
     /** Id: 103 (Not Supported) */
     KALA_NANGGUNG,
-    /** Id: 104 (Not Supported) */
+    /** Id: 104 */
     KALA_NGADEG,
-    /** Id: 105 (Not Supported) */
+    /** Id: 105 */
     KALA_NGARABIN,
-    /** Id: 106 (Not Supported) */
+    /** Id: 106 */
     KALA_NGERUDA,
-    /** Id: 107 (Not Supported) */
+    /** Id: 107 */
     KALA_NGUNA,
-    /** Id: 108 (Not Supported) */
+    /** Id: 108 */
     KALA_OLIH,
-    /** Id: 109 (Not Supported) */
+    /** Id: 109 */
     KALA_PACEKAN,
-    /** Id: 110 (Not Supported) */
+    /** Id: 110 */
     KALA_PAGER,
-    /** Id: 111 (Not Supported) */
+    /** Id: 111 */
     KALA_PANENENG,
-    /** Id: 112 (Not Supported) */
+    /** Id: 112 */
     KALA_PATI,
     /** Id: 113 (Not Supported) */
     KALA_PATI_JENGKANG,
-    /** Id: 114 (Not Supported) */
+    /** Id: 114 */
     KALA_PEGAT,
-    /** Id: 115 (Not Supported) */
+    /** Id: 115 */
     KALA_PRAWANI,
-    /** Id: 116 (Not Supported) */
+    /** Id: 116 */
     KALA_RAJA,
-    /** Id: 117 (Not Supported) */
+    /** Id: 117 */
     KALA_RAU,
-    /** Id: 118 (Not Supported) */
+    /** Id: 118 */
     KALA_REBUTAN,
-    /** Id: 119 (Not Supported) */
+    /** Id: 119 */
     KALA_RUMPUH,
-    /** Id: 120 (Not Supported) */
+    /** Id: 120 */
     KALA_SAPUHAU,
-    /** Id: 121 (Not Supported) */
+    /** Id: 121 */
     KALA_SARANG,
-    /** Id: 122 (Not Supported) */
+    /** Id: 122 */
     KALA_SIYUNG,
-    /** Id: 123 (Not Supported) */
+    /** Id: 123 */
     KALA_SOR,
-    /** Id: 124 (Not Supported) */
+    /** Id: 124 */
     KALA_SUDANGASTRA,
-    /** Id: 125 (Not Supported) */
+    /** Id: 125 */
     KALA_SUDUKAN,
-    /** Id: 126 (Not Supported) */
+    /** Id: 126 */
     KALA_SUNGSANG,
-    /** Id: 127 (Not Supported) */
+    /** Id: 127 */
     KALA_SUWUNG,
-    /** Id: 128 (Not Supported) */
+    /** Id: 128 */
     KALA_TEMAH,
-    /** Id: 129 (Not Supported) */
+    /** Id: 129 */
     KALA_TUMAPEL,
     /** Id: 130 (Not Supported) */
     KALA_UPA,
-    /** Id: 131 (Not Supported) */
+    /** Id: 131 */
     KALA_WAS,
-    /** Id: 132 (Not Supported) */
+    /** Id: 132 */
     KALA_WISESA,
     /** Id: 133 (Not Supported) */
     KALEBURAU,
@@ -296,11 +296,11 @@ public enum Dewasa {
     KAMAJAYA,
     /** Id: 135 (Not Supported) */
     KARNA_SULA,
-    /** Id: 136 (Not Supported) */
+    /** Id: 136 */
     LANUS,
     /** Id: 137 (Not Supported) */
     LEBUR_AWU,
-    /** Id: 138 (Not Supported) */
+    /** Id: 138 */
     LUTUNG_MAGANDONG,
     /** Id: 139 (Not Supported) */
     MACEKAN_AGUNG,
@@ -330,7 +330,7 @@ public enum Dewasa {
     PURWANIN_DINA,
     /** Id: 152 (Not Supported) */
     PURWANIN_TANGGAL_PANGELONG,
-    /** Id: 153 (Not Supported) */
+    /** Id: 153 */
     RANGDA_TIGA,
     /** Id: 154 (Not Supported) */
     RARUNG_PAGELANGAN,
@@ -352,31 +352,31 @@ public enum Dewasa {
     SADHANA_TIBA,
     /** Id: 163 (Not Supported) */
     SADHANA_YOGA,
-    /** Id: 164 (Not Supported) */
+    /** Id: 164 */
     SALAH_WADI,
-    /** Id: 165 (Not Supported) */
+    /** Id: 165 */
     SAMPAR_WANGKE,
-    /** Id: 166 (Not Supported) */
+    /** Id: 166 */
     SAMPI_GUMARANG_MUNGGAH,
-    /** Id: 167 (Not Supported) */
+    /** Id: 167 */
     SAMPI_GUMARANG_TURUN,
-    /** Id: 168 (Not Supported) */
+    /** Id: 168 */
     SARIK_AGUNG,
     /** Id: 169 (Not Supported) */
-    SARIK_ANGLAWEAN,
-    /** Id: 170 (Not Supported) */
     SARIK_KETAH,
+    /** Id: 170 (Not Supported) */
+    SASIH_ANGLAWEAN,
     /** Id: 171 (Not Supported) */
     SEMUT_SADULUR,
     /** Id: 172 (Not Supported) */
     SIWA_SAMPURNA,
     /** Id: 173 (Not Supported) */
     SRIGATI,
-    /** Id: 174 (Not Supported) */
+    /** Id: 174 */
     SRIGATI_JENEK,
-    /** Id: 175 (Not Supported) */
+    /** Id: 175 */
     SRIGATI_MUNGGAH,
-    /** Id: 176 (Not Supported) */
+    /** Id: 176 */
     SRIGATI_TURUN,
     /** Id: 177 (Not Supported) */
     SRIMURTI,
@@ -384,21 +384,21 @@ public enum Dewasa {
     SUBHA_CARA,
     /** Id: 179 (Not Supported) */
     SWARGA_MENGA,
-    /** Id: 180 (Not Supported) */
+    /** Id: 180 */
     TALI_WANGKE,
-    /** Id: 181 (Not Supported) */
+    /** Id: 181 */
     TANPA_GURU,
-    /** Id: 182 (Not Supported) */
+    /** Id: 182 */
     TITI_BUWUK,
-    /** Id: 183 (Not Supported) */
+    /** Id: 183 */
     TUTUR_MANDI,
-    /** Id: 184 (Not Supported) */
+    /** Id: 184 */
     TUTUT_MASIH,
     /** Id: 185 (Not Supported) */
     UNCAL_BALUNG,
     /** Id: 186 (Not Supported) */
     UPADANAMERTA,
-    /** Id: 187 (Not Supported) */
+    /** Id: 187 */
     WAS_PENGANTEN,
     /** Id: 188 (Not Supported) */
     WISESA,

@@ -391,43 +391,70 @@ abstract class BalineseDateBase {
         if (wuku == Wuku.SINTA) {
             list.add(Dewasa.BASAH_GEDE);
             list.add(Dewasa.CARIK_WALANGATI);
+            list.add(Dewasa.SALAH_WADI);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BANCARAN);
+                list.add(Dewasa.KALA_MRETYU);
+                list.add(Dewasa.KALA_PRAWANI);
+                list.add(Dewasa.KALA_RAU);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.BANU_URUNG);
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.SAMPAR_WANGKE);
+                list.add(Dewasa.TALI_WANGKE);
             } else if (saptaWara == SaptaWara.ANGGARA) {    
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_EMPAS);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.BANU_MILIR);
                 list.add(Dewasa.KALA_BRAHMA);
                 list.add(Dewasa.KALA_DANGU);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_MRETYU);
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.KALA_SUDUKAN);
             } else if (saptaWara == SaptaWara.WRASPATI) {
-
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.ASUAJAG_MUNGGAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_BESER);
+                list.add(Dewasa.KALA_MINA);
             }
         } else if (wuku == Wuku.LANDEP) {
             list.add(Dewasa.BASAH_CENIK);
+            list.add(Dewasa.SALAH_WADI);
             if (saptaWara == SaptaWara.REDITE) {
-
+                list.add(Dewasa.KALA_SIYUNG);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_GRAHA);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_GARUDA);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.GUNTUR_GRAHA);
                 list.add(Dewasa.KALA_GURU);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_PRAWANI);
+                list.add(Dewasa.KALA_SUDANGASTRA);
+                list.add(Dewasa.KALA_WISESA);
+                list.add(Dewasa.TALI_WANGKE);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.JIWA_MANGANTI);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.BABI_MUNGGAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
@@ -435,25 +462,44 @@ abstract class BalineseDateBase {
                 list.add(Dewasa.KALA_KUTILA);
             }
         } else if (wuku == Wuku.UKIR) {
+            list.add(Dewasa.LANUS);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.ASUASA);
                 list.add(Dewasa.KALA_JENGKING);
+                list.add(Dewasa.KALA_NGUNA);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.SRIGATI_MUNGGAH);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_SAPUHAU);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_EMPAS);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.LUTUNG_MAGANDONG);
+                list.add(Dewasa.TUTUR_MANDI);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.ASUAJAG_TURUN);
                 list.add(Dewasa.KAJENG_RENDETAN);
                 list.add(Dewasa.KALA_DEMIT);
+                list.add(Dewasa.KALA_PEGAT);
+                list.add(Dewasa.KALA_RAU);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
             }
         } else if (wuku == Wuku.KULANTIR) {
             list.add(Dewasa.BASAH_CENIK);
@@ -462,85 +508,124 @@ abstract class BalineseDateBase {
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.BANU_MILIR);
                 list.add(Dewasa.KALA_BANGKUNG);
+                list.add(Dewasa.KALA_MUAS);
+                list.add(Dewasa.SAMPI_GUMARANG_MUNGGAH);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.KALA_BANGKUNG);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.SRIGATI_JENEK);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_BANGKUNG);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SARIK_AGUNG);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.WRASPATI) {
 
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_BRAHMA);
                 list.add(Dewasa.KALA_GUMARANG);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.BABI_TURUN);
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_RAU);
             }
         } else if (wuku == Wuku.TOLU) {
             list.add(Dewasa.BASAH_CENIK);
+            list.add(Dewasa.KALA_PATI);
+            list.add(Dewasa.WAS_PENGANTEN);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.BOJOG_MUNGGAH);
                 list.add(Dewasa.KALA_DANGU);
                 list.add(Dewasa.KALA_MATAMPAK);
             } else if (saptaWara == SaptaWara.SOMA) {
-
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SRIGATI_TURUN);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BANCARAN);
                 list.add(Dewasa.KALA_BESER);
+                list.add(Dewasa.KALA_MINA);
+                list.add(Dewasa.KALA_PACEKAN);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.GUNTUR_GRAHA);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_EMPAS);
+                list.add(Dewasa.KALA_MRETYU);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SUKRA) {
-
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_GRAHA);
+                list.add(Dewasa.KALA_WISESA);
             }
         } else if (wuku == Wuku.GUMBREG) {
             list.add(Dewasa.BASAH_CENIK);
             list.add(Dewasa.CARIK_WALANGATI);
+            list.add(Dewasa.SALAH_WADI);
+            list.add(Dewasa.TANPA_GURU);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.ASUAJAG_MUNGGAH);
             } else if (saptaWara == SaptaWara.SOMA) {
-
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.SAMPI_GUMARANG_TURUN);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_DANGU);
                 list.add(Dewasa.KALA_KUTILA);
+                list.add(Dewasa.KALA_PATI);
+                list.add(Dewasa.KALA_SUDUKAN);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KAJENG_RENDETAN);
                 list.add(Dewasa.KALA_JENGKING);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_SUWUNG);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BANU_URUNG);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_RAU);
             } else if (saptaWara == SaptaWara.SANISCARA) {
-                
+                list.add(Dewasa.KALA_SUDANGASTRA);
             }
         } else if (wuku == Wuku.WARIGA) {
             list.add(Dewasa.BASAH_CENIK);
             list.add(Dewasa.CARIK_WALANGATI);
+            list.add(Dewasa.KALA_SARANG);
+            list.add(Dewasa.RANGDA_TIGA);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.BABI_MUNGGAH);
+                list.add(Dewasa.KALA_PANENENG);
             } else if (saptaWara == SaptaWara.SOMA) {
-
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SAMPAR_WANGKE);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.ASUASA);
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.SRIGATI_MUNGGAH);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_BUINGRAU);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_PAGER);
+                list.add(Dewasa.TALI_WANGKE);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.JIWA_MANGANTI);
                 list.add(Dewasa.KALA_EMPAS);
@@ -551,6 +636,7 @@ abstract class BalineseDateBase {
             }
         } else if (wuku == Wuku.WARIGADEAN) {
             list.add(Dewasa.BASAH_CENIK);
+            list.add(Dewasa.RANGDA_TIGA);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.BOJOG_MUNGGAH);
                 list.add(Dewasa.KALA_BUINGRAU);
@@ -560,15 +646,24 @@ abstract class BalineseDateBase {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.BOJOG_TURUN);
                 list.add(Dewasa.KALA_BANGKUNG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_LUANG);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.SAMPI_GUMARANG_MUNGGAH);
             } else if (saptaWara == SaptaWara.BUDHA) {
-
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.LUTUNG_MAGANDONG);
+                list.add(Dewasa.SRIGATI_JENEK);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_MINA);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_DANGU);
@@ -578,87 +673,140 @@ abstract class BalineseDateBase {
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KAJENG_RENDETAN);
                 list.add(Dewasa.KALA_BANGKUNG);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.BABI_TURUN);
                 list.add(Dewasa.KALA_CAPLOKAN);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BOJOG_MUNGGAH);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_WISESA);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_DANGU);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.SRIGATI_TURUN);
             } else if (saptaWara == SaptaWara.WRASPATI) {
-
+                list.add(Dewasa.TUTUR_MANDI);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_KUTILA);
+                list.add(Dewasa.KALA_MRETYU);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_CAPLOKAN);
                 list.add(Dewasa.KALA_EMPAS);
                 list.add(Dewasa.KALA_JENGKING);
+                list.add(Dewasa.KALA_SOR);
             }
         } else if (wuku == Wuku.SUNGSANG) {
             list.add(Dewasa.CARIK_WALANGATI);
+            list.add(Dewasa.LANUS);
+            list.add(Dewasa.SALAH_WADI);
             if (saptaWara == SaptaWara.REDITE) {
-
+                list.add(Dewasa.KALA_PATI);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.BANU_URUNG);
+                list.add(Dewasa.KALA_NGERUDA);
+                list.add(Dewasa.KALA_SIYUNG);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.ASUAJAG_MUNGGAH);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.BANU_URUNG);
+                list.add(Dewasa.KALA_PATI);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.SAMPI_GUMARANG_TURUN);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.WRASPATI) {
-
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SUKRA) {
-
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_DANGU);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.KALA_NGERUDA);
             }
         } else if (wuku == Wuku.DUNGULAN) {
+            list.add(Dewasa.KALA_PATI);
+            list.add(Dewasa.LANUS);
+            list.add(Dewasa.SALAH_WADI);
+            list.add(Dewasa.WAS_PENGANTEN);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_LUANG);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.KALA_ISINAN);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BABI_MUNGGAH);
                 list.add(Dewasa.KALA_BANCARAN);
                 list.add(Dewasa.KALA_BESER);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_MINA);
+                list.add(Dewasa.KALA_NGADEG);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.BOJOG_TURUN);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SARIK_AGUNG);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.ASUASA);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.SRIGATI_MUNGGAH);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.KALA_WISESA);
             }
         } else if (wuku == Wuku.KUNINGAN) {
             list.add(Dewasa.CARIK_WALANGATI);
+            list.add(Dewasa.LANUS);
+            list.add(Dewasa.TANPA_GURU);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_EMPAS);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_SUDUKAN);
             } else if (saptaWara == SaptaWara.SOMA) {
-
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_KUTILA);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.KALA_TUMAPEL);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.ASUAJAG_TURUN);
                 list.add(Dewasa.KALA_JENGKING);
+                list.add(Dewasa.KALA_NGADEG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_SUDANGASTRA);
+                list.add(Dewasa.KALA_TUMAPEL);
             } else if (saptaWara == SaptaWara.WRASPATI) {
-
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SAMPI_GUMARANG_MUNGGAH);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_BANCARAN);
                 list.add(Dewasa.KALA_BUINGRAU);
                 list.add(Dewasa.KALA_CAPLOKAN);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_NGADEG);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.TALI_WANGKE);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KAJENG_RENDETAN);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.SRIGATI_JENEK);
             }
         } else if (wuku == Wuku.LANGKIR) {
             list.add(Dewasa.BASAH_CENIK);
@@ -667,18 +815,33 @@ abstract class BalineseDateBase {
                 list.add(Dewasa.KALA_MATAMPAK);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.KALA_BANGKUNG);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SAMPAR_WANGKE);
+                list.add(Dewasa.TALI_WANGKE);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.BABI_TURUN);
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BOJOG_MUNGGAH);
                 list.add(Dewasa.COROK_KODONG);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.LUTUNG_MAGANDONG);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.BANU_MILIR);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SRIGATI_TURUN);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_BRAHMA);
+                list.add(Dewasa.KALA_SUWUNG);
             }
         } else if (wuku == Wuku.MEDANGSIA) {
             list.add(Dewasa.BASAH_CENIK);
@@ -686,136 +849,224 @@ abstract class BalineseDateBase {
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.ASUASA);
                 list.add(Dewasa.KAJENG_SUSUNAN);
                 list.add(Dewasa.KALA_EMPAS);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BRAHMA);
+                list.add(Dewasa.KALA_PATI);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_BANGKUNG);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.ASUAJAG_MUNGGAH);
                 list.add(Dewasa.GUNTUR_GRAHA);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_RUMPUH);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_BANGKUNG);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SAMPI_GUMARANG_TURUN);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_MRETYU);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.KALA_TEMAH);
             }
         } else if (wuku == Wuku.PUJUD) {
             list.add(Dewasa.BASAH_CENIK);
+            list.add(Dewasa.RANGDA_TIGA);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.ASUASA);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.KALA_NGADEG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SOMA) {
 
             } else if (saptaWara == SaptaWara.ANGGARA) {
-
+                list.add(Dewasa.KALA_WISESA);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KAJENG_RENDETAN);
                 list.add(Dewasa.KALA_GUMARANG);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.TITI_BUWUK);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BABI_MUNGGAH);
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.TUTUR_MANDI);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.BOJOG_TURUN);
                 list.add(Dewasa.KALA_KUTILA);
+                list.add(Dewasa.KALA_MRETYU);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_CAPLOKAN);
                 list.add(Dewasa.KALA_JENGKING);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SRIGATI_MUNGGAH);
             }
         } else if (wuku == Wuku.PAHANG) {
+            list.add(Dewasa.LANUS);
+            list.add(Dewasa.RANGDA_TIGA);
+            list.add(Dewasa.SALAH_WADI);
             if (saptaWara == SaptaWara.REDITE) {
 
             } else if (saptaWara == SaptaWara.SOMA) {
-
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_EMPAS);
                 list.add(Dewasa.KALA_MATAMPAK);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.SAMPI_GUMARANG_MUNGGAH);
             } else if (saptaWara == SaptaWara.WRASPATI) {
 
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.ASUAJAG_TURUN);
                 list.add(Dewasa.KAJENG_LULUNAN);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_MUAS);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.TITI_BUWUK);
             }
         } else if (wuku == Wuku.KRULUT) {
+            list.add(Dewasa.KALA_SARANG);
+            list.add(Dewasa.LANUS);
+            list.add(Dewasa.WAS_PENGANTEN);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_ANGIN);
+                list.add(Dewasa.KALA_NGADEG);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BUINGRAU);
                 list.add(Dewasa.KALA_ISINAN);
                 list.add(Dewasa.KALA_KILANGKILUNG);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.KALA_WAS);
+                list.add(Dewasa.SRIGATI_JENEK);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_NGARABIN);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.BABI_TURUN);
                 list.add(Dewasa.BANU_URUNG);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.BOJOG_MUNGGAH);
+                list.add(Dewasa.KALA_PATI);
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.TALI_WANGKE);
             }
         } else if (wuku == Wuku.MERAKIH) {
+            list.add(Dewasa.LANUS);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KAJENG_RENDETAN);
+                list.add(Dewasa.KALA_MRETYU);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.SRIGATI_TURUN);
+                list.add(Dewasa.TITI_BUWUK);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_BESER);
                 list.add(Dewasa.KALA_CAPLOKAN);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_MINA);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BANU_URUNG);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_EMPAS);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.SARIK_AGUNG);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.GUNTUR_GRAHA);
+                list.add(Dewasa.LUTUNG_MAGANDONG);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.SUKRA) {
-
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_WISESA);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.ASUAJAG_MUNGGAH);
+                list.add(Dewasa.KALA_NGARABIN);
+                list.add(Dewasa.KALA_PEGAT);
+                list.add(Dewasa.KALA_RAU);
             }
         } else if (wuku == Wuku.TAMBIR) {
             list.add(Dewasa.BASAH_CENIK);
+            list.add(Dewasa.SALAH_WADI);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_BANGKUNG);
+                list.add(Dewasa.SAMPI_GUMARANG_TURUN);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.JIWA_MANGANTI);
                 list.add(Dewasa.KALA_KUTILA);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_NGADEG);
+                list.add(Dewasa.SAMPAR_WANGKE);
+                list.add(Dewasa.TALI_WANGKE);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_GACOKAN);
                 list.add(Dewasa.KALA_JENGKING);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_KILANGKILUNG);
                 list.add(Dewasa.KALA_MACAN);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.KALA_PRAWANI);
+                list.add(Dewasa.KALA_SUDANGASTRA);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_GUMARANG);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.BABI_MUNGGAH);
                 list.add(Dewasa.BANU_URUNG);
@@ -823,21 +1074,30 @@ abstract class BalineseDateBase {
             }
         } else if (wuku == Wuku.MEDANGKUNGAN) {
             list.add(Dewasa.BASAH_GEDE);
+            list.add(Dewasa.SALAH_WADI);
+            list.add(Dewasa.TANPA_GURU);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.BOJOG_TURUN);
+                list.add(Dewasa.KALA_MRETYU);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.BANU_URUNG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SRIGATI_MUNGGAH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
 
             } else if (saptaWara == SaptaWara.BUDHA) {
-
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.KALA_SUDUKAN);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.JIWA_MANGANTI);
                 list.add(Dewasa.KALA_EMPAS);
+                list.add(Dewasa.TUTUR_MANDI);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_BUINGRAU);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.GUNTUR_GRAHA);
                 list.add(Dewasa.KALA_DANGU);
@@ -847,22 +1107,36 @@ abstract class BalineseDateBase {
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.ASUAJAG_TURUN);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.SOMA) {
-
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.SAMPI_GUMARANG_MUNGGAH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.BANU_URUNG); 
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.SRIGATI_JENEK);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.KALA_BESER);
+                list.add(Dewasa.KALA_MINA);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.TUTUR_MANDI);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_DANGU);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KAJENG_RENDETAN);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.TITI_BUWUK);
+                list.add(Dewasa.TUTUT_MASIH);
             }
         } else if (wuku == Wuku.UYE) {
+            list.add(Dewasa.LANUS);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.BABI_TURUN);
                 list.add(Dewasa.KALA_BUINGRAU);
@@ -870,61 +1144,97 @@ abstract class BalineseDateBase {
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.BOJOG_MUNGGAH);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.KALA_WISESA);
+                list.add(Dewasa.TALI_WANGKE);
             } else if (saptaWara == SaptaWara.ANGGARA) {
-
+                list.add(Dewasa.SRIGATI_TURUN);
             } else if (saptaWara == SaptaWara.BUDHA) {
 
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_KUTILA);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_BUINGRAU);
                 list.add(Dewasa.KALA_EMPAS);
                 list.add(Dewasa.KALA_JENGKING);
                 list.add(Dewasa.KALA_KUTILA);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 
             }
         } else if (wuku == Wuku.MENAIL) {
+            list.add(Dewasa.KALA_PATI);
+            list.add(Dewasa.LANUS);
+            list.add(Dewasa.RANGDA_TIGA);
+            list.add(Dewasa.WAS_PENGANTEN);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_BRAHMA);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.ASUAJAG_MUNGGAH);
                 list.add(Dewasa.KALA_BANGKUNG);
+                list.add(Dewasa.KALA_MRETYU);
+                list.add(Dewasa.KALA_NGERUDA);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.SAMPI_GUMARANG_TURUN);
             } else if (saptaWara == SaptaWara.BUDHA) {
-
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.LUTUNG_MAGANDONG);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_CAKRA);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.TITI_BUWUK);
             }
         } else if (wuku == Wuku.PRANGBAKAT) {
             list.add(Dewasa.CARIK_WALANGATI);
             list.add(Dewasa.KALA_INGSOR);
+            list.add(Dewasa.LANUS);
+            list.add(Dewasa.RANGDA_TIGA);
+            list.add(Dewasa.SALAH_WADI);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_GUMARANG);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.KALA_SUDANGASTRA);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.BOJOG_MUNGGAH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BOJOG_TURUN);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_PRAWANI);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.ASUASA);
                 list.add(Dewasa.KAJENG_RENDETAN);
                 list.add(Dewasa.KALA_CAPLOKAN);
+                list.add(Dewasa.KALA_OLIH);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.SRIGATI_MUNGGAH);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.TITI_BUWUK);
+                list.add(Dewasa.TUTUR_MANDI);
             } else if (saptaWara == SaptaWara.SUKRA) {
-
+                list.add(Dewasa.KALA_SUDUKAN);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_EMPAS);
@@ -933,23 +1243,35 @@ abstract class BalineseDateBase {
         } else if (wuku == Wuku.BALA) {
             list.add(Dewasa.BASAH_CENIK);
             list.add(Dewasa.CARIK_WALANGATI);
+            list.add(Dewasa.SALAH_WADI);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_ANGIN);
                 list.add(Dewasa.KALA_BESER);
                 list.add(Dewasa.KALA_JENGKING);
+                list.add(Dewasa.KALA_MINA);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.SAMPAR_WANGKE);
+                list.add(Dewasa.TALI_WANGKE);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.ASUAJAG_TURUN);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.SARIK_AGUNG);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_WISESA);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.JIWA_MANGANTI);
                 list.add(Dewasa.KALA_BRAHMA);
                 list.add(Dewasa.KALA_BUINGRAU);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.SRIGATI_JENEK);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_DANGU);
             }
@@ -957,16 +1279,25 @@ abstract class BalineseDateBase {
             list.add(Dewasa.BASAH_GEDE);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_KUTILA);
+                list.add(Dewasa.TITI_BUWUK);
+                list.add(Dewasa.TUTUR_MANDI);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.KALA_JENGKING);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.KALA_REBUTAN);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.BABI_TURUN);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.BOJOG_MUNGGAH);
+                list.add(Dewasa.KALA_PATI);
+                list.add(Dewasa.KALA_RUMPUH);
             } else if (saptaWara == SaptaWara.WRASPATI) {
-
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.SRIGATI_TURUN);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_SUDUKAN);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.GUNTUR_GRAHA);
                 list.add(Dewasa.KALA_BUINGRAU);
@@ -974,59 +1305,97 @@ abstract class BalineseDateBase {
         } else if (wuku == Wuku.WAYANG) {
             list.add(Dewasa.BASAH_GEDE);
             list.add(Dewasa.CARIK_WALANGATI);
+            list.add(Dewasa.KALA_SUNGSANG);
+            list.add(Dewasa.SALAH_WADI);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KAJENG_RENDETAN);
                 list.add(Dewasa.KALA_DANGU);
                 list.add(Dewasa.KALA_EMPAS);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.KALA_LUANG);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_MUAS);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
-
+                list.add(Dewasa.KALA_MRETYU);
+                list.add(Dewasa.KALA_PATI);
+                list.add(Dewasa.KALA_SAPUHAU);
+                list.add(Dewasa.KALA_SUDUKAN);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.TALI_WANGKE);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.ASUAJAG_MUNGGAH);
+                list.add(Dewasa.KALA_RUMPUH);
             } else if (saptaWara == SaptaWara.WRASPATI) {
-
+                list.add(Dewasa.SAMPI_GUMARANG_TURUN);
             } else if (saptaWara == SaptaWara.SUKRA) {
-
+                list.add(Dewasa.TUTUT_MASIH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.KALA_SOR);
             }
         } else if (wuku == Wuku.KLAWU) {
             list.add(Dewasa.CARIK_WALANGATI);
+            list.add(Dewasa.KALA_PATI);
+            list.add(Dewasa.LANUS);
+            list.add(Dewasa.TANPA_GURU);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_ANGIN);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.KALA_BANGKUNG);
+                list.add(Dewasa.KALA_NGADEG);
             } else if (saptaWara == SaptaWara.ANGGARA) {
-
+                list.add(Dewasa.KALA_SUDANGASTRA);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.BABI_MUNGGAH);
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BESER);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_MINA);
+                list.add(Dewasa.KALA_SAPUHAU);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BOJOG_TURUN);
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_LUANG);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.LUTUNG_MAGANDONG);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.ASUASA);
                 list.add(Dewasa.BANU_URUNG);
                 list.add(Dewasa.KALA_BESER);
                 list.add(Dewasa.KALA_BUINGRAU);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_SIYUNG);
+                list.add(Dewasa.KALA_SOR);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SRIGATI_MUNGGAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
-                
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.KALA_TEMAH);
             }
         } else if (wuku == Wuku.DUKUT) {
+            list.add(Dewasa.KALA_PATI);
+            list.add(Dewasa.LANUS);
+            list.add(Dewasa.WAS_PENGANTEN);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_MATAMPAK);
+                list.add(Dewasa.KALA_NGERUDA);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.KALA_WISESA);
             } else if (saptaWara == SaptaWara.SOMA) {
                 list.add(Dewasa.KALA_EMPAS);
+                list.add(Dewasa.KALA_SIYUNG);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_BUINGRAU);
@@ -1035,25 +1404,38 @@ abstract class BalineseDateBase {
                 list.add(Dewasa.ASUAJAG_TURUN);
                 list.add(Dewasa.KALA_JENGKING);
                 list.add(Dewasa.KALA_LUANG);
+                list.add(Dewasa.KALA_RAJA);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.SUKRA) {
                 list.add(Dewasa.BANU_URUNG);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.SAMPI_GUMARANG_MUNGGAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.KALA_BANGKUNG);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.KALA_TEMAH);
+                list.add(Dewasa.TITI_BUWUK);
             }
         } else if (wuku == Wuku.WATUGUNUNG) {
             list.add(Dewasa.BASAH_GEDE);
             list.add(Dewasa.CARIK_WALANGATI);
+            list.add(Dewasa.SALAH_WADI);
             if (saptaWara == SaptaWara.REDITE) {
                 list.add(Dewasa.KALA_BUINGRAU);
                 list.add(Dewasa.KALA_KUTILA_MANIK);
+                list.add(Dewasa.KALA_RUMPUH);
+                list.add(Dewasa.SRIGATI_JENEK);
+                list.add(Dewasa.TITI_BUWUK);
             } else if (saptaWara == SaptaWara.SOMA) {
-
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.ANGGARA) {
                 list.add(Dewasa.KALA_LUANG);
             } else if (saptaWara == SaptaWara.BUDHA) {
                 list.add(Dewasa.KALA_GUMARANG);
                 list.add(Dewasa.KALA_ISINAN);
+                list.add(Dewasa.KALA_MERENG);
+                list.add(Dewasa.KALA_SOR);
             } else if (saptaWara == SaptaWara.WRASPATI) {
                 list.add(Dewasa.BABI_TURUN);
                 list.add(Dewasa.BOJOG_MUNGGAH);
@@ -1063,10 +1445,16 @@ abstract class BalineseDateBase {
                 list.add(Dewasa.KALA_BESER);
                 list.add(Dewasa.KALA_BRAHMA);
                 list.add(Dewasa.KALA_BUINGRAU);
+                list.add(Dewasa.KALA_NGADEG);
+                list.add(Dewasa.KALA_PANENENG);
+                list.add(Dewasa.KALA_SAPUHAU);
+                list.add(Dewasa.KALA_SUWUNG);
+                list.add(Dewasa.KALA_TEMAH);
             } else if (saptaWara == SaptaWara.SANISCARA) {
                 list.add(Dewasa.JIWA_MANGANTI);
                 list.add(Dewasa.KAJENG_RENDETAN);
                 list.add(Dewasa.KALA_DANGU);
+                list.add(Dewasa.SRIGATI_TURUN);
             }
         }
     }
