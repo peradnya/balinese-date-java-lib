@@ -778,7 +778,7 @@ public class BalineseDateTest {
         assertEquals("Laku Pandita Sakti", bDate.pararasan().toString());
         assertEquals("Sumur Sinaba", bDate.pancaSuda().toString());
 
-        assertEquals("Patining AmErta", bDate.ekaJalaRsi().toString());
+        assertEquals("Patining Amerta", bDate.ekaJalaRsi().toString());
 
         // Penanggal
         assertEquals("Penanggal", bDate.sasihDayInfo().toString());
