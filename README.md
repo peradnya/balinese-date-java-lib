@@ -8,8 +8,7 @@
 
 BalineseDate is an open source library to build Balinese Saka Calendar in Java based application.
 
-> **Note**: This library is in **Beta Phase**, the API may change frequently. 
-> Feedbacks, corrections, or bug reports are welcomed ... :)
+> **Note**: This library is in **Beta Phase**, the API may change without notice.
 
 ## Features
 
@@ -37,10 +36,11 @@ BalineseDate is designed to be __immutable__ and __thread-safe__. BalineseDate h
     * [Rakam](http://www.babadbali.com/pewarigaan/rakam.htm)
 * Eka Jala Rsi __(v0.3.0)__
 * Pratithi Samut Pada __(v0.3.0)__
+* Dewasa __(v0.5.0)__
 * Sasih
     * Pawukon/Penanggal and Nguna Ratri.
     * Pengalantaka Eka Sungsang Pon (before 2000) & Paing (2000 and after)
-    * Mala/Nampih Sasih
+    * Malamasa (< 1993), Sasih Kesinambungan (1993 - 2002), Nampih Sasih (>= 2003)
 * [Saka Year](http://www.babadbali.com/pewarigaan/kalender-saka.htm)
 
 BalineseDate also have several utilities that can be use by developer like:
@@ -49,7 +49,7 @@ BalineseDate also have several utilities that can be use by developer like:
 
 ## Import BalineseDate into Project
 
-BalineseDate Java Library use [Jitpack](https://jitpack.io/#com.gitlab.peradnya/balinese-date-java-lib) to publish the binary. Choose one of thesefollowing method:
+BalineseDate Java Library use [Jitpack](https://jitpack.io/#com.gitlab.peradnya/balinese-date-java-lib) to publish the binary. Choose one of these following method:
 
 ### Direct Download
 
@@ -102,12 +102,7 @@ and then, add dependency to __BalineseDate Library__ in the ```pom.xml```
 
 ## Documentation
 
-### Version 0.x
-
-* [__0.4.0 (Latest)__](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.4.0/javadoc/)
-* [0.3.0](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.3.0/javadoc/)
-* [0.2.0](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.2.0/javadoc/)
-* [0.1.0](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.1.0/javadoc/)
+* [0.4.0 (Latest)](https://jitpack.io/com/gitlab/peradnya/balinese-date-java-lib/0.4.0/javadoc/)
 
 ## How to Build
 

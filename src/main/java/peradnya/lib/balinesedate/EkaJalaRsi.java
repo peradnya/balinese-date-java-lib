@@ -45,11 +45,11 @@ public enum EkaJalaRsi {
     /** Id: 9 */
     KAMERANAN,
     /** Id: 10 */
-    KAMRTAAN,
+    KAMERTAAN,
     /** Id: 11 */
     KASOBAGIAN,
     /** Id: 12 */
-    KINASIHAN_AMRTA,
+    KINASIHAN_AMERTA,
     /** Id: 13 */
     KINASIHAN_JANA,
     /** Id: 14 */
@@ -61,7 +61,7 @@ public enum EkaJalaRsi {
     /** Id: 17 */
     MANGGIH_SUKA,
     /** Id: 18 */
-    PATINING_AMRTA,
+    PATINING_AMERTA,
     /** Id: 19 */
     RAHAYU,
     /** Id: 20 */

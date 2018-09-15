@@ -449,7 +449,7 @@ public class BalineseDateTest {
         assertEquals(Pararasan.LAKU_BUMI, bDate.pararasan());
         assertEquals(PancaSuda.LEBU_KATIUB_ANGIN, bDate.pancaSuda());
 
-        assertEquals(EkaJalaRsi.PATINING_AMRTA, bDate.ekaJalaRsi());
+        assertEquals(EkaJalaRsi.PATINING_AMERTA, bDate.ekaJalaRsi());
 
         // Penanggal
         assertEquals(Arrays.asList(1), bDate.sasihDay());
@@ -696,7 +696,7 @@ public class BalineseDateTest {
         assertEquals(Pararasan.LAKU_PANDITA_SAKTI, bDate.pararasan());
         assertEquals(PancaSuda.SUMUR_SINABA, bDate.pancaSuda());
 
-        assertEquals(EkaJalaRsi.PATINING_AMRTA, bDate.ekaJalaRsi());
+        assertEquals(EkaJalaRsi.PATINING_AMERTA, bDate.ekaJalaRsi());
 
         // Penanggal
         assertEquals(Arrays.asList(1), bDate.sasihDay());
@@ -737,7 +737,7 @@ public class BalineseDateTest {
         assertEquals(Pararasan.LAKU_PANDITA_SAKTI, bDate.pararasan());
         assertEquals(PancaSuda.SUMUR_SINABA, bDate.pancaSuda());
 
-        assertEquals(EkaJalaRsi.PATINING_AMRTA, bDate.ekaJalaRsi());
+        assertEquals(EkaJalaRsi.PATINING_AMERTA, bDate.ekaJalaRsi());
 
         // Penanggal
         assertEquals(Arrays.asList(4), bDate.sasihDay());
@@ -778,7 +778,7 @@ public class BalineseDateTest {
         assertEquals("Laku Pandita Sakti", bDate.pararasan().toString());
         assertEquals("Sumur Sinaba", bDate.pancaSuda().toString());
 
-        assertEquals("Patining Amrta", bDate.ekaJalaRsi().toString());
+        assertEquals("Patining AmErta", bDate.ekaJalaRsi().toString());
 
         // Penanggal
         assertEquals("Penanggal", bDate.sasihDayInfo().toString());
