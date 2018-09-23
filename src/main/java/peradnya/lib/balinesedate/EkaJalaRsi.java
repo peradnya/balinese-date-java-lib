@@ -77,9 +77,9 @@ public enum EkaJalaRsi {
     /** Id: 25 */
     TININGGALING_SUKA,
     /** Id: 26 */
-    WREDHI_PUTRA,
+    WERDHI_PUTRA,
     /** Id: 27 */
-    WREDHI_SARWA_MULE;
+    WERDHI_SARWA_MULE;
 
     /**
      * Returns the id of EkaJalaRsi.

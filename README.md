@@ -16,38 +16,39 @@ BalineseDate is designed to be __immutable__ and __thread-safe__. BalineseDate h
 
 * [Pawukon](http://www.babadbali.com/pewarigaan/kalender-pawukon.htm)
 * [Pawewaran](http://www.babadbali.com/pewarigaan/pawewaran.htm)
-    * [EkaWara](http://www.babadbali.com/pewarigaan/ekawara.htm)
-    * [DwiWara](http://www.babadbali.com/pewarigaan/dwiwara.htm)
-    * [TriWara](http://www.babadbali.com/pewarigaan/triwara.htm)
-    * [CaturWara](http://www.babadbali.com/pewarigaan/caturwara.htm)
-    * [PancaWara](http://www.babadbali.com/pewarigaan/pancawara.htm)
-    * [SadWara](http://www.babadbali.com/pewarigaan/sadwara.htm)
-    * [SaptaWara](http://www.babadbali.com/pewarigaan/saptawara.htm)
-    * [AstaWara](http://www.babadbali.com/pewarigaan/astawara.htm)
-    * [SangaWara](http://www.babadbali.com/pewarigaan/sangawara.htm)
-    * [DasaWara](http://www.babadbali.com/pewarigaan/dasawara.htm)
+  * [EkaWara](http://www.babadbali.com/pewarigaan/ekawara.htm)
+  * [DwiWara](http://www.babadbali.com/pewarigaan/dwiwara.htm)
+  * [TriWara](http://www.babadbali.com/pewarigaan/triwara.htm)
+  * [CaturWara](http://www.babadbali.com/pewarigaan/caturwara.htm)
+  * [PancaWara](http://www.babadbali.com/pewarigaan/pancawara.htm)
+  * [SadWara](http://www.babadbali.com/pewarigaan/sadwara.htm)
+  * [SaptaWara](http://www.babadbali.com/pewarigaan/saptawara.htm)
+  * [AstaWara](http://www.babadbali.com/pewarigaan/astawara.htm)
+  * [SangaWara](http://www.babadbali.com/pewarigaan/sangawara.htm)
+  * [DasaWara](http://www.babadbali.com/pewarigaan/dasawara.htm)
 * [Paringkelan](http://www.babadbali.com/pewarigaan/paringkelan.htm)
-    * [Jejepan](http://www.babadbali.com/pewarigaan/jejepan.htm)
-    * [Ingkel](http://www.babadbali.com/pewarigaan/ingkel.htm)
-    * [Pawatekan Madya & Alit](http://www.babadbali.com/pewarigaan/watek.htm)
-    * [Lintang](http://www.babadbali.com/pewarigaan/lintang.htm)
-    * [PancaSuda](http://www.babadbali.com/pewarigaan/pancasuda.htm)
-    * [Pararasan](http://www.babadbali.com/pewarigaan/paarasan.htm)
-    * [Rakam](http://www.babadbali.com/pewarigaan/rakam.htm)
+  * [Jejepan](http://www.babadbali.com/pewarigaan/jejepan.htm)
+  * [Ingkel](http://www.babadbali.com/pewarigaan/ingkel.htm)
+  * [Pawatekan Madya & Alit](http://www.babadbali.com/pewarigaan/watek.htm)
+  * [Lintang](http://www.babadbali.com/pewarigaan/lintang.htm)
+  * [PancaSuda](http://www.babadbali.com/pewarigaan/pancasuda.htm)
+  * [Pararasan](http://www.babadbali.com/pewarigaan/paarasan.htm)
+  * [Rakam](http://www.babadbali.com/pewarigaan/rakam.htm)
 * Eka Jala Rsi __(v0.3.0)__
 * Pratithi Samut Pada __(v0.3.0)__
 * Dewasa __(v0.5.0)__
 * Sasih
-    * Pawukon/Penanggal and Nguna Ratri.
-    * Pengalantaka Eka Sungsang Pon (before 2000) & Paing (2000 and after)
-    * Malamasa (< 1993), Sasih Kesinambungan (1993 - 2002), Nampih Sasih (>= 2003)
+  * Pawukon/Penanggal and Nguna Ratri.
+  * Pengalantaka Eka Sungsang Pon (before 2000) & Paing (2000 and after)
+  * Malamasa (< 1993), Sasih Kesinambungan (1993 - 2002), Nampih Sasih (>= 2003)
 * [Saka Year](http://www.babadbali.com/pewarigaan/kalender-saka.htm)
 
 BalineseDate also have several utilities that can be use by developer like:
+
 * Filter BalineseDate(s) from selected Date __(v0.2.0)__
 * Filter BalineseDate(s) from selected BalineseDate List __(v0.4.0)__
 
-## Import BalineseDate into Project
+## Import BalineseDate into Your Project
 
 BalineseDate Java Library use [Jitpack](https://jitpack.io/#com.gitlab.peradnya/balinese-date-java-lib) to publish the binary. Choose one of these following method:
 

@@ -152,7 +152,7 @@ public final class BalineseDate extends BalineseDateBase implements Serializable
         pratithiSamutPada = getPratithiSamutPada(sasihDay, sasihDayInfo, sasih, calendar);
 
         List<Dewasa> tempDewasa = new ArrayList<Dewasa>();
-        getDewasaBySaptaWaraWuku(saptaWara, wuku, tempDewasa);
+        getDewasaByWuku(wuku, saptaWara, tempDewasa);
 
         dewasa = Collections.unmodifiableList(tempDewasa);
     }
@@ -417,13 +417,13 @@ public final class BalineseDate extends BalineseDateBase implements Serializable
     }
 
     /**
-     * Returns the list of Dewasa of BalineseDate.
+     * Returns the list of {@link Dewasa} of BalineseDate.
      * <p>
      * <b>Note:</b> The return value of this method is protected by
      * {@code Collections.unmodifiableList()} to prevent list modification from
      * outside.
      * 
-     * @return the list of Dewasa of BalineseDate
+     * @return the list of {@link Dewasa} of BalineseDate
      */
     @Override
     public List<Dewasa> dewasa() {

@@ -30,9 +30,9 @@ public enum Lintang {
     /** Id: 1 */
     KIRIMAN,
     /** Id: 2 */
-    PERAHU_SARAT,
+    JUNG_SARAT,
     /** Id: 3 */
-    TIWA_TIWA,
+    ATIWA_TIWA,
     /** Id: 4 */
     SANGKA_TIKEL,
     /** Id: 5 */
@@ -50,7 +50,7 @@ public enum Lintang {
     /** Id: 11 */
     BADE,
     /** Id: 12 */
-    MANGELUT,
+    MAGELUT,
     /** Id: 13 */
     PAGELANGAN,
     /** Id: 14 */

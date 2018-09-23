@@ -54,7 +54,7 @@ public enum Wuku {
     /** Id: 13, Urip: 8 */
     MEDANGSIA(8),
     /** Id: 14, Urip: 9 */
-    PUJUD(9),
+    PUJUT(9),
     /** Id: 15, Urip: 3 */
     PAHANG(3),
     /** Id: 16, Urip: 7 */

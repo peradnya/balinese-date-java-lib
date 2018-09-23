@@ -66,7 +66,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.LABA, bDate.caturWara());
         assertEquals(PancaWara.WAGE, bDate.pancaWara());
         assertEquals(SadWara.PANIRON, bDate.sadWara());
-        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
         assertEquals(AstaWara.BRAHMA, bDate.astaWara());
         assertEquals(SangaWara.NOHAN, bDate.sangaWara());
         assertEquals(DasaWara.PATI, bDate.dasaWara());
@@ -148,7 +148,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.MENALA, bDate.caturWara());
         assertEquals(PancaWara.KLIWON, bDate.pancaWara());
         assertEquals(SadWara.PANIRON, bDate.sadWara());
-        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
         assertEquals(AstaWara.YAMA, bDate.astaWara());
         assertEquals(SangaWara.DANGU, bDate.sangaWara());
         assertEquals(DasaWara.MANUH, bDate.dasaWara());
@@ -158,7 +158,7 @@ public class BalineseDateTest {
         assertEquals(Jejepan.PATRA, bDate.jejepan());
         assertEquals(WatekMadya.WONG, bDate.watekMadya());
         assertEquals(WatekAlit.LEMBU, bDate.watekAlit());
-        assertEquals(Lintang.TIWA_TIWA, bDate.lintang());
+        assertEquals(Lintang.ATIWA_TIWA, bDate.lintang());
         assertEquals(Pararasan.LAKU_SURYA, bDate.pararasan());
         assertEquals(PancaSuda.LEBU_KATIUB_ANGIN, bDate.pancaSuda());
 
@@ -271,7 +271,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.LABA, bDate.caturWara());
         assertEquals(PancaWara.PAING, bDate.pancaWara());
         assertEquals(SadWara.ARYANG, bDate.sadWara());
-        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
         assertEquals(AstaWara.INDRA, bDate.astaWara());
         assertEquals(SangaWara.OGAN, bDate.sangaWara());
         assertEquals(DasaWara.MANUSA, bDate.dasaWara());
@@ -312,7 +312,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.JAYA, bDate.caturWara());
         assertEquals(PancaWara.PON, bDate.pancaWara());
         assertEquals(SadWara.TUNGLEH, bDate.sadWara());
-        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
         assertEquals(AstaWara.GURU, bDate.astaWara());
         assertEquals(SangaWara.DANGU, bDate.sangaWara());
         assertEquals(DasaWara.SRI, bDate.dasaWara());
@@ -394,7 +394,7 @@ public class BalineseDateTest {
         assertEquals(CaturWara.LABA, bDate.caturWara());
         assertEquals(PancaWara.UMANIS, bDate.pancaWara());
         assertEquals(SadWara.ARYANG, bDate.sadWara());
-        assertEquals(SaptaWara.BUDHA, bDate.saptaWara());
+        assertEquals(SaptaWara.BUDA, bDate.saptaWara());
         assertEquals(AstaWara.BRAHMA, bDate.astaWara());
         assertEquals(SangaWara.TULUS, bDate.sangaWara());
         assertEquals(DasaWara.SUKA, bDate.dasaWara());
@@ -692,7 +692,7 @@ public class BalineseDateTest {
         assertEquals(Jejepan.PATRA, bDate.jejepan());
         assertEquals(WatekMadya.WONG, bDate.watekMadya());
         assertEquals(WatekAlit.GAJAH, bDate.watekAlit());
-        assertEquals(Lintang.MANGELUT, bDate.lintang());
+        assertEquals(Lintang.MAGELUT, bDate.lintang());
         assertEquals(Pararasan.LAKU_PANDITA_SAKTI, bDate.pararasan());
         assertEquals(PancaSuda.SUMUR_SINABA, bDate.pancaSuda());
 
@@ -701,7 +701,7 @@ public class BalineseDateTest {
         // Penanggal
         assertEquals(Arrays.asList(1), bDate.sasihDay());
         assertEquals(SasihDayInfo.PENANGGAL, bDate.sasihDayInfo());
-        assertEquals(PratithiSamutPada.SAMSKARA, bDate.pratithiSamutPada());
+        assertEquals(PratithiSamutPada.SASKARA, bDate.pratithiSamutPada());
 
         // Sasih
         assertEquals(1924, bDate.saka());

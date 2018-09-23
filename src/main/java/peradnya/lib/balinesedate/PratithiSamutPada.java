@@ -37,7 +37,7 @@ public enum PratithiSamutPada {
     /** Id: 5 */
     AWIDYA,
     /** Id: 6 */
-    SAMSKARA,
+    SASKARA,
     /** Id: 7 */
     WIDNYANA,
     /** Id: 8 */
